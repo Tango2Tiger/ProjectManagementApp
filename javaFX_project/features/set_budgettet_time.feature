@@ -1,6 +1,5 @@
 Feature: Set budgetet for activity
 
-
   Scenario: Succesfully set budgetet time for an activity
     Given There is an activity
     When The user sets the budgetet time for the activity
