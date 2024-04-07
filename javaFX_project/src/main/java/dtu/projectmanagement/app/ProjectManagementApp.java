@@ -11,4 +11,8 @@ public class ProjectManagementApp {
     public static void setEmployeeLoggedIn(boolean employeeLoggedIn) {
         ProjectManagementApp.employeeLoggedIn = employeeLoggedIn;
     }
+
+    public static void login(String initials) {
+
+    }
 }
