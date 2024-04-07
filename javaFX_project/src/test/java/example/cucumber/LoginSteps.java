@@ -23,9 +23,6 @@ public class LoginSteps {
         Employee employee = new Employee("Hubert", "Baumeister");
         assertEquals(employee.getInitials(), string);
     }
-    @When("the employee logs in")
-    public void the_employee_logs_in() {
-        ProjectManagementApp.login(employee.getInitials());
-    }
+
 
 }
