@@ -1,0 +1,13 @@
+Feature: An employee is registered
+
+
+Scenario: Sucesfully register new employee
+  Given the user is logged in
+  When the user registers an employee
+  Then a new employee is created
+
+Scenario: Register an employee that is already registered
+  Given an employee is registered in the system
+  And the user is logged in
+  When the user registers the employee again
+  Then the error message “Employee is already registered” is given
