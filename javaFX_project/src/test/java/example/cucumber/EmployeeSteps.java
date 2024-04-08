@@ -19,9 +19,9 @@ public class EmployeeSteps {
     public void there_is_an_employee_with_name() {
         employee = new Employee("Hubert", "Baumeister");
     }
-    //@When("the user registers an employee")
-    //public void the_user_registers_an_employee() {
-      //  projectManagementApp.getEmployeeList();
+    @When("the user registers an employee")
+    public void the_user_registers_an_employee() {
+        projectManagementApp.getEmployeeList().add(employee);
 
     }
     @Then("a new employeee is created")

@@ -3,7 +3,7 @@ Feature: An employee is registered
 
 Scenario: Successfully register new employee
   Given there is an employee with name{string}
-  #When the user registers an employee
+  When the user registers an employee
   #Then a new employee is created
 
 Scenario: Register an employee that is already registered
