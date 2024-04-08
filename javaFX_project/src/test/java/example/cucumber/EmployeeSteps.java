@@ -23,7 +23,7 @@ public class EmployeeSteps {
     //public void the_user_registers_an_employee() {
       //  projectManagementApp.getEmployeeList();
 
-    }
+    //}
     @Then("a new employeee is created")
     public void aNewEmployeeIsCreated() {
         // Write code here that turns the phrase above into concrete actions
@@ -31,4 +31,3 @@ public class EmployeeSteps {
     }
 
 }
-

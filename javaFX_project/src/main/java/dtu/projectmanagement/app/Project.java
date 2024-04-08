@@ -1,16 +1,13 @@
-package src.main.java.dtu.projectmanagement.app;
+package dtu.projectmanagement.app;
 
 public class Project {
     private String name;
-    private int projectNumber;
 
-    public Project(String name, int number){
+    public Project(String name){
         this.name = name;
-        this.projectNumber = number;
     }
 
     public String getName(){
         return this.name;
     }
-
 }

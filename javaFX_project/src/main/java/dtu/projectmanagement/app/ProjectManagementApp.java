@@ -8,7 +8,10 @@ import java.util.List;
 public class ProjectManagementApp {
     private ArrayList<Employee> employeeList = new ArrayList<>();
     private Employee loggedIn;
-    private boolean employeeLoggedIn = false;
+    private boolean employeeLoggedIn = true;
+
+
+    private ArrayList<Project> projectList = new ArrayList<>();
 
     public static List<Project> projectList = new ArrayList<Project>();
 
@@ -56,5 +59,17 @@ public class ProjectManagementApp {
             }
         }
         return false;
+    }
+
+    public ArrayList<Project> getProjectList(){
+        return this.projectList;
+    }
+
+    public void addProjectToList(Project project){
+        this.projectList.add(project);
+    }
+
+    public void removeProjectFromList(String name){
+        projectList.removeIf(project -> project.getName().equals(name));
     }
 }
