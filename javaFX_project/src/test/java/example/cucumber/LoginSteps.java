@@ -18,6 +18,13 @@ public class LoginSteps {
     public void that_no_employee_is_logged_in() {
         assertFalse(projectManagementApp.isEmployeeLoggedIn());
     }
+
+    @Given("the user is logged in")
+    public void the_user_is_logged_in() {
+        // Write code here that turns the phrase above into concrete actions
+        assertTrue(ProjectManagementApp.isEmployeeLoggedIn());
+    }
+
     @Given("there is a employee with initials {string}")
     public void there_is_a_employee_with_initials(String string) {
         employee = new Employee("Hubert", "Baumeister");
