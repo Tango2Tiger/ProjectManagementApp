@@ -20,7 +20,7 @@ public class LoginSteps {
     }
     @Given("there is a employee with initials {string}")
     public void there_is_a_employee_with_initials(String string) {
-        Employee employee = new Employee("Hubert Baumeister");
+        Employee employee = new Employee("Hubert", "Baumeister");
     }
     @When("the user logs in")
     public void the_user_logs_in() {
