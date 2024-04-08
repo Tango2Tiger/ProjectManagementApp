@@ -16,13 +16,21 @@ public class LoginSteps {
     }
     @Given("that no employee is logged in")
     public void that_no_employee_is_logged_in() {
-        assertFalse(ProjectManagementApp.isEmployeeLoggedIn());
+        assertFalse(projectManagementApp.isEmployeeLoggedIn());
     }
     @Given("there is a employee with initials {string}")
     public void there_is_a_employee_with_initials(String string) {
-        Employee employee = new Employee("Hubert", "Baumeister");
+        employee = new Employee("Hubert", "Baumeister");
         assertEquals(employee.getInitials(), string);
     }
-
+    @When("the employee logs in")
+    public void the_employee_logs_in() {
+        projectManagementApp.getEmployeeList().add(employee);
+        projectManagementApp.login(employee.getInitials());
+    }
+    @Then("the employee is logged in")
+    public void the_employee_is_logged_in() {
+        assertEquals(employee, projectManagementApp.getLoggedIn());
+    }
 
 }

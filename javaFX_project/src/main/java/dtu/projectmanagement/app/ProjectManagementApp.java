@@ -3,24 +3,40 @@ package dtu.projectmanagement.app;
 import java.util.ArrayList;
 
 public class ProjectManagementApp {
-    private static ArrayList<Employee> employeeList;
-    public static Employee loggedIn;
-    private static boolean employeeLoggedIn = false;
+    private ArrayList<Employee> employeeList = new ArrayList<>();
+    private Employee loggedIn;
+    private boolean employeeLoggedIn = false;
 
-    public static boolean isEmployeeLoggedIn() {
+    public boolean isEmployeeLoggedIn() {
         return employeeLoggedIn;
     }
 
-    public static void setEmployeeLoggedIn(boolean employeeLoggedIn) {
-        ProjectManagementApp.employeeLoggedIn = employeeLoggedIn;
+    public ArrayList<Employee> getEmployeeList() {
+        return employeeList;
     }
 
-    public static void login(String initials) {
+    public void setEmployeeList(ArrayList<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
+
+    public void setEmployeeLoggedIn(boolean employeeLoggedIn) {
+        this.employeeLoggedIn = employeeLoggedIn;
+    }
+
+    public void login(String initials) {
         for (Employee employee : employeeList) {
             if(employee.getInitials().equals(initials)) {
                 loggedIn = employee;
                 employeeLoggedIn = true;
             }
         }
+    }
+
+    public Employee getLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(Employee loggedIn) {
+        this.loggedIn = loggedIn;
     }
 }
