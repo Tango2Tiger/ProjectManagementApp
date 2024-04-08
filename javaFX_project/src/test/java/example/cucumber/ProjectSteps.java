@@ -2,9 +2,12 @@ package example.cucumber;
 
 import dtu.projectmanagement.app.ProjectManagementApp;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 import src.main.java.dtu.projectmanagement.app.Project;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 public class ProjectSteps {
@@ -24,5 +27,15 @@ public class ProjectSteps {
         assertFalse(nameExists);
     }
 
+    @When("the user creates the project")
+    public void the_user_creates_the_project() {
+        Project p1 = new Project("project1",1000);
+        ProjectManagementApp.addProject(p1);
+    }
+
+    @Then("there is a project with name {string}")
+    public void there_is_a_project_with_name(String name) {
+        assertTrue(ProjectManagementApp.hasProject(name));
+    }
 
 }
