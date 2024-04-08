@@ -24,10 +24,9 @@ public class EmployeeSteps {
         projectManagementApp.getEmployeeList().add(employee);
 
     }
-    @Then("a new employeee is created")
-    public void aNewEmployeeIsCreated() {
-        // Write code here that turns the phrase above into concrete actions
-
+    @Then("the employee with name\\{string} exists in the system")
+    public void the_employee_with_name_string_exists_in_the_system(String name) {
+        assertTrue("Employee does not exist in the system", projectManagementApp.hasEmployee(name));
     }
 
 }
