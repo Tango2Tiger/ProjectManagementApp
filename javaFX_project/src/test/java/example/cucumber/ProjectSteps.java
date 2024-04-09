@@ -16,14 +16,9 @@ public class ProjectSteps {
         this.projectManagementApp = projectManagementApp;
     }
 
-    @Given("That the user is logged in")
-    public void that_the_user_is_logged_in() {
-        assertTrue(projectManagementApp.isEmployeeLoggedIn());
-    }
-
     @Given("There exists a project with the name {string}")
     public void there_exists_a_project_with_the_name(String string) {
-        Project p1 = new Project("p1");
+        Project p1 = new Project("p1", 1);
         projectManagementApp.addProjectToList(p1);
         for (Project project : projectManagementApp.getProjectList()) {
             assertEquals(project.getName(), string);
@@ -40,6 +35,30 @@ public class ProjectSteps {
         for(Project project: projectManagementApp.getProjectList()){
             assertNotEquals(project.getName(), string);
         }
-
     }
+
+
+    @Given("there is no project with name {string}")
+    public void there_is_no_project_with_name(String name){
+        boolean nameExists = false;
+        for(Project p: projectManagementApp.getProjectList()){
+            if (p.getName().equals(name)) {
+                nameExists = true;
+                break;
+            }
+        }
+        assertFalse(nameExists);
+    }
+
+    @When("the user creates the project")
+    public void the_user_creates_the_project() {
+        Project p1 = new Project("project1",1000);
+        projectManagementApp.addProject(p1);
+    }
+
+    @Then("there is a project with name {string}")
+    public void there_is_a_project_with_name(String name) {
+        assertTrue(projectManagementApp.hasProject(name));
+    }
+
 }
