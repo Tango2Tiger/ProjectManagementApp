@@ -1,5 +1,6 @@
 package dtu.example.ui;
 
+import dtu.projectmanagement.app.OperationNotAllowedException;
 import dtu.projectmanagement.app.ProjectManagementApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +19,10 @@ public class App extends Application {
     private static ProjectManagementApp projectManagementApp = new ProjectManagementApp();
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, OperationNotAllowedException {
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
+        projectManagementApp.registerEmployee("Hubert", "Baumeister");
         stage.show();
     }
 
