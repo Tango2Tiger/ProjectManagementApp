@@ -25,7 +25,7 @@ public class ProjectSteps {
         }
     }
 
-    @When("The user deletes the project {string}")
+    @When("user deletes the project {string}")
     public void The_user_deletes_the_project(String string){
         projectManagementApp.removeProjectFromList(string);
     }
@@ -57,8 +57,15 @@ public class ProjectSteps {
     }
 
     @Then("there is a project with name {string}")
-    public void there_is_a_project_with_name(String name) {
-        assertTrue(projectManagementApp.hasProject(name));
+    public void there_is_a_project_with_name(String string) {
+        assertTrue(projectManagementApp.hasProjectWithName(string));
     }
+
+
+    @Given("no project with the name {string} exists")
+    public void no_project_with_the_name_exists(String string) {
+        assertFalse(projectManagementApp.hasProjectWithName(string));
+    }
+
 
 }

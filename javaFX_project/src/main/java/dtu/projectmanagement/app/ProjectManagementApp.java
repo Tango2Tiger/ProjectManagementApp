@@ -50,9 +50,9 @@ public class ProjectManagementApp {
         projectList.add(project);
     }
 
-    public boolean hasProject(String project){
+    public boolean hasProjectWithName(String name){
         for(Project p : projectList){
-            if(p.getName().equals(project)){
+            if(p.getName().equals(name)){
                 return true;
             }
         }
