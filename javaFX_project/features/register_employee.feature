@@ -2,12 +2,11 @@ Feature: An employee is registered
 
 
 Scenario: Successfully register new employee
-  Given there is an employee with name{string}
-  #When the user registers an employee
-  #Then a new employee is created
+  Given there is an employee with first name "Hubert" and last name "Baumeister"
+  When the employee with first name "Hubert" and last name "Baumeister" is registered
+  Then the employee with first name "Hubert" and last name "Baumeister" is in the system
 
 Scenario: Register an employee that is already registered
-  #Given an employee is registered in the system
-  #And the user is logged in
-  #When the user registers the employee again
-  #Then the error message “Employee is already registered” is given
+  Given the employee with first name "Hubert" and last name "Baumeister" is registered
+  When the employee with first name "Hubert" and last name "Baumeister" is registered again
+  Then the error message "Employee is already registered" is received

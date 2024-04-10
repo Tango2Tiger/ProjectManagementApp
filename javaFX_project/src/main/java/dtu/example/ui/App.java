@@ -1,5 +1,6 @@
 package dtu.example.ui;
 
+import dtu.projectmanagement.app.ProjectManagementApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static ProjectManagementApp projectManagementApp = new ProjectManagementApp();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -35,5 +37,10 @@ public class App extends Application {
 
         launch(App.class, args);
     }
+
+    public static ProjectManagementApp getProjectManagementApp() {
+        return projectManagementApp;
+    }
+
 
 }

@@ -29,13 +29,14 @@ public class ProjectManagementApp {
         this.employeeLoggedIn = employeeLoggedIn;
     }
 
-    public void login(String initials) {
+    public void login(String initials) throws OperationNotAllowedException{
         for (Employee employee : employeeList) {
             if(employee.getInitials().equals(initials)) {
                 loggedIn = employee;
                 employeeLoggedIn = true;
+                return;
             }
-        }
+        } throw new OperationNotAllowedException("employee with initials " + initials + " is not in the system");
     }
 
     public Employee getLoggedIn() {
@@ -69,5 +70,35 @@ public class ProjectManagementApp {
 
     public void removeProjectFromList(String name){
         projectList.removeIf(project -> project.getName().equals(name));
+    }
+
+    public boolean hasEmployeeWithInitials(String initials) {
+        for (Employee employee : employeeList) {
+            if (employee.getInitials().equals(initials)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addEmployeeToEmployeeList(Employee employee) {
+        employeeList.add(employee);
+    }
+
+    public void registerEmployee(String firstName, String lastName) throws OperationNotAllowedException {
+        if (hasEmployeeWithName(firstName, lastName)){
+            throw new OperationNotAllowedException("Employee is already registered");
+        }
+        Employee employee = new Employee(firstName, lastName);
+        addEmployeeToEmployeeList(employee);
+    }
+
+    public boolean hasEmployeeWithName(String firstName, String lastName) {
+        for (Employee employee : employeeList) {
+            if (employee.getFirstName().equals(firstName) && employee.getLastName().equals(lastName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
