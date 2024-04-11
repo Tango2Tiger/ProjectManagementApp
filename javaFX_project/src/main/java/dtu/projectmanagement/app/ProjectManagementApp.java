@@ -68,14 +68,14 @@ public class ProjectManagementApp {
         this.projectList.add(project);
     }
 
-    public void removeProjectFromList(String name) {
+    public void removeProjectFromList(String name) throws OperationNotAllowedException{
         for(Project project: projectList){
             if(project.getName().equals(name)){
                 projectList.remove(project);
                 return;
             }
         }
-        //throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist.");
+        throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
     }
 
     public boolean hasEmployeeWithInitials(String initials) {
@@ -106,5 +106,26 @@ public class ProjectManagementApp {
             }
         }
         return false;
+    }
+
+    public Employee getEmployeeWithInitials(String initials) throws OperationNotAllowedException{
+        for(Employee employee: employeeList){
+            if(employee.getInitials().equals(initials)){
+                return employee;
+            }
+        } throw new OperationNotAllowedException("Employee with the initials " + initials + " does not exist");
+    }
+
+    public Project getProjectWithName(String name){
+        for(Project project: projectList){
+            if(project.getName().equals(name)){
+                return project;
+            }
+        }
+        return null;
+    }
+
+    public void assignProjectLeader(String projectName, String initials) throws OperationNotAllowedException{
+        getProjectWithName(projectName).setProjectLeader(getEmployeeWithInitials(initials));
     }
 }

@@ -30,7 +30,11 @@ public class ProjectSteps {
 
     @When("user deletes the project {string}")
     public void The_user_deletes_the_project(String string) {
-        projectManagementApp.removeProjectFromList(string);
+        try {
+            projectManagementApp.removeProjectFromList(string);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("The project {string} doesn’t exist")
@@ -70,9 +74,21 @@ public class ProjectSteps {
         assertFalse(projectManagementApp.hasProjectWithName(string));
     }
 
+    @When("user sets employee with initials {string} as new leader of the project {string}")
+    public void user_sets_employee_with_initials_as_new_leader_of_the_project(String initials, String p1) {
+        try {
+            projectManagementApp.assignProjectLeader(p1, initials);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
+    }
 
-    @Then("error message {string} is raised")
-    public void errorMessageIsRaised(String arg0) {
-
+    @Then("the employee with initials {string} is the project leader of the project {string}")
+    public void theEmployeeWithInitialsIsTheProjectLeaderOfTheProject(String initials, String p1) {
+        try {
+            assertSame(projectManagementApp.getProjectWithName(p1).getProjectLeader(), projectManagementApp.getEmployeeWithInitials(initials));
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 }
