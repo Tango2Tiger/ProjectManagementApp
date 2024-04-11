@@ -9,7 +9,7 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.SecondaryController">
     <children>
         <Label fx:id="loginLabel" text="Login using your initials:" />
-      <TextField fx:id="loginTextField" />
+      <TextField fx:id="loginTextField" onKeyPressed="#keyListenerLogIn" />
       <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginEmployee" text="Login" />
         <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
     </children>

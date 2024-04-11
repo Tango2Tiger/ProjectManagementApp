@@ -11,4 +11,4 @@ Feature: User deletes a project.
         Given the user is logged in
         And no project with the name "p1" exists
         When user deletes the project "p1"
-        #Then error message is raised
+        #Then the error message "Project with the name p1 doesn't exist" is received

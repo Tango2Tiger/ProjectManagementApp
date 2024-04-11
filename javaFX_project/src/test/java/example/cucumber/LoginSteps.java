@@ -28,6 +28,7 @@ public class LoginSteps {
     @Given("the user is logged in")
     public void the_user_is_logged_in() {
         employee = new Employee("Hubert", "Baumeister");
+        employeeHolder.setEmployee(employee);
         projectManagementApp.getEmployeeList().add(employeeHolder.getEmployee());
         try {
             projectManagementApp.login(employeeHolder.getEmployee().getInitials());

@@ -1,6 +1,7 @@
 package example.cucumber;
 
 import dtu.projectmanagement.app.Employee;
+import dtu.projectmanagement.app.OperationNotAllowedException;
 import dtu.projectmanagement.app.Project;
 import dtu.projectmanagement.app.ProjectManagementApp;
 import io.cucumber.java.en.Given;
@@ -11,9 +12,11 @@ import static org.junit.Assert.*;
 public class ProjectSteps {
     private Employee employee;
     private ProjectManagementApp projectManagementApp;
+    private ErrorMessageHolder errorMessageHolder;
 
-    public ProjectSteps(ProjectManagementApp projectManagementApp) {
+    public ProjectSteps(ProjectManagementApp projectManagementApp, ErrorMessageHolder errorMessageHolder) {
         this.projectManagementApp = projectManagementApp;
+        this.errorMessageHolder = errorMessageHolder;
     }
 
     @Given("There exists a project with the name {string}")
@@ -26,7 +29,7 @@ public class ProjectSteps {
     }
 
     @When("user deletes the project {string}")
-    public void The_user_deletes_the_project(String string){
+    public void The_user_deletes_the_project(String string) {
         projectManagementApp.removeProjectFromList(string);
     }
 
@@ -68,4 +71,8 @@ public class ProjectSteps {
     }
 
 
+    @Then("error message {string} is raised")
+    public void errorMessageIsRaised(String arg0) {
+
+    }
 }

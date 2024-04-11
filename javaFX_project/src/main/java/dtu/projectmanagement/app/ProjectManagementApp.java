@@ -68,8 +68,14 @@ public class ProjectManagementApp {
         this.projectList.add(project);
     }
 
-    public void removeProjectFromList(String name){
-        projectList.removeIf(project -> project.getName().equals(name));
+    public void removeProjectFromList(String name) {
+        for(Project project: projectList){
+            if(project.getName().equals(name)){
+                projectList.remove(project);
+                return;
+            }
+        }
+        //throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist.");
     }
 
     public boolean hasEmployeeWithInitials(String initials) {
