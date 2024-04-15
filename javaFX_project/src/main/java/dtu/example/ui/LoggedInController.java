@@ -11,4 +11,8 @@ public class LoggedInController {
     public void registerEmployee(ActionEvent actionEvent) throws IOException {
         App.setRoot("registerEmployee");
     }
+
+    public void createProject(ActionEvent actionEvent) throws IOException{
+        App.setRoot("createProject");
+    }
 }
