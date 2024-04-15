@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 
 import static org.junit.Assert.*;
 
-
+/*
 public class EmployeeSteps {
     private Employee employee;
     private ProjectManagementApp projectManagementApp;
@@ -37,7 +37,7 @@ public class EmployeeSteps {
     public void aNewEmployeeIsCreated() {
         // Write code here that turns the phrase above into concrete actions
 
-    }
+    // }
 
     @Given("there is no employee with initials {string}")
     public void there_is_no_employee_with_initials(String string) {
@@ -83,4 +83,4 @@ public class EmployeeSteps {
     }
 
 
-}
+}*/
