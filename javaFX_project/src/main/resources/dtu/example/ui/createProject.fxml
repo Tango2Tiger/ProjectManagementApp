@@ -16,6 +16,6 @@
       </Label>
       <Button layoutX="278.0" layoutY="318.0" mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
       <Button layoutX="253.0" layoutY="276.0" mnemonicParsing="false" onAction="#createProject" text="Create project" />
-      <Label fx:id="projectAlreadyExistsFail" layoutX="207.0" layoutY="236.0" prefHeight="17.0" prefWidth="188.0" />
+      <Label fx:id="projectAlreadyExistsFail" layoutX="14.0" layoutY="153.0" prefHeight="95.0" prefWidth="573.0" />
    </children>
 </AnchorPane>

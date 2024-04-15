@@ -21,13 +21,13 @@ public class CreateProjectController {
     public void createProject(ActionEvent actionEvent) throws IOException {
         try{
             App.getProjectManagementApp().createProject(projectname.getText());
+            projectAlreadyExistsFail.setText(projectname + " project has been added to the system!");
+            App.setRoot("loggedIn");
         }
         catch(OperationNotAllowedException e){
             projectAlreadyExistsFail.setText(e.getMessage());
         }
 
-
-        App.setRoot("loggedIn");
     }
 
 }
