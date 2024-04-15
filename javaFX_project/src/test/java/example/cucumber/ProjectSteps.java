@@ -19,9 +19,9 @@ public class ProjectSteps {
         this.errorMessageHolder = errorMessageHolder;
     }
 
-    @Given("There exists a project with the name {string}")
+    @Given("there exists a project with the name {string}")
     public void there_exists_a_project_with_the_name(String string) {
-        Project p1 = new Project("p1", 1);
+        Project p1 = new Project(string);
         projectManagementApp.addProjectToList(p1);
         for (Project project : projectManagementApp.getProjectList()) {
             assertEquals(project.getName(), string);
@@ -57,10 +57,15 @@ public class ProjectSteps {
         assertFalse(nameExists);
     }
 
-    @When("the user creates the project")
-    public void the_user_creates_the_project() {
-        Project p1 = new Project("project1",1000);
-        projectManagementApp.addProject(p1);
+
+    @When("the user creates the project with name {string}")
+    public void the_user_creates_the_project_with_name(String string) {
+        try {
+            projectManagementApp.createProject(string);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
+
     }
 
     @Then("there is a project with name {string}")

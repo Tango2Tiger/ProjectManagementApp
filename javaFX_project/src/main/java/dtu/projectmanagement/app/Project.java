@@ -6,9 +6,8 @@ public class Project {
 
     private Employee projectLeader;
 
-    public Project(String name, int projectNumber){
+    public Project(String name){
         this.name = name;
-        this.setProjectNumber(projectNumber);
     }
 
     public String getName(){
@@ -20,7 +19,7 @@ public class Project {
     }
 
     public void setProjectNumber(int projectNumber) {
-        this.projectNumber = projectNumber;
+        this.projectNumber = 24000 + projectNumber;
     }
 
     public Employee getProjectLeader() {

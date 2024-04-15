@@ -8,6 +8,7 @@ public class ProjectManagementApp {
     private ArrayList<Employee> employeeList = new ArrayList<>();
     private Employee loggedIn;
     private boolean employeeLoggedIn = false;
+    private int projectCounter = 1;
 
 
     private ArrayList<Project> projectList = new ArrayList<>();
@@ -127,5 +128,15 @@ public class ProjectManagementApp {
 
     public void assignProjectLeader(String projectName, String initials) throws OperationNotAllowedException{
         getProjectWithName(projectName).setProjectLeader(getEmployeeWithInitials(initials));
+    }
+
+    public void createProject(String name) throws OperationNotAllowedException{
+        if(hasProjectWithName(name)){
+            throw new OperationNotAllowedException("There is already a project in the app with the given name");
+        }
+        var project = new Project(name);
+        getProjectList().add(project);
+        project.setProjectNumber(projectCounter);
+        projectCounter ++;
     }
 }
