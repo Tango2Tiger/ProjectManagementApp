@@ -6,7 +6,6 @@ Feature: User deletes a project.
         When user deletes the project "p1"
         Then The project "p1" doesn’t exist
 
-
     Scenario: User tries to delete a project that doesn't exist
         Given the user is logged in
         And no project with the name "p1" exists

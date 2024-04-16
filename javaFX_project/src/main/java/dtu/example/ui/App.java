@@ -20,7 +20,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, OperationNotAllowedException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new Scene(loadFXML("secondary"), 640, 480);
         stage.setScene(scene);
         projectManagementApp.registerEmployee("Hubert", "Baumeister");
         stage.show();

@@ -15,7 +15,6 @@
          <effect>
             <DropShadow />
          </effect></Button>
-        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

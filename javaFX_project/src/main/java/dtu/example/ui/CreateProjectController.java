@@ -24,8 +24,7 @@ public class CreateProjectController {
     public void createProject(ActionEvent actionEvent) throws IOException {
         try {
             App.getProjectManagementApp().createProject(projectname.getText());
-            projectAlreadyExistsFail.setText(projectname + " project has been added to the system!");
-            App.setRoot("loggedIn");
+            projectAlreadyExistsFail.setText("Project " + projectname.getText() + " has been added to the system!");
         } catch (OperationNotAllowedException e) {
             projectAlreadyExistsFail.setText(e.getMessage());
         }
@@ -37,8 +36,7 @@ public class CreateProjectController {
         if (event.getCode() == KeyCode.ENTER) {
             try {
                 App.getProjectManagementApp().createProject(projectname.getText());
-                projectAlreadyExistsFail.setText(projectname + " project has been added to the system!");
-                App.setRoot("loggedIn");
+                projectAlreadyExistsFail.setText("Project " + projectname.getText() + " has been added to the system!");
             } catch (OperationNotAllowedException e) {
                 projectAlreadyExistsFail.setText(e.getMessage());
             }
