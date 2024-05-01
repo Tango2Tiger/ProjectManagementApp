@@ -4,6 +4,7 @@ import dtu.projectmanagement.app.Employee;
 import dtu.projectmanagement.app.OperationNotAllowedException;
 import dtu.projectmanagement.app.Project;
 import dtu.projectmanagement.app.ProjectManagementApp;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -96,4 +97,10 @@ public class ProjectSteps {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
+
+    @Given("the project {string} has no activity with the name {string}")
+    public void theProjectHasNoActivityWithTheName(String p1, String a1) {
+        assertFalse(projectManagementApp.getProjectWithName(p1).hasActivityWithName(a1));
+    }
+
 }

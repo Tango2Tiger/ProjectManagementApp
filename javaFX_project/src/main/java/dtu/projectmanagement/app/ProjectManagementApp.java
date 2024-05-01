@@ -145,4 +145,12 @@ public class ProjectManagementApp {
         List<String> nameList = projectList.stream().map(Project::getName).collect(Collectors.toList());
         return nameList;
     }
+
+    public void createActivity(Project p1, String name) throws OperationNotAllowedException{
+        if(p1.hasActivityWithName(name)){
+            throw new OperationNotAllowedException("An activity with the name \"" + name + "\" already exists.");
+        }else {
+            p1.createActivity(name);
+        }
+    }
 }
