@@ -8,6 +8,7 @@ public class Project {
 
     private Employee projectLeader;
     private ArrayList<Activity> activityList = new ArrayList<>();
+    private ArrayList<Employee> employeeList = new ArrayList<>();
 
     public Project(String name){
         this.name = name;
@@ -40,6 +41,19 @@ public class Project {
     public boolean hasActivityWithName(String name){
         for(Activity activity: activityList){
             if(activity.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addEmployee(Employee employee) {this.employeeList.add(employee);}
+
+    public ArrayList<Employee> getEmployeeList(){ return employeeList;}
+
+    public boolean hasEmployee(Employee employee) {
+        for(Employee em : employeeList){
+            if(em.equals(employee)){
                 return true;
             }
         }

@@ -21,9 +21,11 @@ public class EmployeeSteps {
         this.errorMessageHolder = errorMessageHolder;
 
     }
+
     @Given("there is an employee with initials {string}")
     public void there_is_an_employee_with_initials(String string) {
         employee = new Employee("Hubert", "Baumeister");
+        employee.setInitials();
         employeeHolder.setEmployee(employee);
         assertEquals(employeeHolder.getEmployee().getInitials(), string);
     }
@@ -43,7 +45,14 @@ public class EmployeeSteps {
     public void there_is_no_employee_with_initials_in_the_system(String string) {
         assertFalse(projectManagementApp.hasEmployeeWithInitials(string));
     }
-
+    @Given("there is an employee with initials {string} registered")
+    public void there_is_an_employee_with_initials_registered(String string) throws OperationNotAllowedException {
+        employee = new Employee("Hubert", "Baumeister");
+        employee.setInitials();
+        projectManagementApp.registerEmployee(employee.getFirstName(), employee.getLastName());
+        employeeHolder.setEmployee(employee);
+        assertTrue(projectManagementApp.hasEmployeeWithInitials(string));
+    }
     @Given("there is an employee with first name {string} and last name {string}")
     public void there_is_an_employee_with_first_name_and_last_name(String firstName, String lastName) {
         employee = new Employee(firstName, lastName);
@@ -71,6 +80,11 @@ public class EmployeeSteps {
         } catch (OperationNotAllowedException e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
+    }
+    @Given("an employee is logged in")
+    public void an_employee_is_logged_in() throws OperationNotAllowedException {
+        projectManagementApp.registerEmployee("Hubert", "Baumeister");
+        projectManagementApp.login("huba");
     }
 
 

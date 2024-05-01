@@ -1,10 +1,6 @@
 package example.cucumber;
 
-import dtu.projectmanagement.app.Employee;
-import dtu.projectmanagement.app.OperationNotAllowedException;
-import dtu.projectmanagement.app.Project;
-import dtu.projectmanagement.app.ProjectManagementApp;
-import io.cucumber.java.en.And;
+import dtu.projectmanagement.app.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,9 +10,12 @@ public class ProjectSteps {
     private Employee employee;
     private ProjectManagementApp projectManagementApp;
     private ErrorMessageHolder errorMessageHolder;
+    private EmployeeHolder employeeHolder;
+    private Project project;
 
-    public ProjectSteps(ProjectManagementApp projectManagementApp, ErrorMessageHolder errorMessageHolder) {
+    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder) {
         this.projectManagementApp = projectManagementApp;
+        this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
     }
 
@@ -102,5 +101,19 @@ public class ProjectSteps {
     public void theProjectHasNoActivityWithTheName(String p1, String a1) {
         assertFalse(projectManagementApp.getProjectWithName(p1).hasActivityWithName(a1));
     }
+
+
+    @When("the employee gets assigned to the project")
+    public void the_employee_gets_assigned_to_the_project() {
+        project = new Project("p1");
+        project.addEmployee(employeeHolder.getEmployee());
+
+    }
+
+    @Then("the employee is assigned to the project")
+    public void the_employee_is_assigned_to_the_project() {
+        assertTrue(project.hasEmployee(employeeHolder.getEmployee()));
+    }
+
 
 }

@@ -7,17 +7,16 @@ public class Employee {
     public Employee (String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        String[] firstNameSplit = firstName.toLowerCase().split("");
-        String[] lastNameSplit = lastName.toLowerCase().split("");
-        this.initials = firstNameSplit[0] + firstNameSplit[1] + lastNameSplit[0] + lastNameSplit[1];
     }
 
     public String getInitials() {
         return initials;
     }
 
-    public void setInitials(String initials) {
-        this.initials = initials;
+    public void setInitials() {
+        String[] firstNameSplit = firstName.toLowerCase().split("");
+        String[] lastNameSplit = lastName.toLowerCase().split("");
+        this.initials = firstNameSplit[0] + firstNameSplit[1] + lastNameSplit[0] + lastNameSplit[1];
     }
 
     public String getFirstName() {
