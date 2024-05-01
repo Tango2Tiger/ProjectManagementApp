@@ -1,6 +1,8 @@
 package example.cucumber;
 
 import dtu.projectmanagement.app.*;
+import io.cucumber.java.bs.A;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,19 +14,25 @@ public class ProjectSteps {
     private ErrorMessageHolder errorMessageHolder;
     private EmployeeHolder employeeHolder;
     private Project project;
+    private Activity activity;
+    private ActivityHolder activityHolder;
+    private ProjectHolder projectHolder;
 
-    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder) {
+    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder, ProjectHolder projectHolder) {
         this.projectManagementApp = projectManagementApp;
         this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
+        this.activityHolder = activityHolder;
+        this.projectHolder = projectHolder;
     }
 
     @Given("there exists a project with the name {string}")
-    public void there_exists_a_project_with_the_name(String string) {
-        Project p1 = new Project(string);
-        projectManagementApp.addProjectToList(p1);
+    public void there_exists_a_project_with_the_name(String p1) {
+        project = new Project(p1);
+        projectManagementApp.addProjectToList(project);
+        projectHolder.setProject(project);
         for (Project project : projectManagementApp.getProjectList()) {
-            assertEquals(project.getName(), string);
+            assertEquals(project.getName(), p1);
         }
     }
 
@@ -116,4 +124,11 @@ public class ProjectSteps {
     }
 
 
+    @Given("the project {string} has an activity with the name {string}")
+    public void theProjectHasAnActivityWithTheName(String p1, String a1) throws OperationNotAllowedException{
+        activity = new Activity(a1);
+        activityHolder.setActivity(activity);
+        projectManagementApp.createActivity(projectManagementApp.getProjectWithName(p1), a1);
+        assertTrue(projectManagementApp.getProjectWithName(p1).hasActivityWithName(a1));
+    }
 }

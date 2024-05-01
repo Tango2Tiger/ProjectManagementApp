@@ -159,7 +159,7 @@ public class ProjectManagementApp {
 
     public void createActivity(Project p1, String name) throws OperationNotAllowedException{
         if(p1.hasActivityWithName(name)){
-            throw new OperationNotAllowedException("An activity with the name \"" + name + "\" already exists.");
+            throw new OperationNotAllowedException("The project " + p1.getName() + " already has an activity with the name \"" + name + "\"");
         }else {
             p1.createActivity(name);
         }
