@@ -28,8 +28,8 @@ public class ProjectSteps {
         }
     }
 
-    @When("user deletes the project {string}")
-    public void The_user_deletes_the_project(String string) {
+    @When("employee deletes the project {string}")
+    public void The_employee_deletes_the_project(String string) {
         try {
             projectManagementApp.removeProjectFromList(string);
         } catch (OperationNotAllowedException e) {
@@ -58,8 +58,8 @@ public class ProjectSteps {
     }
 
 
-    @When("the user creates the project with name {string}")
-    public void the_user_creates_the_project_with_name(String string) {
+    @When("the employee creates the project with name {string}")
+    public void the_employee_creates_the_project_with_name(String string) {
         try {
             projectManagementApp.createProject(string);
         } catch (OperationNotAllowedException e) {
@@ -79,8 +79,8 @@ public class ProjectSteps {
         assertFalse(projectManagementApp.hasProjectWithName(string));
     }
 
-    @When("user sets employee with initials {string} as new leader of the project {string}")
-    public void user_sets_employee_with_initials_as_new_leader_of_the_project(String initials, String p1) {
+    @When("employee sets employee with initials {string} as new leader of the project {string}")
+    public void employee_sets_employee_with_initials_as_new_leader_of_the_project(String initials, String p1) {
         try {
             projectManagementApp.assignProjectLeader(p1, initials);
         } catch (OperationNotAllowedException e) {

@@ -25,19 +25,6 @@ public class LoginSteps {
         assertFalse(projectManagementApp.isEmployeeLoggedIn());
     }
 
-    @Given("the user is logged in")
-    public void the_user_is_logged_in() {
-        employee = new Employee("Hubert", "Baumeister");
-        employeeHolder.setEmployee(employee);
-        projectManagementApp.getEmployeeList().add(employeeHolder.getEmployee());
-        try {
-            projectManagementApp.login(employeeHolder.getEmployee().getInitials());
-        } catch (OperationNotAllowedException e) {
-            errorMessageHolder.setErrorMessage(e.getMessage());
-        }
-        assertTrue(projectManagementApp.isEmployeeLoggedIn());
-    }
-
 
     @When("the employee logs in")
     public void the_employee_logs_in() {
