@@ -98,6 +98,10 @@ public class ProjectManagementApp {
             throw new OperationNotAllowedException("Employee is already registered");
         }
         Employee employee = new Employee(firstName, lastName);
+        if (lastName.length() < 2 || firstName.length() < 2) {
+            throw new OperationNotAllowedException("Employee names must be two or more characters long");
+        }
+        employee.setInitials();
         addEmployeeToEmployeeList(employee);
     }
 
@@ -142,7 +146,14 @@ public class ProjectManagementApp {
     }
 
     public List<String> getProjectNameList() {
-        List<String> nameList = projectList.stream().map(Project::getName).collect(Collectors.toList());
-        return nameList;
+        return projectList.stream().map(Project::getName).collect(Collectors.toList());
+    }
+
+
+    public List<String> getEmployeeInitialsList() {
+        return employeeList.stream().map(Employee::getInitials).collect(Collectors.toList());
+    }
+    public void setProjectLeader(Employee employee, Project project) {
+        project.setProjectLeader(employee);
     }
 }

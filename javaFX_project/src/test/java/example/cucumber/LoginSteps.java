@@ -37,7 +37,7 @@ public class LoginSteps {
 
     @Then("the employee is logged in")
     public void the_employee_is_logged_in() {
-        assertEquals(employeeHolder.getEmployee(), projectManagementApp.getLoggedIn());
+        assertEquals(employeeHolder.getEmployee().getInitials(), projectManagementApp.getLoggedIn().getInitials());
     }
 
     @Then("the error message {string} is received")
