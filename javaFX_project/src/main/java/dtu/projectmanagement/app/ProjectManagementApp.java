@@ -39,7 +39,14 @@ public class ProjectManagementApp {
             }
         } throw new OperationNotAllowedException("employee with initials " + initials + " is not in the system");
     }
-
+    public boolean hasEmployee(String name) {
+        for (Employee employee : employeeList) {
+            if (employee.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public Employee getLoggedIn() {
         return loggedIn;
     }

@@ -36,7 +36,6 @@ public class EmployeeSteps {
     @Then("a new employeee is created")
     public void aNewEmployeeIsCreated() {
         // Write code here that turns the phrase above into concrete actions
-
     }
 
     @Given("there is no employee with initials {string}")
