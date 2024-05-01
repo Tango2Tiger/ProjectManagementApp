@@ -28,15 +28,7 @@ public class EmployeeSteps {
         assertEquals(employeeHolder.getEmployee().getInitials(), string);
     }
 
-    //@When("the user registers an employee")
-    //public void the_user_registers_an_employee() {
-    //  projectManagementApp.getEmployeeList();
 
-    //}
-    @Then("a new employeee is created")
-    public void aNewEmployeeIsCreated() {
-        // Write code here that turns the phrase above into concrete actions
-    }
 
     @Given("there is no employee with initials {string}")
     public void there_is_no_employee_with_initials(String string) {

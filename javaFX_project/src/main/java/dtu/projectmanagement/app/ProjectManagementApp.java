@@ -3,6 +3,7 @@ package dtu.projectmanagement.app;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProjectManagementApp {
     private ArrayList<Employee> employeeList = new ArrayList<>();
@@ -39,14 +40,7 @@ public class ProjectManagementApp {
             }
         } throw new OperationNotAllowedException("employee with initials " + initials + " is not in the system");
     }
-    public boolean hasEmployee(String name) {
-        for (Employee employee : employeeList) {
-            if (employee.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
+
     public Employee getLoggedIn() {
         return loggedIn;
     }
@@ -145,5 +139,10 @@ public class ProjectManagementApp {
         getProjectList().add(project);
         project.setProjectNumber(projectCounter);
         projectCounter ++;
+    }
+
+    public List<String> getProjectNameList() {
+        List<String> nameList = projectList.stream().map(Project::getName).collect(Collectors.toList());
+        return nameList;
     }
 }
