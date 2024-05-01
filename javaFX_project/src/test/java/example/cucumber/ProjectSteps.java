@@ -101,15 +101,12 @@ public class ProjectSteps {
     public void the_employee_gets_assigned_to_the_project() {
         project = new Project("p1");
         project.addEmployee(employeeHolder.getEmployee());
-        for(Employee em: project.getEmployeeList()){
-            assertEquals(em.getInitials(), employeeHolder.getEmployee().getInitials());
-        }
-        //throw new io.cucumber.java.PendingException();
+
     }
+
     @Then("the employee is assigned to the project")
     public void the_employee_is_assigned_to_the_project() {
-
-        throw new io.cucumber.java.PendingException();
+        assertTrue(project.hasEmployee(employeeHolder.getEmployee()));
     }
 
 

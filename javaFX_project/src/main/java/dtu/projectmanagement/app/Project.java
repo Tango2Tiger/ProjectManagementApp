@@ -35,4 +35,13 @@ public class Project {
     public void addEmployee(Employee employee) {this.employeeList.add(employee);}
 
     public ArrayList<Employee> getEmployeeList(){ return employeeList;}
+
+    public boolean hasEmployee(Employee employee) {
+        for(Employee em : employeeList){
+            if(em.equals(employee)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
