@@ -2,8 +2,7 @@ Feature: An employee logs in
 
 Scenario: Employee in the system logs in
   Given that no employee is logged in
-  And there is an employee with initials "huba"
-  And the employee is registered in the system
+  And there is an employee with initials "huba" registered
   When the employee logs in
   Then the employee is logged in
 
