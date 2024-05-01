@@ -6,6 +6,3 @@ Feature: The employee wants to assign an employee, possibly him/herself, to a pr
     And there is an employee with initials "huba"
     When the employee gets assigned to the project
     Then the employee is assigned to the project
-
-
-
