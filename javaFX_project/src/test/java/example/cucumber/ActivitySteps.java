@@ -22,10 +22,10 @@ public class ActivitySteps {
 
     @When("the employee creates an activity with the name {string} under the project {string}")
     public void the_employee_creates_an_activity_with_the_name(String name, String p1) {
-        project = new Project(p1);
-        projectHolder.setProject(project);
+        //project = new Project(p1);
+        //projectHolder.setProject(project);
         try {
-            projectManagementApp.createActivity(project, name);
+            projectManagementApp.createActivity(projectHolder.getProject(), name);
         } catch (OperationNotAllowedException e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -34,6 +34,6 @@ public class ActivitySteps {
 
     @Then("there is an activity with the name {string} under the project {string}")
     public void thereIsAnActivityWithTheName(String a1, String p1) {
-        assertTrue(project.hasActivityWithName(a1));
+        assertTrue(projectHolder.getProject().hasActivityWithName(a1));
     }
 }
