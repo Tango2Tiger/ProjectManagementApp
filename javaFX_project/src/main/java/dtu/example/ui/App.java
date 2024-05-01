@@ -1,5 +1,7 @@
 package dtu.example.ui;
 
+import dtu.projectmanagement.app.OperationNotAllowedException;
+import dtu.projectmanagement.app.ProjectManagementApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,11 +16,13 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static ProjectManagementApp projectManagementApp = new ProjectManagementApp();
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+    public void start(Stage stage) throws IOException, OperationNotAllowedException {
+        scene = new Scene(loadFXML("secondary"), 640, 480);
         stage.setScene(scene);
+        projectManagementApp.registerEmployee("Hubert", "Baumeister");
         stage.show();
     }
 
@@ -32,7 +36,13 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+
+        launch(App.class, args);
     }
+
+    public static ProjectManagementApp getProjectManagementApp() {
+        return projectManagementApp;
+    }
+
 
 }

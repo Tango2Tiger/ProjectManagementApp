@@ -2,9 +2,11 @@ package dtu.projectmanagement.app;
 
 public class Employee {
     private String initials;
-    private String name;
+    private String firstName;
+    private String lastName;
     public Employee (String firstName, String lastName) {
-        this.name = firstName + " " + lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         String[] firstNameSplit = firstName.toLowerCase().split("");
         String[] lastNameSplit = lastName.toLowerCase().split("");
         this.initials = firstNameSplit[0] + firstNameSplit[1] + lastNameSplit[0] + lastNameSplit[1];
@@ -18,11 +20,11 @@ public class Employee {
         this.initials = initials;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getLastName() {
+        return lastName;
     }
 }
