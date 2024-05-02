@@ -7,6 +7,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 
@@ -83,8 +85,19 @@ public class EmployeeSteps {
     }
     @Given("an employee is logged in")
     public void an_employee_is_logged_in() throws OperationNotAllowedException {
-        projectManagementApp.registerEmployee("Hubert", "Baumeister");
+        employee = new Employee("Hubert", "Baumeister");
+        employee.setInitials();
+        employeeHolder.setEmployee(employee);
+        projectManagementApp.addEmployeeToEmployeeList(employee);
         projectManagementApp.login("huba");
+    }
+    @Given("the employee has {int} half hours registered")
+    public void the_employee_has_half_hours_registered(Integer halfhours) {
+        assertTrue(employeeHolder.getEmployee().getRegisteredTime() == halfhours);
+    }
+    @Then("the employee now has {int} half hours registered")
+    public void the_employee_now_has_half_hours_registered(Integer int1) {
+        assertTrue((employeeHolder.getEmployee().getRegisteredTime()) == int1);
     }
 
 

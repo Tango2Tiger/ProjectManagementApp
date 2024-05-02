@@ -20,7 +20,7 @@ public class Employee {
         this.initials = firstNameSplit[0] + firstNameSplit[1] + lastNameSplit[0] + lastNameSplit[1];
     }
 
-    public void addTime(int halfhours){
+    public void registerTime(int halfhours){
         this.registeredTime += halfhours;
     }
 
@@ -33,4 +33,6 @@ public class Employee {
     }
 
     public int getRegisteredTime() {return registeredTime;}
+
+
 }

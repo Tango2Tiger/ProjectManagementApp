@@ -2,6 +2,7 @@ package example.cucumber;
 
 
 import dtu.projectmanagement.app.*;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -10,16 +11,18 @@ import static org.junit.Assert.*;
 public class ActivitySteps {
     private ProjectHolder projectHolder;
     private ActivityHolder activityHolder;
+    private EmployeeHolder employeeHolder;
     private Employee employee;
     private Project project;
     private Activity activity;
     private ProjectManagementApp projectManagementApp;
     private ErrorMessageHolder errorMessageHolder;
-    public ActivitySteps(ProjectManagementApp projectManagementApp, ErrorMessageHolder errorMessageHolder, ProjectHolder projectHolder, ActivityHolder activityHolder) {
+    public ActivitySteps(ProjectManagementApp projectManagementApp, ErrorMessageHolder errorMessageHolder, EmployeeHolder employeeHolder, ProjectHolder projectHolder, ActivityHolder activityHolder) {
         this.projectManagementApp = projectManagementApp;
         this.errorMessageHolder = errorMessageHolder;
         this.projectHolder = projectHolder;
         this.activityHolder = activityHolder;
+        this.employeeHolder = employeeHolder;
     }
 
     @When("the employee creates an activity with the name {string} under the project {string}")
@@ -50,6 +53,19 @@ public class ActivitySteps {
     public void the_activity_has_the_budgetet_time_hours(Integer int1) {
         int bt = projectManagementApp.getActivityFromProject(projectHolder.getProject().getName(), activityHolder.getActivity().getName()).getBudgetedTime();
         assertTrue(int1 == bt);
+    }
+
+    @Given("the activity has {int} half hours registered")
+    public void the_activity_has_half_hours_registered(Integer int1) {
+        assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
+    }
+    @When("the employee registers {int} half hours on the activity")
+    public void the_employee_registers_half_hours_on_the_activity(int halfhours) {
+        projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), halfhours);
+    }
+    @Then("the activity now has {int} half hours registered")
+    public void the_activity_now_has_half_hours_registered(Integer int1) {
+        assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
     }
 
 }

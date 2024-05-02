@@ -186,4 +186,8 @@ public class ProjectManagementApp {
         p1.addEmployee(e1);
     }
 
+    public void registerTime(Employee employee, Activity activity, Integer halfhours) {
+        employee.registerTime(halfhours);
+        activity.registerTime(halfhours);
+    }
 }
