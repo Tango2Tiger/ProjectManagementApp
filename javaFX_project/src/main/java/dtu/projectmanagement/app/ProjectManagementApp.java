@@ -171,6 +171,10 @@ public class ProjectManagementApp {
         return getProjectWithName(projectName).getActivityWithName(activityName);
     }
 
+    public List<String> getActivityListFromProject(Project project) {
+        return project.getActivityList().stream().map(Activity::getName).collect(Collectors.toList());
+    }
+
     public boolean projectHasEmployee(Project p1, Employee e1){
         if(p1.hasEmployee(e1)){
             return true;
