@@ -11,3 +11,8 @@ Scenario: Employee creates project
     And there exists a project with the name "project1"
     When the employee creates the project with name "project1"
     Then the error message "There is already a project in the app with the given name" is received
+
+  Scenario: Register a project with no name
+    Given an employee is logged in
+    When the employee creates the project with name ""
+    Then the error message "Project must have a name" is received

@@ -139,6 +139,9 @@ public class ProjectManagementApp {
         if(hasProjectWithName(name)){
             throw new OperationNotAllowedException("There is already a project in the app with the given name");
         }
+        if(name.isEmpty()){
+            throw new OperationNotAllowedException("Project must have a name");
+        }
         var project = new Project(name);
         getProjectList().add(project);
         project.setProjectNumber(projectCounter);

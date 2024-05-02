@@ -30,7 +30,7 @@
                   <Insets right="40.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#assignLeader" text="Assign Leader">
+            <Button fx:id="assignLeaderButton" mnemonicParsing="false" onAction="#assignLeader" text="Assign Leader">
                <HBox.margin>
                   <Insets left="40.0" />
                </HBox.margin>
