@@ -113,14 +113,15 @@ public class ProjectSteps {
 
     @When("the employee gets assigned to the project")
     public void the_employee_gets_assigned_to_the_project() {
-        project = new Project("p1");
-        project.addEmployee(employeeHolder.getEmployee());
+        projectManagementApp.addEmployeeToProject(projectHolder.getProject(), employeeHolder.getEmployee());
+
+
 
     }
 
     @Then("the employee is assigned to the project")
     public void the_employee_is_assigned_to_the_project() {
-        assertTrue(project.hasEmployee(employeeHolder.getEmployee()));
+        assertTrue(projectManagementApp.projectHasEmployee(projectHolder.getProject(), employeeHolder.getEmployee()));
     }
 
 

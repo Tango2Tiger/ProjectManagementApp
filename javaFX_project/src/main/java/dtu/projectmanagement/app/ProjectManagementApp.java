@@ -164,4 +164,16 @@ public class ProjectManagementApp {
             p1.createActivity(name);
         }
     }
+
+    public boolean projectHasEmployee(Project p1, Employee e1){
+        if(p1.hasEmployee(e1)){
+            return true;
+        }
+        return false;
+    }
+
+    public void addEmployeeToProject(Project p1, Employee e1){
+        p1.addEmployee(e1);
+    }
+
 }
