@@ -24,4 +24,7 @@ public class viewProjectsController {
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
         App.setRoot("loggedIn");
     }
+    public void activityScreen (ActionEvent actionEvent) throws IOException {
+        App.setRoot("activityScreen");
+    }
 }

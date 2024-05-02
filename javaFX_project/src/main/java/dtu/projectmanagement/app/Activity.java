@@ -2,7 +2,7 @@ package dtu.projectmanagement.app;
 
 public class Activity {
     private String name;
-    private int budgetedTime;
+    private int budgetedTime = 0;
     private final int MAX_TIME = 5000;
     public Activity(String name){
         this.name = name;
@@ -14,7 +14,10 @@ public class Activity {
 
     public void setBudgetedTime(Integer budgetedTime) throws OperationNotAllowedException {
         if(budgetedTime >= MAX_TIME) {
-            throw new OperationNotAllowedException("Budgetet time must be below " + MAX_TIME + " hours");
+            throw new OperationNotAllowedException("Budgeted time must be below " + MAX_TIME + " hours");
+        }
+        if(budgetedTime < 0) {
+            throw new OperationNotAllowedException("Budgeted time must be positive");
         }
         this.budgetedTime = budgetedTime;
     }

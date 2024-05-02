@@ -24,10 +24,6 @@ public class AssignProjectLeaderController implements Initializable {
     private ChoiceBox<String> projectChoiceBox;
     @FXML
     private Button assignLeaderButton;
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -40,9 +36,12 @@ public class AssignProjectLeaderController implements Initializable {
         App.setRoot("viewProjects");
     }
     public void chooseProject(ActionEvent actionEvent) throws IOException {
-        employeeChoiceBox.setVisible(true);
-        assignLeaderButton.setVisible(true);
-        employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
+        if (!isNull(projectChoiceBox.getValue())) {
+            employeeChoiceBox.setVisible(true);
+            assignLeaderButton.setVisible(true);
+            employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
+        }
+
     }
     public void assignLeader() throws IOException, OperationNotAllowedException {
         if(isNull(employeeChoiceBox.getValue()) || isNull(projectChoiceBox.getValue())){

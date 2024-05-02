@@ -12,5 +12,3 @@ Feature: Employee creates a activity.
         And the project "p1" has an activity with the name "a1"
         When the employee creates an activity with the name "a1" under the project "p1"
         Then the error message "The project \'p1\' already has an activity with the name \'a1\'" is received
-
-
