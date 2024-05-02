@@ -31,9 +31,7 @@ public class ProjectSteps {
         project = new Project(p1);
         projectManagementApp.addProjectToList(project);
         projectHolder.setProject(project);
-        for (Project project : projectManagementApp.getProjectList()) {
-            assertEquals(project.getName(), p1);
-        }
+        assertTrue(projectManagementApp.hasProjectWithName(p1));
     }
 
     @When("employee deletes the project {string}")
@@ -47,9 +45,7 @@ public class ProjectSteps {
 
     @Then("The project {string} doesn’t exist")
     public void the_project_doesnt_exist(String string){
-        for(Project project: projectManagementApp.getProjectList()){
-            assertNotEquals(project.getName(), string);
-        }
+        assertFalse(projectManagementApp.hasProjectWithName(string));
     }
 
 
@@ -130,5 +126,10 @@ public class ProjectSteps {
         activityHolder.setActivity(activity);
         projectManagementApp.createActivity(projectManagementApp.getProjectWithName(p1), a1);
         assertTrue(projectManagementApp.getProjectWithName(p1).hasActivityWithName(a1));
+    }
+
+    @Given("the project {string} has no activities")
+    public void the_project_has_no_activities(String string) {
+        assertTrue(projectManagementApp.getProjectWithName(string).getActivityList().isEmpty());
     }
 }

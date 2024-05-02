@@ -1,11 +1,13 @@
 Feature: Set budgetet for activity
 
-#  Scenario: Succesfully set budgetet time for an activity
-#    Given There is an activity
-#    When The user sets the budgetet time for the activity
-#    Then The activity is given a bugetet time span
+  Scenario: Succesfully set budgetet time for an activity
+      Given there exists a project with the name "p1"
+      And the project "p1" has an activity with the name "a1"
+      When The employee sets the budgetet time for the activity belonging to the project to 100 hours
+      Then The activity has the budgetet time 100 hours
 
-#  Scenario: Set a start and end date for a non-existing activity
-#    Given There is no activity
-#    When The user set the budgetet time
-#    Then The error message "There is no activity with this name"
+  Scenario: Set too large budgetet time
+    Given there exists a project with the name "p1"
+    And the project "p1" has an activity with the name "a1"
+    When The employee sets the budgetet time for the activity belonging to the project to 5000 hours
+    Then the error message "Budgetet time must be below 5000 hours" is received

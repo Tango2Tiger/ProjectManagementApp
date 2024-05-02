@@ -59,4 +59,17 @@ public class Project {
         }
         return false;
     }
+
+    public Activity getActivityWithName(String activityName) {
+        for( Activity activity: activityList){
+            if(activity.getName().equals(activityName)){
+                return activity;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Activity> getActivityList() {
+        return activityList;
+    }
 }

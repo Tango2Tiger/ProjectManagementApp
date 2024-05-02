@@ -167,4 +167,7 @@ public class ProjectManagementApp {
             p1.createActivity(name);
         }
     }
+    public Activity getActivityFromProject(String projectName, String activityName) {
+        return getProjectWithName(projectName).getActivityWithName(activityName);
+    }
 }
