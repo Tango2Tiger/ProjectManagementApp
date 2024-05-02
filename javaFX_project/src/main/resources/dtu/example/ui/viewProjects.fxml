@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.viewProjectsController">
    <children>
       <Label text="Projects">
@@ -23,6 +22,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
+      <Button fx:id="switchToAssignEmployee" mnemonicParsing="false" onAction="#assignEmployee" text="Assign Employee to Project" />
       <Button fx:id="switchToAssignLeader" mnemonicParsing="false" onAction="#assignProjectLeader" text="Assign Project Leader" />
       <Button fx:id="switchToCreateActivity" mnemonicParsing="false" onAction="#createActivity" text="Create Activity" />
       <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />

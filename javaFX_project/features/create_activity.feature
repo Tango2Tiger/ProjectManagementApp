@@ -11,4 +11,6 @@ Feature: Employee creates a activity.
         Given there exists a project with the name "p1"
         And the project "p1" has an activity with the name "a1"
         When the employee creates an activity with the name "a1" under the project "p1"
-        Then the error message "The project p1 already has an activity with the name \"a1\"" is received
+        Then the error message "The project \'p1\' already has an activity with the name \'a1\'" is received
+
+
