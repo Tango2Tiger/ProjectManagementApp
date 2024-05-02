@@ -123,9 +123,9 @@ public class ProjectSteps {
 
     @Given("the project {string} has an activity with the name {string}")
     public void theProjectHasAnActivityWithTheName(String p1, String a1) throws OperationNotAllowedException{
-        activity = new Activity(a1);
-        activityHolder.setActivity(activity);
         projectManagementApp.createActivity(projectManagementApp.getProjectWithName(p1), a1);
+        activityHolder.setActivity(projectManagementApp.getActivityFromProject(p1,a1));
+
         assertTrue(projectManagementApp.getProjectWithName(p1).hasActivityWithName(a1));
     }
 

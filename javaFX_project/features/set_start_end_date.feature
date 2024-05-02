@@ -1,11 +1,13 @@
 Feature: Set the start and end date for an activity
 
-#  Scenario: Succesfully set a start and end date for an activity
-#    Given There is an activity
-#    When The user sets the start and end date
-#    Then The activity is given an start and end date
+  Scenario: Succesfully set a start and end date for an activity
+    Given there exists a project with the name "p1"
+    And the project "p1" has an activity with the name "a1"
+    When the employee sets a start year 24, start week 50, end year 25 and end week 5
+    Then the activity has a start date with year 24 and week 50
+    And the activity has an end date with year 25 and week 5
 
-#  Scenario: Set a start and end date for a non-existing activity
-#    Given There is no activity
-#    When The user set the start and end date
-#    Then The error message "There is no activity with this name"
+  Scenario: Employee tries to set an end date before a start date
+    Given there exists a project with the name "p1"
+    And the project "p1" has an activity with the name "a1"
+    When the employee sets a start year 25, start week 8, end year 24 and end week 46

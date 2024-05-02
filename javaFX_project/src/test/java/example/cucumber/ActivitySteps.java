@@ -27,8 +27,6 @@ public class ActivitySteps {
 
     @When("the employee creates an activity with the name {string} under the project {string}")
     public void the_employee_creates_an_activity_with_the_name(String name, String p1) {
-        //project = new Project(p1);
-        //projectHolder.setProject(project);
         try {
             projectManagementApp.createActivity(projectHolder.getProject(), name);
         } catch (OperationNotAllowedException e) {
@@ -41,6 +39,7 @@ public class ActivitySteps {
     public void thereIsAnActivityWithTheName(String a1, String p1) {
         assertTrue(projectHolder.getProject().hasActivityWithName(a1));
     }
+
     @When("The employee sets the budgetet time for the activity belonging to the project to {int} hours")
     public void the_employee_sets_the_budgetet_time_for_the_activity_belonging_to_the_project_to_hours(Integer int1) {
         try {
@@ -49,12 +48,30 @@ public class ActivitySteps {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
+
     @Then("The activity has the budgetet time {int} hours")
     public void the_activity_has_the_budgetet_time_hours(Integer int1) {
         int bt = projectManagementApp.getActivityFromProject(projectHolder.getProject().getName(), activityHolder.getActivity().getName()).getBudgetedTime();
         assertTrue(int1 == bt);
     }
 
+    @When("the employee sets a start year {int}, start week {int}, end year {int} and end week {int}")
+    public void the_employee_sets_a_start_date_with_year_and_week(int start_year, int start_week, int end_year, int end_week) {
+        projectManagementApp.setStartEndActivity(start_year, start_week, end_year, end_week, projectHolder.getProject().getName(), activityHolder.getActivity().getName());
+
+    }
+
+    @Then("the activity has a start date with year {int} and week {int}")
+    public void the_activity_has_a_start_date_with_year_and_week( int start_year, int start_week) {
+        assertEquals(activityHolder.getActivity().getStartDate().getYear(), start_year);
+        assertEquals(activityHolder.getActivity().getStartDate().getWeek(), start_week);
+    }
+
+    @Then("the activity has an end date with year {int} and week {int}")
+    public void the_activity_has_an_end_date_with_year_and_week( int end_year, int end_week) {
+        assertEquals(activityHolder.getActivity().getEndDate().getYear(), end_year);
+        assertEquals(activityHolder.getActivity().getEndDate().getWeek(), end_week);
+    }
     @Given("the activity has {int} half hours registered")
     public void the_activity_has_half_hours_registered(Integer int1) {
         assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
@@ -67,5 +84,7 @@ public class ActivitySteps {
     public void the_activity_now_has_half_hours_registered(Integer int1) {
         assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
     }
+
+}
 
 }

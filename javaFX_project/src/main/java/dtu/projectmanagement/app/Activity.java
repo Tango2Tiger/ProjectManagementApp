@@ -4,6 +4,9 @@ public class Activity {
     private String name;
     private int budgetedTime = 0;
     private int registeredTime = 0;
+    private ActivityDate startDate;
+    private ActivityDate endDate;
+
     private final int MAX_TIME = 5000;
     public Activity(String name){
         this.name = name;
@@ -25,6 +28,23 @@ public class Activity {
 
     public Integer getBudgetedTime() {
         return budgetedTime;
+    }
+
+
+    public ActivityDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(ActivityDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public ActivityDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(ActivityDate endDate) {
+        this.endDate = endDate;
     }
 
     public int getRegisteredTime() {

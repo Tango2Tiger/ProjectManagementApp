@@ -186,6 +186,11 @@ public class ProjectManagementApp {
         p1.addEmployee(e1);
     }
 
+
+    public void setStartEndActivity(int startYear, int startWeek, int endYear, int endWeek, String projectName, String activityName){
+        getProjectWithName(projectName).getActivityWithName(activityName).setStartDate(new ActivityDate(startYear, startWeek));
+        getProjectWithName(projectName).getActivityWithName(activityName).setEndDate(new ActivityDate(endYear, endWeek));
+    }
     public void registerTime(Employee employee, Activity activity, Integer halfhours) {
         employee.registerTime(halfhours);
         activity.registerTime(halfhours);
