@@ -36,8 +36,8 @@ public class AssignProjectLeaderController implements Initializable {
         assignLeaderButton.setVisible(false);
 }
 
-    public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
-        App.setRoot("loggedIn");
+    public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
+        App.setRoot("viewProjects");
     }
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         employeeChoiceBox.setVisible(true);
