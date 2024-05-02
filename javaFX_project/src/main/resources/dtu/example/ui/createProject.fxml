@@ -14,7 +14,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="278.0" layoutY="318.0" mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
+      <Button layoutX="278.0" layoutY="318.0" mnemonicParsing="false" onAction="#returnToViewProjects" text="Back" />
       <Button layoutX="253.0" layoutY="276.0" mnemonicParsing="false" onAction="#createProject" text="Create project" />
       <Label fx:id="projectAlreadyExistsFail" alignment="CENTER" layoutX="14.0" layoutY="153.0" prefHeight="95.0" prefWidth="573.0" />
    </children>

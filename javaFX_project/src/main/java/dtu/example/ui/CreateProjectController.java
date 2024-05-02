@@ -17,8 +17,8 @@ public class CreateProjectController {
     public Label namelabel;
     public Label projectAlreadyExistsFail;
 
-    public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
-        App.setRoot("loggedIn");
+    public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
+        App.setRoot("viewProjects");
     }
 
     public void createProject(ActionEvent actionEvent) throws IOException {

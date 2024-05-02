@@ -139,6 +139,9 @@ public class ProjectManagementApp {
         if(hasProjectWithName(name)){
             throw new OperationNotAllowedException("There is already a project in the app with the given name");
         }
+        if(name.isEmpty()){
+            throw new OperationNotAllowedException("Project must have a name");
+        }
         var project = new Project(name);
         getProjectList().add(project);
         project.setProjectNumber(projectCounter);
@@ -159,10 +162,13 @@ public class ProjectManagementApp {
 
     public void createActivity(Project p1, String name) throws OperationNotAllowedException{
         if(p1.hasActivityWithName(name)){
-            throw new OperationNotAllowedException("The project " + p1.getName() + " already has an activity with the name \"" + name + "\"");
+            throw new OperationNotAllowedException("The project \'" + p1.getName() + "\' already has an activity with the name \'" + name + "\'");
         }else {
             p1.createActivity(name);
         }
+    }
+    public Activity getActivityFromProject(String projectName, String activityName) {
+        return getProjectWithName(projectName).getActivityWithName(activityName);
     }
 
     public boolean projectHasEmployee(Project p1, Employee e1){

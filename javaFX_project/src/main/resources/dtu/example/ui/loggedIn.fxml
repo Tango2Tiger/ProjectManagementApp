@@ -9,8 +9,7 @@
     <children>
         <Label text="Logged In Screen" />
       <Button fx:id="registerEmployeeButton" mnemonicParsing="false" onAction="#registerEmployee" text="Register Employee" />
-      <Button fx:id="createProjectButton" mnemonicParsing="false" onAction="#createProject" prefHeight="26.0" prefWidth="116.0" text="Create Project" />
-      <Button mnemonicParsing="false" onAction="#assignProjectLeader" text="Assign Project Leader" />
+      <Button fx:id="projectButton" mnemonicParsing="false" onAction="#viewProjects" prefHeight="26.0" prefWidth="116.0" text="Projects" />
 
     </children>
     <padding>
