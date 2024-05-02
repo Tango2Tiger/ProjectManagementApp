@@ -171,6 +171,22 @@ public class ProjectManagementApp {
         return getProjectWithName(projectName).getActivityWithName(activityName);
     }
 
+    public List<String> getActivityListFromProject(Project project) {
+        return project.getActivityList().stream().map(Activity::getName).collect(Collectors.toList());
+    }
+
+    public boolean projectHasEmployee(Project p1, Employee e1){
+        if(p1.hasEmployee(e1)){
+            return true;
+        }
+        return false;
+    }
+
+    public void addEmployeeToProject(Project p1, Employee e1){
+        p1.addEmployee(e1);
+    }
+
+
     public void setStartEndActivity(int startYear, int startWeek, int endYear, int endWeek, String projectName, String activityName){
         getProjectWithName(projectName).getActivityWithName(activityName).setStartDate(new ActivityDate(startYear, startWeek));
         getProjectWithName(projectName).getActivityWithName(activityName).setEndDate(new ActivityDate(endYear, endWeek));
