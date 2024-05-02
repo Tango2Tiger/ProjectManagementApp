@@ -17,10 +17,6 @@ public class SecondaryController {
     private TextField loginTextField;
 
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-    }
-    @FXML
     public void loginEmployee(ActionEvent actionEvent) throws IOException {
         try {
             App.getProjectManagementApp().login(loginTextField.getText());

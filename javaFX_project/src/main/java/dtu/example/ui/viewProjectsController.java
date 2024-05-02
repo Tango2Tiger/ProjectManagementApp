@@ -13,6 +13,10 @@ public class viewProjectsController {
         App.setRoot("assignProjectLeader");
     }
 
+    public void createActivity(ActionEvent actionEvent) throws IOException{
+        App.setRoot("createActivityScene");
+    }
+
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
         App.setRoot("loggedIn");
     }
