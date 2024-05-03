@@ -60,9 +60,9 @@ public class Activity {
         this.timeRegistrations.add(timeRegistration);
     }
 
-    public TimeRegistration getSpecificTimeRegistration(String employeeName, Calendar date) {
+    public TimeRegistration getSpecificTimeRegistration(Employee employee, Calendar date) {
         for (TimeRegistration timeRegistration : timeRegistrations){
-            if (timeRegistration.getEmployeeName().equals(employeeName)  && timeRegistration.getDate().equals(date)) {
+            if (timeRegistration.getEmployee().equals(employee)  && timeRegistration.getDate().equals(date)) {
                 return timeRegistration;
             }
         }

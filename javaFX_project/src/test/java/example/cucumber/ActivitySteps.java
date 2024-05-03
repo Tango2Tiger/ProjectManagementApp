@@ -95,6 +95,8 @@ public class ActivitySteps {
         assertEquals(activityHolder.getActivity().getRegisteredTime(), (int) int1);
     }
 
+
+
     @When("the employee registers {int} half hours for the year {int}, month {int}, and day {int}")
     public void theEmployeeRegistersHalfHoursForTheYearMonthAndDay(int arg0, int arg1, int arg2, int arg3) {
         try {
@@ -111,8 +113,7 @@ public class ActivitySteps {
     @And("the activity now has {int} half hours registered from the employee on the date {int}, {int}, {int}")
     public void theActivityNowHasHalfHoursRegisteredFromTheEmployeeOnTheDate(int arg0, int arg1, int arg2, int arg3) {
         activity = activityHolder.getActivity();
-        String employeeName = employeeHolder.getEmployee().getFullName();
-        TimeRegistration timeRegistration = activity.getSpecificTimeRegistration(employeeName, new GregorianCalendar(arg1, arg2, arg3));
+        TimeRegistration timeRegistration = activity.getSpecificTimeRegistration(employeeHolder.getEmployee(), new GregorianCalendar(arg1, arg2, arg3));
         assertTrue(activity.getRegisteredTime() == arg0);
         assertTrue(timeRegistration.getHalfHours() == arg0);
     }

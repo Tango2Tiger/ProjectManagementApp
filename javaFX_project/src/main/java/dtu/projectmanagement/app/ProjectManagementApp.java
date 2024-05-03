@@ -197,7 +197,7 @@ public class ProjectManagementApp {
     }
 
     public void registerTime(Employee employee, Activity activity, Integer halfHours, int year, int month, int day) throws OperationNotAllowedException {
-        TimeRegistration timeRegistration = new TimeRegistration(halfHours, year, month, day, employee.getFullName());
+        TimeRegistration timeRegistration = new TimeRegistration(halfHours, year, month, day, employee);
         activity.registerTime(timeRegistration);
         employee.registerTime(halfHours);
     }

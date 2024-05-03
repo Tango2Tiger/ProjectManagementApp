@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class RegisterTimeController implements Initializable {
@@ -78,6 +79,7 @@ public class RegisterTimeController implements Initializable {
         dayChoiceBox.setVisible(true);
         dayLabel.setVisible(true);
         registerTimeButton.setVisible(true);
+
 
 
     }

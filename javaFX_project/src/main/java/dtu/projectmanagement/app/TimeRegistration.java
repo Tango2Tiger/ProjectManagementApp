@@ -6,15 +6,15 @@ import java.util.GregorianCalendar;
 public class TimeRegistration {
     private int halfHours;
     private Calendar date;
-    private String employeeName;
+    private Employee employee;
 
-    public TimeRegistration(Integer halfHours, int year, int month, int day, String employeeName) throws OperationNotAllowedException {
+    public TimeRegistration(Integer halfHours, int year, int month, int day, Employee employee) throws OperationNotAllowedException {
         if (halfHours < 1) {
             throw new OperationNotAllowedException("Only positive time registrations allowed");
         }
         this.date = new GregorianCalendar(year, month, day);
         this.halfHours = halfHours;
-        this.employeeName = employeeName;
+        this.employee = employee;
     }
 
     public int getHalfHours() {
@@ -25,8 +25,8 @@ public class TimeRegistration {
         this.halfHours = halfHours;
     }
 
-    public String getEmployeeName() {
-        return this.employeeName;
+    public Employee getEmployee() {
+        return this.employee;
     }
 
     public Calendar getDate() {
