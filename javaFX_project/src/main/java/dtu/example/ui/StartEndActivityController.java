@@ -107,10 +107,12 @@ public class StartEndActivityController implements Initializable {
             String projectName = projectChoiceBox.getValue();
             String activityName = activityChoiceBox.getValue();
             Activity activity = App.getProjectManagementApp().getProjectWithName(projectName).getActivityWithName(activityName);
+
             int startYear = startYearDrop.getValue();
             int startWeek = startWeekDrop.getValue();
             int endYear = endYearDrop.getValue();
             int endWeek = endWeekDrop.getValue();
+
             try {
                 activity.setStartDate(new ActivityDate(startYear, startWeek));
                 activity.setEndDate(new ActivityDate(endYear, endWeek));

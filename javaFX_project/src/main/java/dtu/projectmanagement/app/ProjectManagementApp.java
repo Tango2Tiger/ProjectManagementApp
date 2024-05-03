@@ -14,7 +14,6 @@ public class ProjectManagementApp {
 
     private ArrayList<Project> projectList = new ArrayList<>();
 
-
     public boolean isEmployeeLoggedIn() {
         return employeeLoggedIn;
     }
@@ -215,8 +214,6 @@ public class ProjectManagementApp {
     public void registerSickness(Employee employee, Integer days){
         employee.registerSickness(days);
     }
-
-
 
     public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, GregorianCalendar gregorianCalendar) {
         activity.editTimeRegistration(employee, halfHours, gregorianCalendar);

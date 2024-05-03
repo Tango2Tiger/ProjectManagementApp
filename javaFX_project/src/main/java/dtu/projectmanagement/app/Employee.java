@@ -53,14 +53,11 @@ public class Employee {
     }
 
     public boolean hasActivity(Activity activity){
-        for(Activity ele: activityList){
-            if(ele == activity){
-                return true;
-            }
+        for(Activity a: activityList){
+            if(a.equals(activity)){return true;}
         }
         return false;
     }
-
 
     public void assignToActivity(Activity activity) throws OperationNotAllowedException {
         activityList.add(activity);

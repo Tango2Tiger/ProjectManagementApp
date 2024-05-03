@@ -123,5 +123,20 @@ public class ActivitySteps {
     public void theEmployeeEditsTheTimeRegistrationForTheYearMonthAndDayToBeHalfHours(int arg0, int arg1, int arg2, int halfHours) {
         projectManagementApp.editTimeRegistrationForActivity(employeeHolder.getEmployee(), activityHolder.getActivity(), halfHours, new GregorianCalendar(arg0, arg1, arg2));
     }
+
+    @When("employee deletes the activity")
+    public void employeeDeletesTheActivity() {
+        projectManagementApp.deleteActivity(projectHolder.getProject().getName(), activityHolder.getActivity().getName());
+    }
+
+    @Then("the activity is not on the activitylist of the project")
+    public void theActivityIsNotOnTheActivitylistOfTheProject() {
+        assertFalse(projectHolder.getProject().hasActivityWithName(activityHolder.getActivity().getName()));
+    }
+
+    @And("the activity is not on the employee's activitylist")
+    public void theActivityIsNotOnTheEmployeeSActivitylist() {
+        assertFalse(employeeHolder.getEmployee().hasActivity(activityHolder.getActivity()));
+    }
 }
 
