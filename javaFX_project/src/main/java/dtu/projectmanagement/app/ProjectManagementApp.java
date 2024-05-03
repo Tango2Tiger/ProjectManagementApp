@@ -107,7 +107,7 @@ public class ProjectManagementApp {
 
     public boolean hasEmployeeWithName(String firstName, String lastName) {
         for (Employee employee : employeeList) {
-            if (employee.getFirstName().equals(firstName) && employee.getLastName().equals(lastName)) {
+            if (employee.getFirstName().equalsIgnoreCase(firstName) && employee.getLastName().equalsIgnoreCase(lastName)) {
                 return true;
             }
         }
@@ -156,6 +156,7 @@ public class ProjectManagementApp {
     public List<String> getEmployeeInitialsList() {
         return employeeList.stream().map(Employee::getInitials).collect(Collectors.toList());
     }
+
     public void setProjectLeader(Employee employee, Project project) {
         project.setProjectLeader(employee);
     }
@@ -187,10 +188,15 @@ public class ProjectManagementApp {
     }
 
 
-    public void setStartEndActivity(int startYear, int startWeek, int endYear, int endWeek, String projectName, String activityName){
-        getProjectWithName(projectName).getActivityWithName(activityName).setStartDate(new ActivityDate(startYear, startWeek));
-        getProjectWithName(projectName).getActivityWithName(activityName).setEndDate(new ActivityDate(endYear, endWeek));
+    public void setStartEndActivity(int startYear, int startWeek, int endYear, int endWeek, String projectName, String activityName) throws OperationNotAllowedException{
+        if(endYear*52 - startYear*52 + endWeek - startWeek < 0){
+            throw new OperationNotAllowedException("End date cannot be set before start date.");
+        } else{
+            getProjectWithName(projectName).getActivityWithName(activityName).setStartDate(new ActivityDate(startYear, startWeek));
+            getProjectWithName(projectName).getActivityWithName(activityName).setEndDate(new ActivityDate(endYear, endWeek));
+        }
     }
+
     public void registerTime(Employee employee, Activity activity, Integer halfhours) {
         employee.registerTime(halfhours);
         activity.registerTime(halfhours);
