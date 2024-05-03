@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import java.io.IOException;
 
 public class CreateProjectController {
-
     public TextField projectname;
     public Label namelabel;
     public Label projectAlreadyExistsFail;
@@ -28,7 +27,6 @@ public class CreateProjectController {
         } catch (OperationNotAllowedException e) {
             projectAlreadyExistsFail.setText(e.getMessage());
         }
-
     }
 
     @FXML
@@ -40,7 +38,6 @@ public class CreateProjectController {
             } catch (OperationNotAllowedException e) {
                 projectAlreadyExistsFail.setText(e.getMessage());
             }
-
         }
     }
 

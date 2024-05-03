@@ -57,8 +57,11 @@ public class ActivitySteps {
 
     @When("the employee sets a start year {int}, start week {int}, end year {int} and end week {int}")
     public void the_employee_sets_a_start_date_with_year_and_week(int start_year, int start_week, int end_year, int end_week) {
-        projectManagementApp.setStartEndActivity(start_year, start_week, end_year, end_week, projectHolder.getProject().getName(), activityHolder.getActivity().getName());
-
+        try {
+            projectManagementApp.setStartEndActivity(start_year, start_week, end_year, end_week, projectHolder.getProject().getName(), activityHolder.getActivity().getName());
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("the activity has a start date with year {int} and week {int}")
@@ -72,18 +75,23 @@ public class ActivitySteps {
         assertEquals(activityHolder.getActivity().getEndDate().getYear(), end_year);
         assertEquals(activityHolder.getActivity().getEndDate().getWeek(), end_week);
     }
+
     @Given("the activity has {int} half hours registered")
     public void the_activity_has_half_hours_registered(Integer int1) {
         assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
     }
+
     @When("the employee registers {int} half hours on the activity")
     public void the_employee_registers_half_hours_on_the_activity(int halfhours) {
         projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), halfhours);
     }
+
     @Then("the activity now has {int} half hours registered")
     public void the_activity_now_has_half_hours_registered(Integer int1) {
         assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
     }
+
+
 
 }
 
