@@ -32,4 +32,12 @@ public class viewProjectsController {
     public void activityScreen (ActionEvent actionEvent) throws IOException {
         App.setRoot("activityScreen");
     }
+
+    public void switchToDeleteProject(ActionEvent actionEvent)throws IOException{
+        App.setRoot("deleteProject");
+    }
+
+    public void switchToDeleteActivity(ActionEvent actionEvent) throws IOException{
+        App.setRoot("deleteActivity");
+    }
 }

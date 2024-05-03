@@ -23,9 +23,11 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
+      <Button fx:id="deleteProjectButton" mnemonicParsing="false" onAction="#switchToDeleteProject" text="Delete Project" />
       <Button fx:id="switchToAssignEmployee" mnemonicParsing="false" onAction="#assignEmployee" text="Assign Employee to Project" />
       <Button fx:id="switchToAssignLeader" mnemonicParsing="false" onAction="#assignProjectLeader" text="Assign Project Leader" />
       <Button fx:id="switchToCreateActivity" mnemonicParsing="false" onAction="#createActivity" text="Create Activity" />
+      <Button mnemonicParsing="false" onAction="#switchToDeleteActivity" text="Delete Activity" />
       <Button fx:id="switchToBudgetedTime" mnemonicParsing="false" onAction="#activityScreen" text="Set budgeted time" />
       <Button fx:id="switchToSetDate" mnemonicParsing="false" onAction="#setDateScreen" text="Set Activity Date" />
       <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />

@@ -71,13 +71,11 @@ public class ProjectManagementApp {
     }
 
     public void removeProjectFromList(String name) throws OperationNotAllowedException{
-        for(Project project: projectList){
-            if(project.getName().equals(name)){
-                projectList.remove(project);
-                return;
-            }
+        if(hasProjectWithName(name)){
+            projectList.remove(getProjectWithName(name));
+        } else {
+            throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
         }
-        throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
     }
 
     public boolean hasEmployeeWithInitials(String initials) {
@@ -200,5 +198,9 @@ public class ProjectManagementApp {
     public void registerTime(Employee employee, Activity activity, Integer halfhours) {
         employee.registerTime(halfhours);
         activity.registerTime(halfhours);
+    }
+
+    public void deleteActivity(String projectName, String activityName){
+        getProjectWithName(projectName).deleteActivity(activityName);
     }
 }

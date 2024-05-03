@@ -72,4 +72,21 @@ public class Project {
     public ArrayList<Activity> getActivityList() {
         return activityList;
     }
+
+    public ArrayList<String> getActivityNameList(){
+        ArrayList<String> activityNameList = new ArrayList<>();
+        for(Activity activity: this.activityList){
+            activityNameList.add(activity.getName());
+        }
+        return activityNameList;
+    }
+
+    public void deleteActivity(String activityName){
+        activityList.remove(getActivityWithName(activityName));
+        for(Employee employee: this.employeeList){
+            if(employee.hasActivity(getActivityWithName(activityName))){
+                employee.removeActivity(getActivityWithName(activityName));
+            }
+        }
+    }
 }
