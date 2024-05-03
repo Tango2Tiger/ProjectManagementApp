@@ -216,4 +216,10 @@ public class ProjectManagementApp {
     public void registerSickness(Employee employee, Integer days){
         employee.registerSickness(days);
     }
+
+
+
+    public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, GregorianCalendar gregorianCalendar) {
+        activity.editTimeRegistration(employee, halfHours, gregorianCalendar);
+    }
 }

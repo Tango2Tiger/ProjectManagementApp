@@ -114,8 +114,14 @@ public class ActivitySteps {
     public void theActivityNowHasHalfHoursRegisteredFromTheEmployeeOnTheDate(int arg0, int arg1, int arg2, int arg3) {
         activity = activityHolder.getActivity();
         TimeRegistration timeRegistration = activity.getSpecificTimeRegistration(employeeHolder.getEmployee(), new GregorianCalendar(arg1, arg2, arg3));
-        assertTrue(activity.getRegisteredTime() == arg0);
-        assertTrue(timeRegistration.getHalfHours() == arg0);
+        assertEquals(activity.getRegisteredTime(), arg0);
+        assertEquals(employeeHolder.getEmployee().getRegisteredTime(), arg0);
+        assertEquals(timeRegistration.getHalfHours(), arg0);
+    }
+
+    @And("the employee edits the time registration for the year {int}, month {int}, and day {int} to be {int} half hours")
+    public void theEmployeeEditsTheTimeRegistrationForTheYearMonthAndDayToBeHalfHours(int arg0, int arg1, int arg2, int halfHours) {
+        projectManagementApp.editTimeRegistrationForActivity(employeeHolder.getEmployee(), activityHolder.getActivity(), halfHours, new GregorianCalendar(arg0, arg1, arg2));
     }
 }
 

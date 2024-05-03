@@ -1,6 +1,6 @@
-Feature: Time is registered
+Feature: An employee who is logged in registers time
 
-  Scenario: Employee succesfully registers time on an activity
+  Scenario: Employee successfully registers time on an activity
     Given an employee is logged in
     And there exists a project with the name "p1"
     And the project "p1" has an activity with the name "a1"
@@ -16,6 +16,15 @@ Feature: Time is registered
     And the project "p1" has an activity with the name "a1"
     When the employee registers -6 half hours for the year 2024, month 8, and day 9
     Then the error message "Only positive time registrations allowed" is received
+
+  Scenario: Employee edits wrongly submitted time sheet
+    Given an employee is logged in
+    And there exists a project with the name "p1"
+    And the project "p1" has an activity with the name "a1"
+    When the employee registers 25 half hours for the year 2024, month 8, and day 9
+    And the employee edits the time registration for the year 2024, month 8, and day 9 to be 20 half hours
+    Then the employee now has 20 half hours registered
+    And the activity now has 20 half hours registered from the employee on the date 2024, 8, 9
 
 #  Scenario: Employee registers time on a day not in the gregorian calendar
 #    Given an employee is logged in

@@ -2,6 +2,8 @@ package dtu.projectmanagement.app;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 
 public class Activity {
     private String name;
@@ -62,10 +64,19 @@ public class Activity {
 
     public TimeRegistration getSpecificTimeRegistration(Employee employee, Calendar date) {
         for (TimeRegistration timeRegistration : timeRegistrations){
-            if (timeRegistration.getEmployee().equals(employee)  && timeRegistration.getDate().equals(date)) {
+            int n = timeRegistration.getDate().compareTo(date);
+            if (timeRegistration.getEmployee().equals(employee)  && timeRegistration.getDate().compareTo(date) == 0) {
                 return timeRegistration;
             }
         }
         return null;
+    }
+
+    public void editTimeRegistration(Employee employee, int newHalfHours, GregorianCalendar gregorianCalendar) {
+        TimeRegistration specificTimeRegistration = getSpecificTimeRegistration(employee, gregorianCalendar);
+        int diff = newHalfHours - specificTimeRegistration.getHalfHours();
+        employee.addRegisteredTime(diff);
+        this.registeredTime += diff;
+        specificTimeRegistration.setHalfHours(newHalfHours);
     }
 }

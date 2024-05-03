@@ -70,4 +70,8 @@ public class Employee {
     public String getFullName() {
         return firstName + " " + lastName;
     }
+
+    public void addRegisteredTime(int diff) {
+        this.registeredTime += diff;
+    }
 }
