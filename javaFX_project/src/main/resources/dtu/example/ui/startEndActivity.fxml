@@ -4,71 +4,67 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" prefHeight="278.0" prefWidth="395.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.StartEndActivityController">
     <children>
-        <Label fx:id="setDateScreenLabel" text="Set Date" />
-        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="355.0">
-            <children>
-                <ChoiceBox fx:id="projectChoiceBox" prefWidth="150.0" />
-                <ChoiceBox fx:id="activityChoiceBox" prefWidth="150.0">
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </ChoiceBox>
-            </children>
-            <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </padding>
-        </HBox>
+        <Label text="Set Date">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <VBox alignment="CENTER">
+         <children>
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="204.0" text="Project:" />
+                  <Label prefHeight="18.0" prefWidth="118.0" text="Activity:" />
+               </children>
+            </HBox>
+              <HBox alignment="CENTER">
+                  <children>
+                      <ChoiceBox fx:id="projectChoiceBox" prefWidth="150.0" />
+                      <ChoiceBox fx:id="activityChoiceBox" prefWidth="150.0">
+                          <HBox.margin>
+                              <Insets left="40.0" />
+                          </HBox.margin>
+                      </ChoiceBox>
+                  </children>
+              </HBox>
+         </children>
+      </VBox>
         <HBox alignment="CENTER" prefHeight="36.0" prefWidth="355.0">
-            <children>
-                <Button mnemonicParsing="false" onAction="#chooseProject" text="Choose Project">
-                    <HBox.margin>
-                        <Insets right="40.0" />
-                    </HBox.margin>
-                </Button>
-                <Button fx:id="chooseActivityButton" mnemonicParsing="false" onAction="#chooseActivity" text="Choose Activity">
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </Button>
-            </children>
             <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
         </HBox>
-      <HBox prefHeight="20.0" prefWidth="355.0" spacing="60.0">
+      <HBox alignment="TOP_CENTER" prefHeight="18.0" prefWidth="356.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Start:" />
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="141.0">
+               <children>
+                  <Label text="End:" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="20.0" prefWidth="355.0" spacing="40.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <TextField fx:id="setStartYear" promptText="Year">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
-                  <TextField fx:id="setStartWeek" promptText="Week">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
+                  <ChoiceBox fx:id="startYearDrop" accessibleText="Year" prefWidth="150.0" />
+                  <ChoiceBox fx:id="startWeekDrop" prefWidth="150.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <TextField fx:id="setEndYear" promptText="Year">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
-                  <TextField fx:id="setEndWeek" promptText="Week">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </TextField>
+                  <ChoiceBox fx:id="endYearDrop" prefWidth="150.0" />
+                  <ChoiceBox fx:id="endWeekDrop" prefWidth="150.0" />
                </children>
             </HBox>
          </children>
@@ -80,6 +76,7 @@
             </padding>
         </HBox>
         <Button mnemonicParsing="false" onAction="#returnToViewProjects" text="Back" />
+      <Label fx:id="setDateScreenLabel" />
 
     </children>
     <padding>

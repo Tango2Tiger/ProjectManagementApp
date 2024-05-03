@@ -28,7 +28,6 @@ public class DeleteActivityController implements Initializable {
         projectChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Kald metoden onItemSelected med det nye valgte element
                 showActivities();
             }
         });
