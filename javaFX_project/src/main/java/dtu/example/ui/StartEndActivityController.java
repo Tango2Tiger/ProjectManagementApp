@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
 
-public class startEndActivityController implements Initializable {
+public class StartEndActivityController implements Initializable {
     @FXML
     public Label setDateScreenLabel;
     @FXML
