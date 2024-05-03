@@ -59,6 +59,11 @@ public class Employee {
     }
 
 
+    public void assignToActivity(Activity activity) throws OperationNotAllowedException {
+        activityList.add(activity);
+    }
+
+
     public String getFullName() {
         return firstName + " " + lastName;
     }

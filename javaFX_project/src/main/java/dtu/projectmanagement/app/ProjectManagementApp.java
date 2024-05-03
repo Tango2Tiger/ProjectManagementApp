@@ -205,4 +205,12 @@ public class ProjectManagementApp {
     public void deleteActivity(String projectName, String activityName){
         getProjectWithName(projectName).deleteActivity(activityName);
     }
+
+    public void assignEmployeeToActivity(Employee employee, Activity activity) throws OperationNotAllowedException {
+        employee.assignToActivity(activity);
+    }
+
+    public boolean employeeHasActivity(Employee employee, Activity activity){
+        return employee.hasActivity(activity);
+    }
 }
