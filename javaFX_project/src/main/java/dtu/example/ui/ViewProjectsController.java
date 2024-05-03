@@ -39,4 +39,8 @@ public class ViewProjectsController {
     public void switchToDeleteActivity(ActionEvent actionEvent) throws IOException{
         App.setRoot("deleteActivity");
     }
+
+    public void assignToActivityScreen(ActionEvent actionEvent) throws IOException{
+        App.setRoot("assignEmployeeToActivity");
+    }
 }
