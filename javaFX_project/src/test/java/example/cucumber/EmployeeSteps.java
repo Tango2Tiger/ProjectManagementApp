@@ -107,9 +107,9 @@ public class EmployeeSteps {
         assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) halfhours);
     }
 
-    @Then("the employee now has {int} half hours sickness registered")
-    public void the_employee_now_has_half_hours_sickness_registered(Integer halfhours) {
-        assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) halfhours);
+    @Then("the employee now has {int} days sickness registered")
+    public void the_employee_now_has_half_hours_sickness_registered(Integer days) {
+        assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) days);
     }
 
     @When("the employee gets assigned to the activity {string}")

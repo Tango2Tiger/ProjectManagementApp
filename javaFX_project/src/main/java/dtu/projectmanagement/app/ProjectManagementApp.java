@@ -213,7 +213,7 @@ public class ProjectManagementApp {
     public boolean employeeHasActivity(Employee employee, Activity activity){
         return employee.hasActivity(activity);
     }
-    public void registerSickness(Employee employee, Integer halfhours){
-        employee.registerSickness(halfhours);
+    public void registerSickness(Employee employee, Integer days){
+        employee.registerSickness(days);
     }
 }

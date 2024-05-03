@@ -84,10 +84,7 @@ public class ActivitySteps {
         assertEquals(activityHolder.getActivity().getRegisteredTime(), (int) int1);
     }
 
-    @When("the employee registers {int} half hours on the activity")
-    public void the_employee_registers_half_hours_on_the_activity(int halfhours) {
-        projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), halfhours);
-    }
+
     @When("the employee registers {int} half hours on sickness")
     public void the_employee_registers_half_hours_on_sickness(Integer halfhours) {
         projectManagementApp.registerSickness(employeeHolder.getEmployee(),halfhours);
@@ -98,14 +95,6 @@ public class ActivitySteps {
         assertEquals(activityHolder.getActivity().getRegisteredTime(), (int) int1);
     }
 
-
-
-
-
-
-
-
-
     @When("the employee registers {int} half hours for the year {int}, month {int}, and day {int}")
     public void theEmployeeRegistersHalfHoursForTheYearMonthAndDay(int arg0, int arg1, int arg2, int arg3) {
         try {
@@ -113,6 +102,10 @@ public class ActivitySteps {
         } catch (OperationNotAllowedException e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
+    }
+    @When("the employee registers {int} days of sickness")
+    public void the_employee_registers_days_of_sickness(Integer days) {
+        projectManagementApp.registerSickness(employeeHolder.getEmployee(),days);
     }
 
     @And("the activity now has {int} half hours registered from the employee on the date {int}, {int}, {int}")

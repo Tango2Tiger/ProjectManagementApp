@@ -25,8 +25,8 @@ public class Employee {
     }
 
     public void registerTime(int halfhours){this.registeredTime += halfhours;}
-    public void registerSickness(int halfhours){
-        this.registeredSickness += halfhours;
+    public void registerSickness(int days){
+        this.registeredSickness += days;
     }
 
     public String getFirstName() {
