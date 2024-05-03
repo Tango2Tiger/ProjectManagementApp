@@ -201,4 +201,7 @@ public class ProjectManagementApp {
         employee.registerTime(halfhours);
         activity.registerTime(halfhours);
     }
+    public void registerSickness(Employee employee, Integer halfhours){
+        employee.registerSickness(halfhours);
+    }
 }

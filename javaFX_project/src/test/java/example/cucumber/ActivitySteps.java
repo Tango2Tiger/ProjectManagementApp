@@ -78,17 +78,21 @@ public class ActivitySteps {
 
     @Given("the activity has {int} half hours registered")
     public void the_activity_has_half_hours_registered(Integer int1) {
-        assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
+        assertEquals(activityHolder.getActivity().getRegisteredTime(), (int) int1);
     }
 
     @When("the employee registers {int} half hours on the activity")
     public void the_employee_registers_half_hours_on_the_activity(int halfhours) {
         projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), halfhours);
     }
+    @When("the employee registers {int} half hours on sickness")
+    public void the_employee_registers_half_hours_on_sickness(Integer halfhours) {
+        projectManagementApp.registerSickness(employeeHolder.getEmployee(),halfhours);
+    }
 
     @Then("the activity now has {int} half hours registered")
     public void the_activity_now_has_half_hours_registered(Integer int1) {
-        assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
+        assertEquals(activityHolder.getActivity().getRegisteredTime(), (int) int1);
     }
 
 

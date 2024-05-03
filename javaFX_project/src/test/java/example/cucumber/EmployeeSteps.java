@@ -1,8 +1,5 @@
 package example.cucumber;
-import dtu.projectmanagement.app.Employee;
-import dtu.projectmanagement.app.EmployeeHolder;
-import dtu.projectmanagement.app.OperationNotAllowedException;
-import dtu.projectmanagement.app.ProjectManagementApp;
+import dtu.projectmanagement.app.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,10 +14,13 @@ public class EmployeeSteps {
     private ProjectManagementApp projectManagementApp;
     private EmployeeHolder employeeHolder;
     private ErrorMessageHolder errorMessageHolder;
-    public EmployeeSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder) {
+    private Activity activity;
+    private ActivityHolder activityHolder;
+    public EmployeeSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ActivityHolder activityHolder, ErrorMessageHolder errorMessageHolder) {
         this.projectManagementApp = projectManagementApp;
         this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
+        this.activityHolder = activityHolder;
 
     }
 
@@ -98,6 +98,17 @@ public class EmployeeSteps {
     @Then("the employee now has {int} half hours registered")
     public void the_employee_now_has_half_hours_registered(Integer int1) {
         assertTrue((employeeHolder.getEmployee().getRegisteredTime()) == int1);
+    }
+    @Given("the employee has {int} sickness half hours registered")
+    public void the_employee_has_sickness_half_hours_registered(Integer halfhours) {
+        activity = new Activity("a1");
+        activityHolder.setActivity(activity);
+        assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) halfhours);
+    }
+
+    @Then("the employee now has {int} half hours sickness registered")
+    public void the_employee_now_has_half_hours_sickness_registered(Integer halfhours) {
+        assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) halfhours);
     }
 
 
