@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.example.ui.RegisterTimeController">
+   <children>
+      <Label fx:id="registerTimeLabel" alignment="CENTER" layoutX="19.0" layoutY="44.0" prefHeight="17.0" prefWidth="563.0" text="Register Time Screen">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="projectChoiceBox" layoutX="104.0" layoutY="100.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="activityChoiceBox" layoutX="365.0" layoutY="100.0" prefWidth="150.0" />
+      <Button layoutX="129.0" layoutY="162.0" mnemonicParsing="false" onAction="#chooseProject" text="Choose Project" />
+      <Button fx:id="chooseActivityButton" layoutX="394.0" layoutY="162.0" mnemonicParsing="false" onAction="#chooseActivity" text="Choose Activity" />
+      <Button layoutX="278.0" layoutY="312.0" mnemonicParsing="false" onAction="#returnToViewProjects" text="Back" />
+      <TextField fx:id="halfHoursField" layoutX="254.0" layoutY="246.0" prefHeight="26.0" prefWidth="92.0" />
+      <Label fx:id="halfHoursLabel" layoutX="251.0" layoutY="224.0" text="Half hours worked" />
+      <Button fx:id="registerTimeButton" layoutX="400.0" layoutY="246.0" mnemonicParsing="false" onAction="#registerTime" text="Register Time" />
+   </children>
+</AnchorPane>

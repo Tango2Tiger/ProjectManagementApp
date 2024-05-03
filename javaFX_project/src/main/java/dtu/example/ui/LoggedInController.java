@@ -15,4 +15,7 @@ public class LoggedInController {
     public void viewProjects(ActionEvent actionEvent) throws IOException{
         App.setRoot("viewProjects");
     }
+    public void registerTimeScreen(ActionEvent actionEvent) throws IOException{
+        App.setRoot("registerTime");
+    }
 }
