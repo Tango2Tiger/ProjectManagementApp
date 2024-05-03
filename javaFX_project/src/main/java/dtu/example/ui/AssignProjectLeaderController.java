@@ -39,6 +39,7 @@ public class AssignProjectLeaderController implements Initializable {
         if (!isNull(projectChoiceBox.getValue())) {
             employeeChoiceBox.setVisible(true);
             assignLeaderButton.setVisible(true);
+            employeeChoiceBox.getItems().clear();
             employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
         }
 

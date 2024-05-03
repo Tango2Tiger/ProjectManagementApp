@@ -1,11 +1,15 @@
 package dtu.projectmanagement.app;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class Activity {
     private String name;
     private int budgetedTime = 0;
     private int registeredTime = 0;
     private ActivityDate startDate;
     private ActivityDate endDate;
+    private ArrayList<TimeRegistration> timeRegistrations = new ArrayList<>();
 
     private final int MAX_TIME = 5000;
     public Activity(String name){
@@ -51,7 +55,17 @@ public class Activity {
         return registeredTime;
     }
 
-    public void registerTime(int registeredTime) {
-        this.registeredTime += registeredTime;
+    public void registerTime(TimeRegistration timeRegistration) {
+        this.registeredTime += timeRegistration.getHalfHours();
+        this.timeRegistrations.add(timeRegistration);
+    }
+
+    public TimeRegistration getSpecificTimeRegistration(String employeeName, Calendar date) {
+        for (TimeRegistration timeRegistration : timeRegistrations){
+            if (timeRegistration.getEmployeeName().equals(employeeName)  && timeRegistration.getDate().equals(date)) {
+                return timeRegistration;
+            }
+        }
+        return null;
     }
 }

@@ -1,4 +1,5 @@
 package example.cucumber;
+import dtu.example.ui.App;
 import dtu.projectmanagement.app.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,10 +14,10 @@ public class EmployeeSteps {
     private Employee employee;
     private ProjectManagementApp projectManagementApp;
     private EmployeeHolder employeeHolder;
-    private ErrorMessageHolder errorMessageHolder;
     private Activity activity;
     private ActivityHolder activityHolder;
-    public EmployeeSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ActivityHolder activityHolder, ErrorMessageHolder errorMessageHolder) {
+    private ErrorMessageHolder errorMessageHolder;
+    public EmployeeSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder) {
         this.projectManagementApp = projectManagementApp;
         this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
@@ -26,7 +27,7 @@ public class EmployeeSteps {
 
     @Given("there is an employee with initials {string}")
     public void there_is_an_employee_with_initials(String string) {
-        employee = new Employee("Hubert", "Baumeister");
+        employee = new Employee("Hubert","Baumeister");
         employee.setInitials();
         employeeHolder.setEmployee(employee);
         assertEquals(employeeHolder.getEmployee().getInitials(), string);
@@ -110,6 +111,19 @@ public class EmployeeSteps {
     public void the_employee_now_has_half_hours_sickness_registered(Integer halfhours) {
         assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) halfhours);
     }
+
+    @When("the employee gets assigned to the activity {string}")
+    public void the_employee_gets_assigned_to_the_activity(String name) throws OperationNotAllowedException {
+        projectManagementApp.assignEmployeeToActivity(employeeHolder.getEmployee(),activityHolder.getActivity());
+
+    }
+
+    @Then("the employee is assigned to the activity {string}")
+    public void the_employee_is_assigned_to_the_activity(String string) {
+        assertTrue(projectManagementApp.employeeHasActivity(employeeHolder.getEmployee(),activityHolder.getActivity()));
+    }
+
+
 
 
 }

@@ -2,6 +2,8 @@ package dtu.projectmanagement.app;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,7 +12,6 @@ public class ProjectManagementApp {
     private Employee loggedIn;
     private boolean employeeLoggedIn = false;
     private int projectCounter = 1;
-
 
     private ArrayList<Project> projectList = new ArrayList<>();
 
@@ -71,13 +72,11 @@ public class ProjectManagementApp {
     }
 
     public void removeProjectFromList(String name) throws OperationNotAllowedException{
-        for(Project project: projectList){
-            if(project.getName().equals(name)){
-                projectList.remove(project);
-                return;
-            }
+        if(hasProjectWithName(name)){
+            projectList.remove(getProjectWithName(name));
+        } else {
+            throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
         }
-        throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
     }
 
     public boolean hasEmployeeWithInitials(String initials) {
@@ -197,9 +196,22 @@ public class ProjectManagementApp {
         }
     }
 
-    public void registerTime(Employee employee, Activity activity, Integer halfhours) {
-        employee.registerTime(halfhours);
-        activity.registerTime(halfhours);
+    public void registerTime(Employee employee, Activity activity, Integer halfHours, int year, int month, int day) throws OperationNotAllowedException {
+        TimeRegistration timeRegistration = new TimeRegistration(halfHours, year, month, day, employee.getFullName());
+        activity.registerTime(timeRegistration);
+        employee.registerTime(halfHours);
+    }
+
+    public void deleteActivity(String projectName, String activityName){
+        getProjectWithName(projectName).deleteActivity(activityName);
+    }
+
+    public void assignEmployeeToActivity(Employee employee, Activity activity) throws OperationNotAllowedException {
+        employee.assignToActivity(activity);
+    }
+
+    public boolean employeeHasActivity(Employee employee, Activity activity){
+        return employee.hasActivity(activity);
     }
     public void registerSickness(Employee employee, Integer halfhours){
         employee.registerSickness(halfhours);

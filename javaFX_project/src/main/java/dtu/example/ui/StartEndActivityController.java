@@ -1,8 +1,6 @@
 package dtu.example.ui;
 
-import dtu.projectmanagement.app.Activity;
-import dtu.projectmanagement.app.OperationNotAllowedException;
-import dtu.projectmanagement.app.Project;
+import dtu.projectmanagement.app.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,37 +15,43 @@ import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
 
-public class ActivityScreenController implements Initializable {
+public class StartEndActivityController implements Initializable {
+    @FXML
+    public Label setDateScreenLabel;
+    @FXML
+    public ChoiceBox<String> projectChoiceBox;
     @FXML
     public ChoiceBox<String> activityChoiceBox;
     @FXML
-    public Label activityScreenLabel;
+    public TextField setStartYear;
     @FXML
-    private ChoiceBox<String> projectChoiceBox;
+    public TextField setStartWeek;
+    @FXML
+    public TextField setEndYear;
+    @FXML
+    public TextField setEndWeek;
+
     @FXML
     private Button chooseActivityButton;
     @FXML
-    private Button setBudgetedTimeButton;
+    private Button setStartDateButton;
     @FXML
-    private TextField setBudgetedTimeText;
     private Project project;
     private Activity activity;
+    private ProjectManagementApp projectManagementApp;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
         activityChoiceBox.setVisible(false);
         chooseActivityButton.setVisible(false);
-        setBudgetedTimeText.setVisible(false);
-        setBudgetedTimeButton.setVisible(false);
     }
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         if (!isNull(projectChoiceBox.getValue())) {
             activityChoiceBox.setVisible(true);
             chooseActivityButton.setVisible(true);
             project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());
-            activityChoiceBox.getItems().clear();
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(project));
-            activityScreenLabel.setText("Please choose an activity");
+            setDateScreenLabel.setText("Please choose an activity");
         }
 
     }
@@ -57,23 +61,29 @@ public class ActivityScreenController implements Initializable {
 
     public void chooseActivity(ActionEvent actionEvent) {
         if(!isNull(activityChoiceBox.getValue())) {
-            setBudgetedTimeText.setVisible(true);
-            setBudgetedTimeButton.setVisible(true);
             activity = project.getActivityWithName(activityChoiceBox.getValue());
-            activityScreenLabel.setText("Activity "+ activity.getName() + " has budgeted time " + activity.getBudgetedTime() + " hours. Enter budgeted time");
+            setDateScreenLabel.setText("Activity "+ activity.getName() + " has no date");
         }
     }
-    public void setBudgetedTime() {
+
+
+    public void setDate(ActionEvent actionEvent) throws NumberFormatException{
         try {
-            int num = Integer.parseInt(setBudgetedTimeText.getText());
-            try {
-                activity.setBudgetedTime(num);
-                activityScreenLabel.setText("Activity "+ activity.getName() + " has budgeted time " + activity.getBudgetedTime() + " hours");
-            } catch (OperationNotAllowedException e) {
-                activityScreenLabel.setText(e.getMessage());
-            }
+            int s_year = Integer.parseInt(setStartYear.getText());
+            int s_week = Integer.parseInt(setStartWeek.getText());
+            int e_year = Integer.parseInt(setEndYear.getText());
+            int e_week = Integer.parseInt(setEndWeek.getText());
+            activity.setStartDate(new ActivityDate(s_year, s_week));
+            activity.setEndDate(new ActivityDate(e_year,e_week));
+            setDateScreenLabel.setText("Activity "+ activity.getName() + " has start week 20"
+                    + activity.getStartDate().getYear() + "-" +activity.getStartDate().getWeek()
+                        +" and end week 20"+activity.getEndDate().getYear()+"-"+activity.getEndDate().getWeek());
+            App.getProjectManagementApp().setStartEndActivity(s_year,s_week,e_year,e_week,project.getName(),activity.getName());
         } catch (NumberFormatException e) {
-            activityScreenLabel.setText("Please enter an integer");
+            setDateScreenLabel.setText("Please enter an integer");
+        } catch (OperationNotAllowedException e) {
+            setDateScreenLabel.setText(e.getMessage());
         }
     }
+
 }

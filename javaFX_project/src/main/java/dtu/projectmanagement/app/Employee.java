@@ -1,11 +1,14 @@
 package dtu.projectmanagement.app;
 
+import java.util.ArrayList;
+
 public class Employee {
     private String initials;
     private String firstName;
     private String lastName;
     private int registeredTime;
     private int registeredSickness;
+    private ArrayList<Activity> activityList = new ArrayList<>();
     public Employee (String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,5 +40,34 @@ public class Employee {
 
     public int getRegisteredSickness() {return registeredSickness;}
 
+    public void removeActivity(Activity activity){
+        this.activityList.remove(activity);
+    }
 
+    public void addActivity(Activity activity){
+        this.activityList.add(activity);
+    }
+
+    public ArrayList<Activity> getActivityList(){
+        return this.activityList;
+    }
+
+    public boolean hasActivity(Activity activity){
+        for(Activity ele: activityList){
+            if(ele == activity){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public void assignToActivity(Activity activity) throws OperationNotAllowedException {
+        activityList.add(activity);
+    }
+
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }

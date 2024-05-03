@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import dtu.projectmanagement.app.Activity;
 import dtu.projectmanagement.app.OperationNotAllowedException;
-import dtu.projectmanagement.app.Project;
-import dtu.projectmanagement.app.ProjectManagementApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,11 +12,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import static java.util.Objects.isNull;
 
-public class createActivityController implements Initializable {
+public class CreateActivityController implements Initializable {
     @FXML
     public Label createActivityLabel;
     @FXML

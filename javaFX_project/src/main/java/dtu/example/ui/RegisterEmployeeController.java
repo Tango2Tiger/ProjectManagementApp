@@ -10,7 +10,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
-public class registerEmployeeController {
+public class RegisterEmployeeController {
     public TextField firstNameTxt;
     public TextField lastNameTxt;
     public Label registerFailTxt;
