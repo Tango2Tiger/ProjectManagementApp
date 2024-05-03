@@ -2,9 +2,12 @@ package example.cucumber;
 
 
 import dtu.projectmanagement.app.*;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.GregorianCalendar;
 
 import static org.junit.Assert.*;
 
@@ -81,10 +84,7 @@ public class ActivitySteps {
         assertTrue(activityHolder.getActivity().getRegisteredTime() == int1);
     }
 
-    @When("the employee registers {int} half hours on the activity")
-    public void the_employee_registers_half_hours_on_the_activity(int halfhours) {
-        projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), halfhours);
-    }
+
 
     @Then("the activity now has {int} half hours registered")
     public void the_activity_now_has_half_hours_registered(Integer int1) {
@@ -93,5 +93,28 @@ public class ActivitySteps {
 
 
 
+
+
+
+
+
+
+    @When("the employee registers {int} half hours for the year {int}, month {int}, and day {int}")
+    public void theEmployeeRegistersHalfHoursForTheYearMonthAndDay(int arg0, int arg1, int arg2, int arg3) {
+        try {
+            projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), arg0, arg1, arg2, arg3);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
+    }
+
+    @And("the activity now has {int} half hours registered from the employee on the date {int}, {int}, {int}")
+    public void theActivityNowHasHalfHoursRegisteredFromTheEmployeeOnTheDate(int arg0, int arg1, int arg2, int arg3) {
+        activity = activityHolder.getActivity();
+        String employeeName = employeeHolder.getEmployee().getFullName();
+        TimeRegistration timeRegistration = activity.getSpecificTimeRegistration(employeeName, new GregorianCalendar(arg1, arg2, arg3));
+        assertTrue(activity.getRegisteredTime() == arg0);
+        assertTrue(timeRegistration.getHalfHours() == arg0);
+    }
 }
 

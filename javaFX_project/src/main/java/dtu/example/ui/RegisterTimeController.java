@@ -25,7 +25,19 @@ public class RegisterTimeController implements Initializable {
     @FXML
     public Label halfHoursLabel;
     @FXML
+    public Label yearLabel;
+    @FXML
+    public Label monthLabel;
+    @FXML
+    public Label dayLabel;
+    @FXML
     public TextField halfHoursField;
+    @FXML
+    public ChoiceBox yearChoiceBox;
+    @FXML
+    public ChoiceBox monthChoiceBox;
+    @FXML
+    public ChoiceBox dayChoiceBox;
     @FXML
     public Button registerTimeButton;
     @FXML
@@ -39,24 +51,50 @@ public class RegisterTimeController implements Initializable {
         registerTimeButton.setVisible(false);
         halfHoursLabel.setVisible(false);
         halfHoursField.setVisible(false);
+        yearChoiceBox.setVisible(false);
+        yearLabel.setVisible(false);
+        monthChoiceBox.setVisible(false);
+        monthLabel.setVisible(false);
+        dayChoiceBox.setVisible(false);
+        dayLabel.setVisible(false);
         chooseActivityButton.setVisible(false);
     }
-    public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
-        App.setRoot("viewProjects");
+    public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
+        App.setRoot("loggedIn");
     }
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         activityChoiceBox.setVisible(true);
         chooseActivityButton.setVisible(true);
+        activityChoiceBox.getItems();
         activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
     }
     public void chooseActivity(ActionEvent actionEvent) throws IOException {
         halfHoursLabel.setVisible(true);
         halfHoursField.setVisible(true);
+        yearChoiceBox.setVisible(true);
+        yearLabel.setVisible(true);
+        monthChoiceBox.setVisible(true);
+        monthLabel.setVisible(true);
+        dayChoiceBox.setVisible(true);
+        dayLabel.setVisible(true);
         registerTimeButton.setVisible(true);
+
+
     }
     public void registerTime(ActionEvent actionEvent) throws IOException{
-        App.getProjectManagementApp().registerTime(App.getProjectManagementApp().getLoggedIn(), App.getProjectManagementApp().getActivityFromProject(projectChoiceBox.getValue(), activityChoiceBox.getValue()),Integer.parseInt(halfHoursField.getText()));
-        registerTimeLabel.setText("Time has been registered!");
+//        try {
+//            int halfHours = Integer.parseInt(halfHoursField.getText());
+//            int year = Integer.parseInt(yearField.getText());
+//            int month = Integer.parseInt(monthField.getText());
+//            int day = Integer.parseInt(dayField.getText());
+//            App.getProjectManagementApp().registerTime(App.getProjectManagementApp().getLoggedIn(), App.getProjectManagementApp().getActivityFromProject(projectChoiceBox.getValue(), activityChoiceBox.getValue()),halfHours,year,month,day);
+//            registerTimeLabel.setText("Time has been registered!");
+//        } catch (NumberFormatException e) {
+//            registerTimeLabel.setText("Please enter integers only");
+//        } catch (OperationNotAllowedException e) {
+//            registerTimeLabel.setText(e.getMessage());
+        }
+
     }
 
     /*@FXML
@@ -71,4 +109,4 @@ public class RegisterTimeController implements Initializable {
     }*/
 
 
-}
+

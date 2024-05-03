@@ -2,6 +2,8 @@ package dtu.projectmanagement.app;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,7 +12,6 @@ public class ProjectManagementApp {
     private Employee loggedIn;
     private boolean employeeLoggedIn = false;
     private int projectCounter = 1;
-
 
     private ArrayList<Project> projectList = new ArrayList<>();
 
@@ -195,9 +196,10 @@ public class ProjectManagementApp {
         }
     }
 
-    public void registerTime(Employee employee, Activity activity, Integer halfhours) {
-        employee.registerTime(halfhours);
-        activity.registerTime(halfhours);
+    public void registerTime(Employee employee, Activity activity, Integer halfHours, int year, int month, int day) throws OperationNotAllowedException {
+        TimeRegistration timeRegistration = new TimeRegistration(halfHours, year, month, day, employee.getFullName());
+        activity.registerTime(timeRegistration);
+        employee.registerTime(halfHours);
     }
 
     public void deleteActivity(String projectName, String activityName){
