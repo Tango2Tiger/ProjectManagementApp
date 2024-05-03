@@ -55,7 +55,7 @@ public class AssignEmployeeToActivityController implements Initializable {
         if (!isNull(activityChoiceBox.getValue())) {
             employeeChoiceBox.setVisible(true);
             activity = App.getProjectManagementApp().getActivityFromProject(project.getName(),activityChoiceBox.getValue());
-            employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
+            employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeNameListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
             assignEmployeeToActivityLabel.setText("Please choose an employee");
         }
     }

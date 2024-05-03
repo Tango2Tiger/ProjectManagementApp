@@ -1,5 +1,6 @@
 package dtu.projectmanagement.app;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class Project {
@@ -9,6 +10,7 @@ public class Project {
     private Employee projectLeader;
     private ArrayList<Activity> activityList = new ArrayList<>();
     private ArrayList<Employee> employeeList = new ArrayList<>();
+    private ArrayList<String> employeeNameList = new ArrayList<>();
 
     public Project(String name){
         this.name = name;
@@ -47,12 +49,13 @@ public class Project {
         return false;
     }
 
-    public void addEmployee(Employee employee) {this.employeeList.add(employee);}
+    public void addEmployee(Employee employee) {
+        this.getEmployeeList().add(employee);}
 
     public ArrayList<Employee> getEmployeeList(){ return employeeList;}
 
     public boolean hasEmployee(Employee employee) {
-        for(Employee em : employeeList){
+        for(Employee em : getEmployeeList()){
             if(em.equals(employee)){
                 return true;
             }
@@ -83,10 +86,23 @@ public class Project {
 
     public void deleteActivity(String activityName){
         activityList.remove(getActivityWithName(activityName));
-        for(Employee employee: this.employeeList){
+        for(Employee employee: this.getEmployeeList()){
             if(employee.hasActivity(getActivityWithName(activityName))){
                 employee.removeActivity(getActivityWithName(activityName));
             }
         }
+    }
+    public void convertEmployeeListToNameList(){
+        employeeNameList.clear();
+        for(Employee employee: employeeList){
+            employeeNameList.add(employee.getInitials());
+        }
+    }
+    public void setEmployeeList(ArrayList<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
+    public ArrayList<String> getEmployeeNameList(){
+        convertEmployeeListToNameList();
+        return employeeNameList;
     }
 }

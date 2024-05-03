@@ -2,7 +2,6 @@ package dtu.projectmanagement.app;
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -221,5 +220,8 @@ public class ProjectManagementApp {
 
     public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, GregorianCalendar gregorianCalendar) {
         activity.editTimeRegistration(employee, halfHours, gregorianCalendar);
+    }
+    public ArrayList<String> getEmployeeNameListFromProject(Project project){
+        return project.getEmployeeNameList();
     }
 }
