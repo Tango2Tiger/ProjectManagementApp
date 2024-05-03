@@ -45,6 +45,7 @@ public class ActivityScreenController implements Initializable {
             activityChoiceBox.setVisible(true);
             chooseActivityButton.setVisible(true);
             project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());
+            activityChoiceBox.getItems().clear();
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(project));
             activityScreenLabel.setText("Please choose an activity");
         }

@@ -36,6 +36,7 @@ public class AssignEmployeeToProjectController implements Initializable{
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         employeeChoiceBox.setVisible(true);
         assignEmployeeButton.setVisible(true);
+        employeeChoiceBox.getItems().clear();
         employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
     }
     public void assignEmployee() throws IOException, OperationNotAllowedException {
