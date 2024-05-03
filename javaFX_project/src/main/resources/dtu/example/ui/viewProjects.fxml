@@ -27,6 +27,7 @@
       <Button fx:id="switchToAssignLeader" mnemonicParsing="false" onAction="#assignProjectLeader" text="Assign Project Leader" />
       <Button fx:id="switchToCreateActivity" mnemonicParsing="false" onAction="#createActivity" text="Create Activity" />
       <Button fx:id="switchToBudgetedTime" mnemonicParsing="false" onAction="#activityScreen" text="Set budgeted time" />
+      <Button fx:id="switchToSetDate" mnemonicParsing="false" onAction="#setDateScreen" text="Set Activity Date" />
       <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
    </children>
    <padding>

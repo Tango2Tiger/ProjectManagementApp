@@ -1,10 +1,15 @@
 package dtu.example.ui;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 
 import java.io.IOException;
 
 public class viewProjectsController {
+    public void setDateScreen(ActionEvent actionEvent) throws IOException {
+        App.setRoot("startEndActivity");
+    }
+
     public void createProject(ActionEvent actionEvent) throws IOException {
         App.setRoot("createProject");
     }
