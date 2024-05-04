@@ -1,5 +1,9 @@
 package dtu.projectmanagement.app;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.AbstractList;
 import java.util.ArrayList;
 
@@ -104,5 +108,30 @@ public class Project {
     public ArrayList<String> getEmployeeNameList(){
         convertEmployeeListToNameList();
         return employeeNameList;
+    }
+
+    public void writeReport(File report){
+        try {
+            FileWriter writer = new FileWriter(report);
+
+            for(Activity activity: activityList){
+                writer.write("Activity name: " + activity.getName() + "    Budgeted time: " + activity.getBudgetedTime() + "    Time spent: " + activity.getRegisteredTime() + "\n");
+            }
+
+            ActivityDate finishingDate = new ActivityDate(0,0);
+
+            for(Activity activity: activityList){
+                if(activity.getEndDate() != null){
+                    if(activity.getEndDate().getYear()*52 - finishingDate.getYear()*52 + activity.getEndDate().getWeek() - finishingDate.getWeek() > 0){
+                        finishingDate = activity.getEndDate();
+                    }
+                }
+            }
+            writer.write("Estimated finish week: " + finishingDate.getYear() + "-" + finishingDate.getWeek());
+            writer.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

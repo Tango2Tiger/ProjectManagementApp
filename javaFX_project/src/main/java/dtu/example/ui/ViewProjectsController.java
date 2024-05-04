@@ -43,4 +43,8 @@ public class ViewProjectsController {
     public void assignToActivityScreen(ActionEvent actionEvent) throws IOException{
         App.setRoot("assignEmployeeToActivity");
     }
+
+    public void switchToStatusReport() throws IOException{
+        App.setRoot("getStatusReport");
+    }
 }

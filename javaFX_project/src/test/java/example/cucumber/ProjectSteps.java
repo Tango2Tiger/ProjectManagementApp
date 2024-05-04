@@ -37,7 +37,7 @@ public class ProjectSteps {
     @When("employee deletes the project {string}")
     public void The_employee_deletes_the_project(String string) {
         try {
-            projectManagementApp.removeProjectFromList(string);
+            projectManagementApp.finishProject(string);
         } catch (OperationNotAllowedException e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }

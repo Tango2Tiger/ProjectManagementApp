@@ -69,8 +69,9 @@ public class ProjectManagementApp {
         this.projectList.add(project);
     }
 
-    public void removeProjectFromList(String name) throws OperationNotAllowedException{
+    public void finishProject(String name) throws OperationNotAllowedException{
         if(hasProjectWithName(name)){
+            //getProjectWithName(name).downloadProjectReport();
             projectList.remove(getProjectWithName(name));
         } else {
             throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
