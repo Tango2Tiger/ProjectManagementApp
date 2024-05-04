@@ -1,10 +1,18 @@
 package dtu.projectmanagement.app;
 
 
+import dtu.example.ui.App;
+import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 public class ProjectManagementApp {
     private ArrayList<Employee> employeeList = new ArrayList<>();
@@ -69,14 +77,14 @@ public class ProjectManagementApp {
         this.projectList.add(project);
     }
 
-    public void finishProject(String name) throws OperationNotAllowedException{
+    public void deleteProject(String name) throws OperationNotAllowedException{
         if(hasProjectWithName(name)){
-            //getProjectWithName(name).downloadProjectReport();
             projectList.remove(getProjectWithName(name));
         } else {
             throw new OperationNotAllowedException("Project with the name " + name + " doesn't exist");
         }
     }
+
 
     public boolean hasEmployeeWithInitials(String initials) {
         for (Employee employee : employeeList) {
@@ -221,5 +229,22 @@ public class ProjectManagementApp {
     }
     public ArrayList<String> getEmployeeNameListFromProject(Project project){
         return project.getEmployeeNameList();
+    }
+
+    public void downloadProjectReport(Project project, Pane pane){
+        String projectName = project.getName();
+        if(!isNull(projectName)){
+            Window stage = pane.getScene().getWindow();
+            FileChooser fc = new FileChooser();
+
+            fc.setInitialFileName("status_report_" + projectName + ".txt");
+            fc.setInitialDirectory(new File(System.getProperty("user.home") + "/Downloads"));
+
+            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Text Files", "*.txt");
+            fc.getExtensionFilters().add(filter);
+
+            File file = fc.showSaveDialog(stage);
+            project.writeReport(file);
+        }
     }
 }

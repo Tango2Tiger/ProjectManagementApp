@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ public class DeleteProjectController implements Initializable {
     private ChoiceBox<String> projectChoiceBox;
     @FXML
     public Label deleteProjectLabel;
+    @FXML
+    private AnchorPane pane;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
@@ -30,12 +33,13 @@ public class DeleteProjectController implements Initializable {
         App.setRoot("viewProjects");
     }
 
-    public void deleteProject() throws IOException, OperationNotAllowedException {
+
+    public void deleteProject() throws OperationNotAllowedException {
         if(isNull(projectChoiceBox.getValue())){
             deleteProjectLabel.setText("Please choose a project.");
             return;
         }
-        App.getProjectManagementApp().getProjectList().remove(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue()));
+        App.getProjectManagementApp().deleteProject(projectChoiceBox.getValue());
         deleteProjectLabel.setText("The project \'" + projectChoiceBox.getValue() + "\' has been deleted.");
         projectChoiceBox.getItems().clear();
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());

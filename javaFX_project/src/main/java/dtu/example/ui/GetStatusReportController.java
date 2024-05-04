@@ -32,19 +32,12 @@ public class GetStatusReportController implements Initializable {
     }
 
     public void downloadProjectReport() {
-        if(!isNull(projectChoiceBox.getValue())){
-            Window stage = pane.getScene().getWindow();
-            FileChooser fc = new FileChooser();
+        String projectName = projectChoiceBox.getValue();
+        App.getProjectManagementApp().downloadProjectReport(App.getProjectManagementApp().getProjectWithName(projectName), pane);
+    }
 
-            fc.setInitialFileName("status_report_" + projectChoiceBox.getValue() + ".txt");
-            fc.setInitialDirectory(new File(System.getProperty("user.home") + "/Downloads"));
-
-            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Text Files", "*.txt");
-            fc.getExtensionFilters().add(filter);
-
-            File file = fc.showSaveDialog(stage);
-            App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue()).writeReport(file);
-        }
+    public void returnToViewProjects() throws IOException {
+        App.setRoot("viewProjects");
     }
 
 }

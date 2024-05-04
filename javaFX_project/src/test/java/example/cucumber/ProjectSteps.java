@@ -1,11 +1,14 @@
 package example.cucumber;
 
+import dtu.example.ui.App;
 import dtu.projectmanagement.app.*;
 import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.io.File;
 
 import static org.junit.Assert.*;
 public class ProjectSteps {
@@ -17,13 +20,15 @@ public class ProjectSteps {
     private Activity activity;
     private ActivityHolder activityHolder;
     private ProjectHolder projectHolder;
+    private FileHolder fileHolder;
 
-    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder, ProjectHolder projectHolder) {
+    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder, ProjectHolder projectHolder, FileHolder fileHolder) {
         this.projectManagementApp = projectManagementApp;
         this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
         this.activityHolder = activityHolder;
         this.projectHolder = projectHolder;
+        this.fileHolder = fileHolder;
     }
 
     @Given("there exists a project with the name {string}")
@@ -37,7 +42,7 @@ public class ProjectSteps {
     @When("employee deletes the project {string}")
     public void The_employee_deletes_the_project(String string) {
         try {
-            projectManagementApp.finishProject(string);
+            projectManagementApp.deleteProject(string);
         } catch (OperationNotAllowedException e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -132,5 +137,14 @@ public class ProjectSteps {
     @Given("the project {string} has no activities")
     public void the_project_has_no_activities(String string) {
         assertTrue(projectManagementApp.getProjectWithName(string).getActivityList().isEmpty());
+    }
+
+
+    @Given("there is a file for the report")
+    public void thereIsAFileForTheReport() {
+        File file = new File(System.getProperty("user.home"));
+        this.fileHolder.setFile(file);
+        assertTrue(file.exists());
+
     }
 }
