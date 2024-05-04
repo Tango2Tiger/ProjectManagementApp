@@ -1,9 +1,6 @@
 package example.cucumber;
 
-import dtu.example.ui.App;
-import dtu.projectmanagement.app.*;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
+import dtu.projectmanagement.businesslogic.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

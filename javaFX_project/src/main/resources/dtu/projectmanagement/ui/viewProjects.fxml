@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dtu.projectmanagement.ui.ViewProjectsController">
+   <children>
+      <Label text="Projects">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="createProjectButton" mnemonicParsing="false" onAction="#createProject" text="Create Project">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Button>
+      <Button fx:id="deleteProjectButton" mnemonicParsing="false" onAction="#switchToDeleteProject" text="Delete Project" />
+      <Button fx:id="switchToAssignEmployee" mnemonicParsing="false" onAction="#assignEmployee" text="Assign Employee to Project" />
+      <Button fx:id="switchToAssignLeader" mnemonicParsing="false" onAction="#assignProjectLeader" text="Assign Project Leader" />
+      <Button fx:id="switchToBudgetedTime" mnemonicParsing="false" onAction="#activityScreen" text="Set budgeted time" />
+      <Button fx:id="statusReportBtn" mnemonicParsing="false" onAction="#switchToStatusReport" text="Project Status Report" />
+      <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

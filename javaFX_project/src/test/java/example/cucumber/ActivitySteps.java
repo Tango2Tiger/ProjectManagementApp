@@ -1,12 +1,13 @@
 package example.cucumber;
 
 
-import dtu.projectmanagement.app.*;
+import dtu.projectmanagement.businesslogic.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import static org.junit.Assert.*;
@@ -58,7 +59,7 @@ public class ActivitySteps {
         assertTrue(int1 == bt);
     }
 
-    @When("the employee sets a start year {int}, start week {int}, end year {int} and end week {int}")
+    @When("the employee sets a start year {int}, start week {int}, end year {int} and end week {int} for the activity")
     public void the_employee_sets_a_start_date_with_year_and_week(int start_year, int start_week, int end_year, int end_week) {
         try {
             projectManagementApp.setStartEndActivity(start_year, start_week, end_year, end_week, projectHolder.getProject().getName(), activityHolder.getActivity().getName());
@@ -100,7 +101,7 @@ public class ActivitySteps {
     @When("the employee registers {int} half hours for the year {int}, month {int}, and day {int}")
     public void theEmployeeRegistersHalfHoursForTheYearMonthAndDay(int arg0, int arg1, int arg2, int arg3) {
         try {
-            projectManagementApp.registerTime(employeeHolder.getEmployee(), activityHolder.getActivity(), arg0, arg1, arg2, arg3);
+            projectManagementApp.registerTime(activityHolder.getActivity(), arg0, arg1, arg2, arg3);
         } catch (OperationNotAllowedException e) {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
@@ -137,6 +138,20 @@ public class ActivitySteps {
     @And("the activity is not on the employee's activitylist")
     public void theActivityIsNotOnTheEmployeeSActivitylist() {
         assertFalse(employeeHolder.getEmployee().hasActivity(activityHolder.getActivity()));
+    }
+
+    @And("the employee registers {int} half hours for a day outside of the activity date")
+    public void theEmployeeRegistersHalfHoursForADayOutsideOfTheActivityDate(int arg0) {
+        Calendar cal = new GregorianCalendar();
+        cal.set(Calendar.WEEK_OF_YEAR, activityHolder.getActivity().getStartDate().getWeek());
+        int year = activityHolder.getActivity().getStartDate().getYear();
+        int month = cal.MONTH;
+        int day = cal.DAY_OF_MONTH - 1;
+        try {
+            projectManagementApp.registerTime(activityHolder.getActivity(), arg0, year, month, day);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 }
 

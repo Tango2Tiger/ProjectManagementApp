@@ -1,11 +1,8 @@
 package example.cucumber;
-import dtu.example.ui.App;
-import dtu.projectmanagement.app.*;
+import dtu.projectmanagement.businesslogic.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 
