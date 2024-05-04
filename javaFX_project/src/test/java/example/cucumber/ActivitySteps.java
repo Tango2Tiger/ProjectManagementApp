@@ -98,7 +98,7 @@ public class ActivitySteps {
 
 
 
-    @When("the employee registers {int} half hours for the year {int}, month {int}, and day {int}")
+    @When("the employee registers {int} half hours for the year {int}, month {int}, and day {int} on the activity")
     public void theEmployeeRegistersHalfHoursForTheYearMonthAndDay(int arg0, int arg1, int arg2, int arg3) {
         try {
             projectManagementApp.registerTime(activityHolder.getActivity(), arg0, arg1, arg2, arg3);
