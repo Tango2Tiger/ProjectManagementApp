@@ -26,4 +26,8 @@ public class LoggedInController {
     public void logOut(ActionEvent actionEvent) throws IOException{
         App.setRoot("login");
     }
+
+    public void viewActivities(ActionEvent actionEvent) throws IOException{
+        App.setRoot("viewActivities");
+    }
 }

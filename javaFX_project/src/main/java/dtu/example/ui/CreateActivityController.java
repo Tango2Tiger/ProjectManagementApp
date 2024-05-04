@@ -33,7 +33,7 @@ public class CreateActivityController implements Initializable {
     }
 
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
-        App.setRoot("viewProjects");
+        App.setRoot("viewActivities");
     }
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         if(!isNull(projectChoiceBox.getValue())){

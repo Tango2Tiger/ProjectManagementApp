@@ -5,9 +5,6 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 
 public class ViewProjectsController {
-    public void setDateScreen(ActionEvent actionEvent) throws IOException {
-        App.setRoot("startEndActivity");
-    }
 
     public void createProject(ActionEvent actionEvent) throws IOException {
         App.setRoot("createProject");
@@ -21,10 +18,6 @@ public class ViewProjectsController {
         App.setRoot("AssignEmployeeToProject");
     }
 
-    public void createActivity(ActionEvent actionEvent) throws IOException{
-        App.setRoot("createActivityScene");
-    }
-
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
         App.setRoot("loggedIn");
     }
@@ -34,14 +27,6 @@ public class ViewProjectsController {
 
     public void switchToDeleteProject(ActionEvent actionEvent)throws IOException{
         App.setRoot("deleteProject");
-    }
-
-    public void switchToDeleteActivity(ActionEvent actionEvent) throws IOException{
-        App.setRoot("deleteActivity");
-    }
-
-    public void assignToActivityScreen(ActionEvent actionEvent) throws IOException{
-        App.setRoot("assignEmployeeToActivity");
     }
 
     public void switchToStatusReport() throws IOException{

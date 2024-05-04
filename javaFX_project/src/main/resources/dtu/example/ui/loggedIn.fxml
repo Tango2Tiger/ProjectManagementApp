@@ -10,7 +10,8 @@
         <Label text="Logged In Screen" />
       <Button fx:id="registerEmployeeButton" mnemonicParsing="false" onAction="#registerEmployee" text="Register Employee" />
       <Button fx:id="projectButton" mnemonicParsing="false" onAction="#viewProjects" prefHeight="26.0" prefWidth="116.0" text="Projects" />
-        <Button fx:id="deleteEmployeeButton" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="26.0" prefWidth="116.0" text="Delete Employee" />
+      <Button fx:id="activitiesButton" mnemonicParsing="false" onAction="#viewActivities" prefHeight="26.0" prefWidth="116.0" text="Activities" />
+      <Button fx:id="deleteEmployeeButton" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="26.0" prefWidth="116.0" text="Delete Employee" />
       <Button mnemonicParsing="false" onAction="#registerTimeScreen" text="Register Time" />
       <Button mnemonicParsing="false" onAction="#logOut" text="Log Out">
          <VBox.margin>

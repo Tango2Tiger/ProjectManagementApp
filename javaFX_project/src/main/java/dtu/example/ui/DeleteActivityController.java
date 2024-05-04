@@ -34,7 +34,7 @@ public class DeleteActivityController implements Initializable {
     }
 
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
-        App.setRoot("viewProjects");
+        App.setRoot("viewActivities");
     }
 
     public void showActivities(){

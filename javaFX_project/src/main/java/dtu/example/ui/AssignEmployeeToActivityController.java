@@ -48,7 +48,7 @@ public class AssignEmployeeToActivityController implements Initializable {
 
     }
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
-        App.setRoot("viewProjects");
+        App.setRoot("viewActivities");
     }
 
     public void chooseActivity(ActionEvent actionEvent) throws IOException{
