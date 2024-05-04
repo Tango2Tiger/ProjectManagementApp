@@ -16,12 +16,14 @@ public class EmployeeSteps {
     private EmployeeHolder employeeHolder;
     private Activity activity;
     private ActivityHolder activityHolder;
+    private ProjectHolder projectHolder;
     private ErrorMessageHolder errorMessageHolder;
-    public EmployeeSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder) {
+    public EmployeeSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder, ProjectHolder projectHolder) {
         this.projectManagementApp = projectManagementApp;
         this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
         this.activityHolder = activityHolder;
+        this.projectHolder = projectHolder;
 
     }
 
@@ -123,7 +125,20 @@ public class EmployeeSteps {
         assertTrue(projectManagementApp.employeeHasActivity(employeeHolder.getEmployee(),activityHolder.getActivity()));
     }
 
+    @When("employee deletes the employee with name {string}")
+    public void employee_deletes_the_employee_with_name(String string) {
+        projectManagementApp.deleteEmployee(employeeHolder.getEmployee());
+    }
 
+    @Then("the employee is not on the employeeList")
+    public void the_employee_is_not_on_the_employee_list() {
+        assertFalse(projectManagementApp.hasEmployeeWithInitials(employeeHolder.getEmployee().getInitials()));
+    }
+
+    @Then("the employee is not on the projects employeeList")
+    public void the_employee_is_not_on_the_projects_employee_list() {
+        assertFalse(projectManagementApp.projectHasEmployee(projectHolder.getProject(), employeeHolder.getEmployee()));
+    }
 
 
 }

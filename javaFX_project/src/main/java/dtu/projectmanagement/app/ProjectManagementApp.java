@@ -247,4 +247,13 @@ public class ProjectManagementApp {
             project.writeReport(file);
         }
     }
+
+    public void deleteEmployee(Employee employee){
+        employeeList.remove(employee);
+        for (Project project : projectList){
+            if (project.hasEmployee(employee)){
+                project.getEmployeeList().remove(employee);
+            }
+        }
+    }
 }

@@ -18,4 +18,8 @@ public class LoggedInController {
     public void registerTimeScreen(ActionEvent actionEvent) throws IOException{
         App.setRoot("registerTime");
     }
+
+    public void deleteEmployee(ActionEvent actionEvent) throws IOException{
+        App.setRoot("deleteEmployee");
+    }
 }
