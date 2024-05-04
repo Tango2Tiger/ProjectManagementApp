@@ -62,7 +62,7 @@ public class RegisterTimeController implements Initializable {
     }
 
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
-        App.setRoot("loggedIn");
+        App.setRoot("viewEmployees");
     }
 
     public void chooseProject(ActionEvent actionEvent) throws IOException {
@@ -133,16 +133,7 @@ public class RegisterTimeController implements Initializable {
 
     }
 }
-    /*@FXML
-    private void keyListenerRegisterEmployee(KeyEvent event) throws IOException{
-        if(event.getCode() == KeyCode.ENTER){
-            try{
-                App.getProjectManagementApp().registerTime(App.getProjectManagementApp().getLoggedIn(), App.getProjectManagementApp().getActivityFromProject(projectChoiceBox.getValue(), activityChoiceBox.getValue()),Integer.parseInt(halfHoursField.getText()));
-            } catch (OperationNotAllowedException e) {
-                //registerFailTxt.setText(e.getMessage());
-            }
-        }
-    }*/
+
 
 
 

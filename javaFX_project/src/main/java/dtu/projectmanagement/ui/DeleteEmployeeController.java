@@ -25,7 +25,7 @@ public class DeleteEmployeeController implements Initializable {
     }
 
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
-        App.setRoot("loggedIn");
+        App.setRoot("viewEmployees");
     }
 
     public void deleteEmployee() throws IOException, OperationNotAllowedException {

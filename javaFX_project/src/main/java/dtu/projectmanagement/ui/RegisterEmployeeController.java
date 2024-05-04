@@ -24,7 +24,7 @@ public class RegisterEmployeeController {
     }
 
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
-        App.setRoot("loggedIn");
+        App.setRoot("viewEmployees");
     }
 
     @FXML
