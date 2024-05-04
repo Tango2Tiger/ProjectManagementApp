@@ -22,4 +22,8 @@ public class LoggedInController {
     public void deleteEmployee(ActionEvent actionEvent) throws IOException{
         App.setRoot("deleteEmployee");
     }
+
+    public void logOut(ActionEvent actionEvent) throws IOException{
+        App.setRoot("login");
+    }
 }

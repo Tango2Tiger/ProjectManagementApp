@@ -12,6 +12,11 @@
       <Button fx:id="projectButton" mnemonicParsing="false" onAction="#viewProjects" prefHeight="26.0" prefWidth="116.0" text="Projects" />
         <Button fx:id="deleteEmployeeButton" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="26.0" prefWidth="116.0" text="Delete Employee" />
       <Button mnemonicParsing="false" onAction="#registerTimeScreen" text="Register Time" />
+      <Button mnemonicParsing="false" onAction="#logOut" text="Log Out">
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Button>
 
     </children>
     <padding>
