@@ -17,14 +17,13 @@ Feature: An employee who is logged in registers time
     When the employee registers -6 half hours for the year 2024, month 8, and day 9 on the activity
     Then the error message "Only positive time registrations allowed" is received
 
-#  Scenario: Employee tries to register time on the same activity for the same day twice
-#    Given an employee is logged in
-#    And there exists a project with the name "p1"
-#    And the project "p1" has an activity with the name "a1"
-#    And the employee registers 5 half hours for the year 2024, month 9, and day 12 on the activity
-#    When the employee registers 5 half hours for the year 2024, month 9, and day 12 on the activity
-#    Then the error message "Only one time registration per activity per employee per day" is received
-#
+  Scenario: Employee tries to register time on the same activity for the same day twice
+    Given an employee is logged in
+    And there exists a project with the name "p1"
+    And the project "p1" has an activity with the name "a1"
+    And the employee registers 5 half hours for the year 2024, month 9, and day 12 on the activity
+    When the employee registers 5 half hours for the year 2024, month 9, and day 12 on the activity
+    Then the error message "Only one time registration per activity per employee per day" is received
 
 
   Scenario: Employee registers time outside activitys planned runtime

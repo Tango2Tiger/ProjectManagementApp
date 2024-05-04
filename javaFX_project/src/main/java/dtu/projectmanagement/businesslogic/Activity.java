@@ -63,6 +63,9 @@ public class Activity {
         if (outsideDates(timeRegistration)) {
             throw new OperationNotAllowedException("Please register time within the runtime of the activity");
         }
+        if (!isNull(getSpecificTimeRegistration(timeRegistration.getEmployee(), timeRegistration.getDate()))) {
+            throw new OperationNotAllowedException("Only one time registration per activity per employee per day");
+        }
         this.registeredTime += timeRegistration.getHalfHours();
         this.timeRegistrations.add(timeRegistration);
     }
