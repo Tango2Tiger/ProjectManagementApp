@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * JavaFX App
- *
+ * @author huba
  */
 public class App extends Application {
 

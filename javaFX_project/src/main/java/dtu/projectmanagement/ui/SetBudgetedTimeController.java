@@ -16,7 +16,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
-
+/**
+ @author s235223
+ */
 public class SetBudgetedTimeController implements Initializable {
     @FXML
     public ChoiceBox<String> activityChoiceBox;
