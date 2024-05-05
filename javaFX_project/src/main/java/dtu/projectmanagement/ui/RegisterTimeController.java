@@ -6,6 +6,7 @@ import dtu.projectmanagement.businesslogic.Project;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -43,6 +44,8 @@ public class RegisterTimeController implements Initializable {
     public Button registerTimeButton;
     @FXML
     public Button chooseActivityButton;
+    @FXML
+    private Button editTimeButton;
 
 
     @Override
@@ -50,6 +53,7 @@ public class RegisterTimeController implements Initializable {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
         activityChoiceBox.setVisible(false);
         registerTimeButton.setVisible(false);
+        editTimeButton.setVisible(false);
         halfHoursLabel.setVisible(false);
         halfHoursField.setVisible(false);
         yearChoiceBox.setVisible(false);
@@ -82,6 +86,7 @@ public class RegisterTimeController implements Initializable {
         dayChoiceBox.setVisible(true);
         dayLabel.setVisible(true);
         registerTimeButton.setVisible(true);
+        editTimeButton.setVisible(true);
         yearChoiceBox.getItems().clear();
         monthChoiceBox.getItems().clear();
         dayChoiceBox.getItems().clear();
