@@ -45,7 +45,7 @@ public class GetStatusReportController implements Initializable {
         }
     }
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
-        App.setRoot("viewActivities");
+        App.setRoot("viewProjects");
     }
 
 }

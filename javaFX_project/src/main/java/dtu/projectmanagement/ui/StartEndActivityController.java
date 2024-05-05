@@ -50,7 +50,7 @@ public class StartEndActivityController implements Initializable {
     private Project project;
     private Activity activity;
     private ProjectManagementApp projectManagementApp;
-    private Integer[] yearArray = new Integer[100];
+    private Integer[] yearArray = new Integer[10];
     private Integer[] weekArray = new Integer[52];
     ObservableList<Integer> yearList;
     ObservableList<Integer> weekList;
@@ -127,7 +127,7 @@ public class StartEndActivityController implements Initializable {
     }
 
     public void fillYearArray(){
-        for(int i=0; i<50; i++){
+        for(int i=0; i<10; i++){
             this.yearArray[i] = i + 2023;
         }
     }
