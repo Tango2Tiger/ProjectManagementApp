@@ -3,6 +3,9 @@ package dtu.projectmanagement.businesslogic;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ @author s235223
+ */
 public abstract class Registration {
     private Calendar date;
     private Employee employee;

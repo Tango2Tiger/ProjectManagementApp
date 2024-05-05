@@ -104,17 +104,7 @@ public class EmployeeSteps {
     public void the_employee_now_has_half_hours_registered(Integer int1) {
         assertEquals((employeeHolder.getEmployee().getRegisteredTime()), (int) int1);
     }
-    @Given("the employee has {int} sickness half hours registered")
-    public void the_employee_has_sickness_half_hours_registered(Integer halfhours) {
-        activity = new Activity("a1");
-        activityHolder.setActivity(activity);
-        assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) halfhours);
-    }
 
-    @Then("the employee now has {int} days sickness registered")
-    public void the_employee_now_has_half_hours_sickness_registered(Integer days) {
-        assertEquals(employeeHolder.getEmployee().getRegisteredSickness(), (int) days);
-    }
 
     @When("the employee gets assigned to the activity {string}")
     public void the_employee_gets_assigned_to_the_activity(String name) throws OperationNotAllowedException {

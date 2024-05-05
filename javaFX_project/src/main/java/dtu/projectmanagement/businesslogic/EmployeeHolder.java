@@ -1,4 +1,7 @@
 package dtu.projectmanagement.businesslogic;
+/**
+ @author huba
+ */
 
 public class EmployeeHolder {
     private Employee employee;

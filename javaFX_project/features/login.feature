@@ -1,16 +1,21 @@
 Feature: An employee logs in
 
-Scenario: Employee in the system logs in
-  Given that no employee is logged in
-  And there is an employee with initials "huba" registered
-  When the employee logs in
-  Then the employee is logged in
+  Scenario: Employee in the system logs in
+    Given that no employee is logged in
+    And there is an employee with initials "huba" registered
+    When the employee logs in
+    Then the employee is logged in
+
+  Scenario: Employee in the system logs in
+    Given an employee is logged in
+    When the employee logs out
+    Then no employee is logged in
 
 
-Scenario: Employee not in the system tries to log in
-  Given that no employee is logged in
-  And there is an employee with initials "huba"
-  And there is no employee with initials "huba" in the system
-  When the employee logs in
-  Then the error message "employee with initials huba is not in the system" is received
+  Scenario: Employee not in the system tries to log in
+    Given that no employee is logged in
+    And there is an employee with initials "huba"
+    And there is no employee with initials "huba" in the system
+    When the employee logs in
+    Then the error message "employee with initials huba is not in the system" is received
 

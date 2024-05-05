@@ -23,7 +23,9 @@ public class Activity {
     public String getName() {
         return name;
     }
-
+    /**
+     @author s235223
+     */
     public void setBudgetedTime(Integer budgetedTime) throws OperationNotAllowedException {
         if(budgetedTime >= MAX_TIME) {
             throw new OperationNotAllowedException("Budgeted time must be below " + MAX_TIME + " hours");
@@ -58,7 +60,9 @@ public class Activity {
     public int getRegisteredTime() {
         return registeredTime;
     }
-
+    /**
+     @author s235223
+     */
     public void registerTime(TimeRegistration timeRegistration) throws OperationNotAllowedException {
         if (outsideDates(timeRegistration)) {
             throw new OperationNotAllowedException("Please register time within the runtime of the activity");
@@ -85,7 +89,9 @@ public class Activity {
         }
         return false;
     }
-
+    /**
+     @author s235223
+     */
     public TimeRegistration getSpecificTimeRegistration(Employee employee, Calendar date) {
         for (TimeRegistration timeRegistration : timeRegistrations){
             int n = timeRegistration.getDate().compareTo(date);

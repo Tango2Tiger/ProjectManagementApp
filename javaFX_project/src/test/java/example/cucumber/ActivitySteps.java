@@ -86,10 +86,6 @@ public class ActivitySteps {
     }
 
 
-    @When("the employee registers {int} half hours on sickness")
-    public void the_employee_registers_half_hours_on_sickness(Integer halfhours) {
-        projectManagementApp.registerSickness(employeeHolder.getEmployee(),halfhours);
-    }
 
     @Then("the activity now has {int} half hours registered")
     public void the_activity_now_has_half_hours_registered(Integer int1) {
@@ -106,10 +102,7 @@ public class ActivitySteps {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
-    @When("the employee registers {int} days of sickness")
-    public void the_employee_registers_days_of_sickness(Integer days) {
-        projectManagementApp.registerSickness(employeeHolder.getEmployee(),days);
-    }
+
 
     @And("the activity now has {int} half hours registered from the employee on the date {int}, {int}, {int}")
     public void theActivityNowHasHalfHoursRegisteredFromTheEmployeeOnTheDate(int arg0, int arg1, int arg2, int arg3) {
