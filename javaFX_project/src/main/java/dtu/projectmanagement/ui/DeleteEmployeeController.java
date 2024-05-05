@@ -30,7 +30,7 @@ public class DeleteEmployeeController implements Initializable {
 
     public void deleteEmployee() throws IOException, OperationNotAllowedException {
         if(isNull(employeeChoiceBox.getValue())){
-            deleteEmployeeLabel.setText("Please choose a project.");
+            deleteEmployeeLabel.setText("Please choose an employee :)");
             return;
         }
         if (App.getProjectManagementApp().getEmployeeWithInitials(employeeChoiceBox.getValue()) == App.getProjectManagementApp().getLoggedIn()){
