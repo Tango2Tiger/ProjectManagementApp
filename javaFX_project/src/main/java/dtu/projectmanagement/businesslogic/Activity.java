@@ -96,11 +96,15 @@ public class Activity {
         return null;
     }
 
-    public void editTimeRegistration(Employee employee, int newHalfHours, GregorianCalendar gregorianCalendar) {
+    public void editTimeRegistration(Employee employee, int newHalfHours, GregorianCalendar gregorianCalendar) throws OperationNotAllowedException {
         TimeRegistration specificTimeRegistration = getSpecificTimeRegistration(employee, gregorianCalendar);
+        if (isNull(specificTimeRegistration)) {
+            throw new OperationNotAllowedException("No time registration to edit for that date");
+        }
         int diff = newHalfHours - specificTimeRegistration.getHalfHours();
+        specificTimeRegistration.setHalfHours(newHalfHours);
         employee.addRegisteredTime(diff);
         this.registeredTime += diff;
-        specificTimeRegistration.setHalfHours(newHalfHours);
+
     }
 }

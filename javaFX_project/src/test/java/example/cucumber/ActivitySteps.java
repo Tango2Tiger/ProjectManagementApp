@@ -122,7 +122,11 @@ public class ActivitySteps {
 
     @And("the employee edits the time registration for the year {int}, month {int}, and day {int} to be {int} half hours")
     public void theEmployeeEditsTheTimeRegistrationForTheYearMonthAndDayToBeHalfHours(int arg0, int arg1, int arg2, int halfHours) {
-        projectManagementApp.editTimeRegistrationForActivity(employeeHolder.getEmployee(), activityHolder.getActivity(), halfHours, new GregorianCalendar(arg0, arg1, arg2));
+        try {
+            projectManagementApp.editTimeRegistrationForActivity(employeeHolder.getEmployee(), activityHolder.getActivity(), halfHours, arg0, arg1, arg2);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 
     @When("employee deletes the activity")

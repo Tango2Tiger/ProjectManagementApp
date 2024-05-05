@@ -21,12 +21,13 @@
       <Button layoutX="278.0" layoutY="312.0" mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
       <TextField fx:id="halfHoursField" layoutX="254.0" layoutY="246.0" prefHeight="26.0" prefWidth="92.0" />
       <Label fx:id="halfHoursLabel" layoutX="251.0" layoutY="224.0" text="Half hours worked" />
-      <Button fx:id="registerTimeButton" layoutX="400.0" layoutY="246.0" mnemonicParsing="false" onAction="#registerTime" text="Register Time" />
+      <Button fx:id="registerTimeButton" layoutX="396.0" layoutY="246.0" mnemonicParsing="false" onAction="#registerTime" text="Register Time" />
       <Label fx:id="yearLabel" layoutX="14.0" layoutY="224.0" text="Year of work" />
       <Label fx:id="monthLabel" layoutX="91.0" layoutY="224.0" text="Month" />
       <Label fx:id="dayLabel" layoutX="179.0" layoutY="224.0" text="Day" />
       <ChoiceBox fx:id="yearChoiceBox" layoutX="14.0" layoutY="246.0" prefHeight="25.0" prefWidth="67.0" />
       <ChoiceBox fx:id="monthChoiceBox" layoutX="91.0" layoutY="246.0" prefHeight="25.0" prefWidth="73.0" />
       <ChoiceBox fx:id="dayChoiceBox" layoutX="176.0" layoutY="246.0" prefHeight="25.0" prefWidth="57.0" />
+      <Button fx:id="edtTimeButton" layoutX="396.0" layoutY="287.0" mnemonicParsing="false" onAction="#editTime" text="Edit time registration" />
    </children>
 </AnchorPane>

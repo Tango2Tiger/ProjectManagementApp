@@ -48,7 +48,7 @@ public class AssignProjectLeaderController implements Initializable {
             assignLeaderLabel.setText("Please choose a project and an employee");
             return;
         }
-        App.getProjectManagementApp().setProjectLeader(App.getProjectManagementApp().getEmployeeWithInitials(employeeChoiceBox.getValue()), App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue()));
+        App.getProjectManagementApp().assignProjectLeader((projectChoiceBox.getValue()), employeeChoiceBox.getValue());
         assignLeaderLabel.setText("Employee " + employeeChoiceBox.getValue() + " has been assigned as leader of project " + projectChoiceBox.getValue());
     }
 }

@@ -7,6 +7,7 @@ import javafx.stage.Window;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -162,9 +163,6 @@ public class ProjectManagementApp {
         return employeeList.stream().map(Employee::getInitials).collect(Collectors.toList());
     }
 
-    public void setProjectLeader(Employee employee, Project project) {
-        project.setProjectLeader(employee);
-    }
 
     public void createActivity(Project p1, String name) throws OperationNotAllowedException{
         if(p1.hasActivityWithName(name)){
@@ -223,8 +221,9 @@ public class ProjectManagementApp {
         employee.registerSickness(days);
     }
 
-    public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, GregorianCalendar gregorianCalendar) {
-        activity.editTimeRegistration(employee, halfHours, gregorianCalendar);
+    public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, int year, int month, int day) throws OperationNotAllowedException {
+        GregorianCalendar date = new GregorianCalendar(year, month, day);
+        activity.editTimeRegistration(employee, halfHours, date);
     }
     public ArrayList<String> getEmployeeNameListFromProject(Project project){
         return project.getEmployeeNameList();

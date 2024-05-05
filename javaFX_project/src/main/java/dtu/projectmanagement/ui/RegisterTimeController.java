@@ -132,6 +132,24 @@ public class RegisterTimeController implements Initializable {
         }
 
     }
+    public void editTime(ActionEvent actionEvent) throws IOException{
+        try {
+            Project project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());
+            Activity activity = project.getActivityWithName(activityChoiceBox.getValue());
+            int halfHours = Integer.parseInt(halfHoursField.getText());
+            int year = Integer.parseInt((String) yearChoiceBox.getValue());
+            int day = Integer.parseInt((String) dayChoiceBox.getValue());
+            int month = Integer.parseInt((String) monthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
+
+            App.getProjectManagementApp().editTimeRegistrationForActivity(App.getProjectManagementApp().getLoggedIn(), activity, halfHours, year, month, day);
+            registerTimeLabel.setText("Successfully edited " + halfHours + " half hours on activity " + activity.getName());
+        } catch (OperationNotAllowedException e) {
+            registerTimeLabel.setText(e.getMessage());
+        } catch (NumberFormatException e) {
+            registerTimeLabel.setText("Please fill all fields with integers");
+        }
+
+    }
 }
 
 
