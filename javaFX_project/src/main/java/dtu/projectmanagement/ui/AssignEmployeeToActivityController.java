@@ -43,6 +43,7 @@ public class AssignEmployeeToActivityController implements Initializable {
         if (!isNull(projectChoiceBox.getValue())) {
             activityChoiceBox.setVisible(true);
             chooseActivityButton.setVisible(true);
+            activityChoiceBox.getItems().clear();
             project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(project));
             assignEmployeeToActivityLabel.setText("Please choose an activity");
@@ -57,6 +58,7 @@ public class AssignEmployeeToActivityController implements Initializable {
     public void chooseActivity(ActionEvent actionEvent) throws IOException {
         if (!isNull(activityChoiceBox.getValue())) {
             employeeChoiceBox.setVisible(true);
+            employeeChoiceBox.getItems().clear();
             activity = App.getProjectManagementApp().getActivityFromProject(project.getName(), activityChoiceBox.getValue());
             employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeNameListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
             assignEmployeeToActivityLabel.setText("Please choose an employee");
