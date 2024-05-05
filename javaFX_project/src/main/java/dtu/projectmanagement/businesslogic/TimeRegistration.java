@@ -3,22 +3,17 @@ package dtu.projectmanagement.businesslogic;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class TimeRegistration {
+public class TimeRegistration extends Registration{
     private int halfHours;
-    private Calendar date;
-    private Employee employee;
+
 
     public TimeRegistration(Integer halfHours, int year, int month, int day, Employee employee) throws OperationNotAllowedException {
-        if (halfHours < 1) {
-            throwNotAllowed("Only positive time registrations allowed");
-        }
-        if (halfHours > 48) {
-            throwNotAllowed("Only 48 half hours in a day");
-        }
-        this.date = new GregorianCalendar(year, month, day);
+        super(year, month, day, employee);
+        checkHalfHours(halfHours);
         this.halfHours = halfHours;
-        this.employee = employee;
+
     }
+
 
     private void throwNotAllowed(String msg) throws OperationNotAllowedException {
         throw new OperationNotAllowedException(msg);
@@ -29,20 +24,23 @@ public class TimeRegistration {
     }
 
     public void setHalfHours(int halfHours) throws OperationNotAllowedException {
-        if (halfHours < 1) {
-            throwNotAllowed("Only positive time registrations allowed");
-        }
-        if (halfHours > 48) {
-            throwNotAllowed("Only 48 half hours in a day");
-        }
+        checkHalfHours(halfHours);
         this.halfHours = halfHours;
     }
 
     public Employee getEmployee() {
-        return this.employee;
+        return super.getEmployee();
     }
 
     public Calendar getDate() {
-        return this.date;
+        return super.getDate();
+    }
+    private void checkHalfHours(Integer halfHours) throws OperationNotAllowedException {
+        if (halfHours < 1) {
+            throw new OperationNotAllowedException("Only positive time registrations allowed");
+        }
+        if (halfHours > 48) {
+            throw new OperationNotAllowedException("Only 48 half hours in a day");
+        }
     }
 }
