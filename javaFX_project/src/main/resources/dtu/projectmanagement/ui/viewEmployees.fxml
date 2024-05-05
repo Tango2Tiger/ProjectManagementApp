@@ -16,6 +16,7 @@
         <Button fx:id="switchToRegisterEmployee" mnemonicParsing="false" onAction="#registerEmployee" text="Register Employee" />
         <Button mnemonicParsing="false" onAction="#registerTimeScreen" text="Register Time" />
       <Button fx:id="registerAbsenceButton" mnemonicParsing="false" onAction="#registerAbsence" text="Register Absence" />
+      <Button mnemonicParsing="false" onAction="#deleteAbsence" text="Delete Absence" />
         <Button fx:id="switchDeleteEMployee" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete Employee" />
         <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
     </children>

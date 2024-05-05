@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.concurrent.AbstractExecutorService;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -305,6 +306,16 @@ public class ProjectManagementApp {
             throw new OperationNotAllowedException("Absence registration does not exist");
         }
         absenceRegistrations.remove(getSpecificAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn));
+    }
+
+    public ArrayList<AbsenceRegistration> getAbsencesForLoggedIn() {
+        ArrayList<AbsenceRegistration> loggedInAbsences = new ArrayList<AbsenceRegistration>();
+        for (AbsenceRegistration absenceRegistration : absenceRegistrations) {
+            if (absenceRegistration.getEmployee().equals(loggedIn)) {
+                loggedInAbsences.add(absenceRegistration);
+            }
+        }
+        return loggedInAbsences;
     }
 }
 

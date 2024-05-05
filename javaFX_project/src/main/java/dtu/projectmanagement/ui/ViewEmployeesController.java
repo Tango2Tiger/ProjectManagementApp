@@ -26,4 +26,8 @@ public class ViewEmployeesController {
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException{
         App.setRoot("loggedIn");
     }
+
+    public void deleteAbsence(ActionEvent actionEvent) throws IOException {
+        App.setRoot("deleteAbsenceRegistration");
+    }
 }

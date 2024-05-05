@@ -10,11 +10,7 @@ public class AbsenceRegistration extends Registration{
     private Calendar endDate;
     public AbsenceRegistration(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee) throws OperationNotAllowedException {
         super(startYear, startMonth, startDay, employee);
-        if (startYear > endYear) {
-            throw new OperationNotAllowedException("Start of absence must be before end of absence");
-        } else if (startYear == endYear && startMonth > endMonth) {
-            throw new OperationNotAllowedException("Start of absence must be before end of absence");
-        } else if (startMonth == endMonth && startDay > endDay) {
+        if (startYear > endYear || startYear == endYear && startMonth > endMonth || startYear == endYear && startMonth == endMonth && startDay > endDay) {
             throw new OperationNotAllowedException("Start of absence must be before end of absence");
         }
 

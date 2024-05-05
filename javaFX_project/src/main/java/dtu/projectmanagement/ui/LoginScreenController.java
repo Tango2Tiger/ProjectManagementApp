@@ -14,7 +14,9 @@ public class LoginScreenController {
     public Label loginLabel;
     @FXML
     private TextField loginTextField;
-
+    /**
+     @author s235223
+     */
     @FXML
     public void loginEmployee(ActionEvent actionEvent) throws IOException {
         try {
