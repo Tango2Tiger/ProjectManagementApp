@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
@@ -16,6 +15,7 @@
         </Label>
         <Button fx:id="switchToRegisterEmployee" mnemonicParsing="false" onAction="#registerEmployee" text="Register Employee" />
         <Button mnemonicParsing="false" onAction="#registerTimeScreen" text="Register Time" />
+      <Button fx:id="registerAbsenceButton" mnemonicParsing="false" onAction="#registerAbsence" text="Register Absence" />
         <Button fx:id="switchDeleteEMployee" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete Employee" />
         <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
     </children>

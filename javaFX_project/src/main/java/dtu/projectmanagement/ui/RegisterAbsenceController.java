@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AbsenceRegistrationController implements Initializable {
+public class RegisterAbsenceController implements Initializable {
     @FXML
     public ChoiceBox startYearChoiceBox;
     @FXML
@@ -38,11 +38,16 @@ public class AbsenceRegistrationController implements Initializable {
     @FXML
     public Label endDayLabel;
     @FXML
-    public Label endDateBeforeStart;
+    public Label absenceLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        endDateBeforeStart.setVisible(false);
+        setStartYearChoiceBox();
+        setStartMonthChoiceBox();
+        setStartDayChoiceBox();
+        setEndYearChoiceBox();
+        setEndMonthChoiceBox();
+        setEndDayChoiceBox();
     }
 
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
@@ -108,9 +113,10 @@ public class AbsenceRegistrationController implements Initializable {
             int endDay = Integer.parseInt((String) endDayChoiceBox.getValue());
             int endMonth = Integer.parseInt((String) endMonthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
             App.getProjectManagementApp().registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+            absenceLabel.setText("Your absence has been registered");
+
         } catch (OperationNotAllowedException e) {
-            endDateBeforeStart.setVisible(true);
-            endDateBeforeStart.setText(e.getMessage());
+            absenceLabel.setText(e.getMessage());
         }
     }
 }
