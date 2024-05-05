@@ -7,7 +7,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private int registeredTime;
-    private int registeredSickness;
+
     private ArrayList<Activity> activityList = new ArrayList<>();
     public Employee (String firstName, String lastName) {
         this.firstName = firstName;
@@ -17,7 +17,9 @@ public class Employee {
     public String getInitials() {
         return initials;
     }
-
+    /**
+     @author s235223
+     */
     public void setInitials() {
         String[] firstNameSplit = firstName.toLowerCase().split("");
         String[] lastNameSplit = lastName.toLowerCase().split("");
@@ -25,9 +27,7 @@ public class Employee {
     }
 
     public void registerTime(int halfhours){this.registeredTime += halfhours;}
-    public void registerSickness(int days){
-        this.registeredSickness += days;
-    }
+
 
     public String getFirstName() {
         return firstName;
@@ -38,15 +38,12 @@ public class Employee {
 
     public int getRegisteredTime() {return registeredTime;}
 
-    public int getRegisteredSickness() {return registeredSickness;}
 
     public void removeActivity(Activity activity){
         this.activityList.remove(activity);
     }
 
-    public void addActivity(Activity activity){
-        this.activityList.add(activity);
-    }
+
 
     public ArrayList<Activity> getActivityList(){
         return this.activityList;

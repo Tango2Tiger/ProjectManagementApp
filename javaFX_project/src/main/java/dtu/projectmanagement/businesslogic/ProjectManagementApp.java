@@ -31,14 +31,10 @@ public class ProjectManagementApp {
         return employeeList;
     }
 
-    public void setEmployeeList(ArrayList<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
 
-    public void setEmployeeLoggedIn(boolean employeeLoggedIn) {
-        this.employeeLoggedIn = employeeLoggedIn;
-    }
-
+    /**
+     @author s235223
+     */
     public void login(String initials) throws OperationNotAllowedException{
         for (Employee employee : employeeList) {
             if(employee.getInitials().equals(initials)) {
@@ -86,7 +82,9 @@ public class ProjectManagementApp {
         }
     }
 
-
+    /**
+     @author s235223
+     */
     public boolean hasEmployeeWithInitials(String initials) {
         for (Employee employee : employeeList) {
             if (employee.getInitials().equals(initials)) {
@@ -99,6 +97,9 @@ public class ProjectManagementApp {
     public void addEmployeeToEmployeeList(Employee employee) {
         employeeList.add(employee);
     }
+    /**
+     @author s235223
+     */
 
     public void registerEmployee(String firstName, String lastName) throws OperationNotAllowedException {
         if (hasEmployeeWithName(firstName, lastName)){
@@ -200,6 +201,9 @@ public class ProjectManagementApp {
             getProjectWithName(projectName).getActivityWithName(activityName).setEndDate(new ActivityDate(endYear, endWeek));
         }
     }
+    /**
+     @author s235223
+     */
 
     public void registerTime(Activity activity, Integer halfHours, int year, int month, int day) throws OperationNotAllowedException {
         TimeRegistration timeRegistration = new TimeRegistration(halfHours, year, month, day, loggedIn);
@@ -218,9 +222,9 @@ public class ProjectManagementApp {
     public boolean employeeHasActivity(Employee employee, Activity activity){
         return employee.hasActivity(activity);
     }
-    public void registerSickness(Employee employee, Integer days){
-        employee.registerSickness(days);
-    }
+    /**
+     @author s235223
+     */
 
     public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, int year, int month, int day) throws OperationNotAllowedException {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
@@ -255,15 +259,22 @@ public class ProjectManagementApp {
             }
         }
     }
-
+    /**
+     @author s235223
+     */
     public void logout() {
         this.setLoggedIn(null);
     }
-
+    /**
+     @author s235223
+     */
     public void registerAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) throws OperationNotAllowedException {
         AbsenceRegistration absence = new AbsenceRegistration(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
         absenceRegistrations.add(absence);
     }
+    /**
+     @author s235223
+     */
 
     public boolean hasAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee) {
         for (AbsenceRegistration absence : absenceRegistrations) {
@@ -275,6 +286,9 @@ public class ProjectManagementApp {
         }
         return false;
     }
+    /**
+     @author s235223
+     */
     public AbsenceRegistration getSpecificAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee){
         for (AbsenceRegistration absence : absenceRegistrations) {
             if (employee.equals(absence.getEmployee())
@@ -286,6 +300,9 @@ public class ProjectManagementApp {
         return null;
     }
 
+    /**
+     @author s235223
+     */
     public void deleteAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) throws OperationNotAllowedException {
         AbsenceRegistration absenceRegistration = getSpecificAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
         if (isNull(absenceRegistration)) {

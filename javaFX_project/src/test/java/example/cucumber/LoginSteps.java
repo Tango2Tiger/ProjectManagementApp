@@ -46,4 +46,13 @@ public class LoginSteps {
     }
 
 
+    @When("the employee logs out")
+    public void theEmployeeLogsOut() {
+        projectManagementApp.logout();
+    }
+
+    @Then("no employee is logged in")
+    public void noEmployeeIsLoggedIn() {
+        assertEquals(null, projectManagementApp.getLoggedIn());
+    }
 }

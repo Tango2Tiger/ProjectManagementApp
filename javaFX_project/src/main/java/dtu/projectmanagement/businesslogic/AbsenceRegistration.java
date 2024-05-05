@@ -3,6 +3,9 @@ package dtu.projectmanagement.businesslogic;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ @author s235223
+ */
 public class AbsenceRegistration extends Registration{
     private Calendar endDate;
     public AbsenceRegistration(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee) throws OperationNotAllowedException {
