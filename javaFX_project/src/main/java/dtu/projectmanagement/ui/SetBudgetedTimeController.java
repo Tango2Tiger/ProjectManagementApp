@@ -51,9 +51,6 @@ public class SetBudgetedTimeController implements Initializable {
         }
 
     }
-    public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
-        App.setRoot("viewProjects");
-    }
 
     public void chooseActivity(ActionEvent actionEvent) {
         if(!isNull(activityChoiceBox.getValue())) {
@@ -75,5 +72,9 @@ public class SetBudgetedTimeController implements Initializable {
         } catch (NumberFormatException e) {
             activityScreenLabel.setText("Please enter an integer");
         }
+    }
+
+    public void returnToViewActivities(ActionEvent actionEvent) throws IOException {
+        App.setRoot("viewActivities");
     }
 }
