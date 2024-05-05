@@ -18,6 +18,7 @@ public class ProjectManagementApp {
     private ArrayList<Employee> employeeList = new ArrayList<>();
     private Employee loggedIn;
     private boolean employeeLoggedIn = false;
+    private ArrayList<AbsenceRegistration> absenceRegistrations = new ArrayList<>();
     private int projectCounter = 1;
 
     private ArrayList<Project> projectList = new ArrayList<>();
@@ -257,5 +258,21 @@ public class ProjectManagementApp {
 
     public void logout() {
         this.setLoggedIn(null);
+    }
+
+    public void registerAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
+        AbsenceRegistration absence = new AbsenceRegistration(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
+        absenceRegistrations.add(absence);
+    }
+
+    public boolean hasAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee) {
+        for (AbsenceRegistration absence : absenceRegistrations) {
+            if (!employee.equals(absence.getEmployee())
+                    || absence.getStartYear() != startYear || absence.getStartMonth() != startMonth || absence.getStartDay() != startDay
+                    || absence.getEndYear() != endYear || absence.getEndMonth() != endMonth || absence.getEndDay() != endDay) {
+                return false;
+            }
+        }
+        return true;
     }
 }

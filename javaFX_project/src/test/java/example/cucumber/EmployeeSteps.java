@@ -1,14 +1,20 @@
 package example.cucumber;
 import dtu.projectmanagement.businesslogic.*;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import static org.junit.Assert.*;
 
 
 public class EmployeeSteps {
     private Employee employee;
+    private Calendar startDate;
+    private Calendar endDate;
     private ProjectManagementApp projectManagementApp;
     private EmployeeHolder employeeHolder;
     private Activity activity;
@@ -138,4 +144,21 @@ public class EmployeeSteps {
     }
 
 
+    @When("the employee registers absence from year {int} month {int} day {int} to year {int} month {int} day {int}")
+    public void theEmployeeRegistersAbsenceFromYearMonthDayToYearMonthDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
+        startDate = new GregorianCalendar(startYear, startMonth, startDay);
+        endDate = new GregorianCalendar(endYear, endMonth, endDay);
+        projectManagementApp.registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+    }
+
+    @Then("the app has an absence registration with the same start and end date for that employee")
+    public void theAppHasAnAbsenceRegistrationWithTheSameStartAndEndDateForThatEmployee() {
+        int startYear = startDate.get(Calendar.YEAR);
+        int startMonth = startDate.get(Calendar.MONTH);
+        int startDay = startDate.get(Calendar.DAY_OF_MONTH);
+        int endYear = endDate.get(Calendar.YEAR);
+        int endMonth = endDate.get(Calendar.MONTH);
+        int endDay = endDate.get(Calendar.DAY_OF_MONTH);
+        assertTrue(projectManagementApp.hasAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, employeeHolder.getEmployee()));
+    }
 }
