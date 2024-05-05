@@ -1,4 +1,6 @@
-package dtu.projectmanagement.businesslogic;
+package example.cucumber;
+
+import dtu.projectmanagement.businesslogic.Activity;
 
 public class ActivityHolder {
     private Activity activity;

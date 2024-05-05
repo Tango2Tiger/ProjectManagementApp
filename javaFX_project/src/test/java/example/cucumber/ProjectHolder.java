@@ -1,4 +1,6 @@
-package dtu.projectmanagement.businesslogic;
+package example.cucumber;
+
+import dtu.projectmanagement.businesslogic.Project;
 
 public class ProjectHolder {
     private Project project;

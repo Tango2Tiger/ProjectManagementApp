@@ -1,7 +1,6 @@
 package example.cucumber;
 
 import dtu.projectmanagement.businesslogic.Employee;
-import dtu.projectmanagement.businesslogic.EmployeeHolder;
 import dtu.projectmanagement.businesslogic.OperationNotAllowedException;
 import dtu.projectmanagement.businesslogic.ProjectManagementApp;
 import io.cucumber.java.en.Given;
