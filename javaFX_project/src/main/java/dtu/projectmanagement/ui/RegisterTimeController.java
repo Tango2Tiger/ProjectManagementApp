@@ -17,6 +17,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static java.util.Objects.isNull;
+
 public class RegisterTimeController implements Initializable {
     @FXML
     public Label registerTimeLabel;
@@ -70,29 +72,33 @@ public class RegisterTimeController implements Initializable {
     }
 
     public void chooseProject(ActionEvent actionEvent) throws IOException {
-        activityChoiceBox.setVisible(true);
-        chooseActivityButton.setVisible(true);
-        activityChoiceBox.getItems().clear();
-        activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
+        if (!isNull(projectChoiceBox.getValue())) {
+            activityChoiceBox.setVisible(true);
+            chooseActivityButton.setVisible(true);
+            activityChoiceBox.getItems().clear();
+            activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
+        }
     }
 
     public void chooseActivity(ActionEvent actionEvent) throws IOException {
-        halfHoursLabel.setVisible(true);
-        halfHoursField.setVisible(true);
-        yearChoiceBox.setVisible(true);
-        yearLabel.setVisible(true);
-        monthChoiceBox.setVisible(true);
-        monthLabel.setVisible(true);
-        dayChoiceBox.setVisible(true);
-        dayLabel.setVisible(true);
-        registerTimeButton.setVisible(true);
-        editTimeButton.setVisible(true);
-        yearChoiceBox.getItems().clear();
-        monthChoiceBox.getItems().clear();
-        dayChoiceBox.getItems().clear();
-        setYearChoiceBox();
-        setMonthChoiceBox();
-        setDayChoiceBox();
+        if (!isNull(activityChoiceBox.getValue())) {
+            halfHoursLabel.setVisible(true);
+            halfHoursField.setVisible(true);
+            yearChoiceBox.setVisible(true);
+            yearLabel.setVisible(true);
+            monthChoiceBox.setVisible(true);
+            monthLabel.setVisible(true);
+            dayChoiceBox.setVisible(true);
+            dayLabel.setVisible(true);
+            registerTimeButton.setVisible(true);
+            editTimeButton.setVisible(true);
+            yearChoiceBox.getItems().clear();
+            monthChoiceBox.getItems().clear();
+            dayChoiceBox.getItems().clear();
+            setYearChoiceBox();
+            setMonthChoiceBox();
+            setDayChoiceBox();
+        }
     }
 
     private void setYearChoiceBox() {
