@@ -260,7 +260,7 @@ public class ProjectManagementApp {
         this.setLoggedIn(null);
     }
 
-    public void registerAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
+    public void registerAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) throws OperationNotAllowedException {
         AbsenceRegistration absence = new AbsenceRegistration(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
         absenceRegistrations.add(absence);
     }

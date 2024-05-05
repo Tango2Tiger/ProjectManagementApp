@@ -148,7 +148,11 @@ public class EmployeeSteps {
     public void theEmployeeRegistersAbsenceFromYearMonthDayToYearMonthDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
         startDate = new GregorianCalendar(startYear, startMonth, startDay);
         endDate = new GregorianCalendar(endYear, endMonth, endDay);
-        projectManagementApp.registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        try {
+            projectManagementApp.registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("the app has an absence registration with the same start and end date for that employee")
