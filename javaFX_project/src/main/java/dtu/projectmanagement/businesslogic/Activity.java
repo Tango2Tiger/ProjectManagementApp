@@ -75,12 +75,12 @@ public class Activity {
             return false;
         }
         Calendar date = timeRegistration.getDate();
-        int registeredWeek = date.WEEK_OF_YEAR;
-        int registeredYear = date.YEAR;
-        if (startDate.getYear() - registeredYear < 0 || endDate.getYear() - registeredYear > 0) {
+        int registeredWeek = date.get(Calendar.WEEK_OF_YEAR);
+        int registeredYear = date.get(Calendar.YEAR);
+        if (startDate.getYear() - registeredYear > 0 || endDate.getYear() - registeredYear < 0) {
             return true;
         }
-        if (startDate.getWeek() - registeredWeek < 0 || endDate.getWeek() - registeredWeek > 0) {
+        if (startDate.getYear() - registeredYear == 0 && startDate.getWeek() - registeredWeek > 0 || endDate.getYear() - registeredYear == 0 && endDate.getWeek() - registeredWeek < 0) {
             return true;
         }
         return false;
