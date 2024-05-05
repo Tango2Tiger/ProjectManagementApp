@@ -21,9 +21,6 @@ public class ViewProjectsController {
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
         App.setRoot("loggedIn");
     }
-    public void activityScreen (ActionEvent actionEvent) throws IOException {
-        App.setRoot("setBudgetedTime");
-    }
 
     public void switchToDeleteProject(ActionEvent actionEvent)throws IOException{
         App.setRoot("deleteProject");

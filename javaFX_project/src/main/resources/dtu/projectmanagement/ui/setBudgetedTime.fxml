@@ -43,7 +43,7 @@
       </HBox>
       <TextField fx:id="setBudgetedTimeText" />
       <Button fx:id="setBudgetedTimeButton" mnemonicParsing="false" onAction="#setBudgetedTime" text="Set budgeted time" />
-      <Button mnemonicParsing="false" onAction="#returnToViewProjects" text="Back" />
+      <Button mnemonicParsing="false" onAction="#returnToViewActivities" text="Back" />
 
    </children>
    <padding>

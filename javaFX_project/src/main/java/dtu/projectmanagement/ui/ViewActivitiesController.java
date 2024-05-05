@@ -13,6 +13,9 @@ public class ViewActivitiesController {
         App.setRoot("createActivityScene");
     }
 
+    public void activityScreen (ActionEvent actionEvent) throws IOException {
+        App.setRoot("setBudgetedTime");
+    }
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
         App.setRoot("loggedIn");
     }

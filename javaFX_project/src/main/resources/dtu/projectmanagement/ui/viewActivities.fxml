@@ -17,6 +17,7 @@
         <Button fx:id="switchToCreateActivity" mnemonicParsing="false" onAction="#createActivity" text="Create Activity" />
         <Button mnemonicParsing="false" onAction="#switchToDeleteActivity" text="Delete Activity" />
         <Button fx:id="switchToSetDate" mnemonicParsing="false" onAction="#setDateScreen" text="Set Activity Date" />
+        <Button fx:id="switchToBudgetedTime" mnemonicParsing="false" onAction="#activityScreen" text="Set budgeted time" />
         <Button fx:id="switchToAssignToActivity" mnemonicParsing="false" onAction="#assignToActivityScreen" text="Assign Employee To An Activity" />
         <Button mnemonicParsing="false" onAction="#returnToLoggedIn" text="Back" />
     </children>
