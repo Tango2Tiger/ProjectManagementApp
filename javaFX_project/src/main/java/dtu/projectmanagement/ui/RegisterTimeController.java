@@ -45,7 +45,7 @@ public class RegisterTimeController implements Initializable {
     @FXML
     public Button chooseActivityButton;
     @FXML
-    private Button editTimeButton;
+    public Button editTimeButton;
 
 
     @Override
