@@ -15,9 +15,6 @@ public class TimeRegistration extends Registration{
     }
 
 
-    private void throwNotAllowed(String msg) throws OperationNotAllowedException {
-        throw new OperationNotAllowedException(msg);
-    }
 
     public int getHalfHours() {
         return halfHours;

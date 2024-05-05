@@ -260,19 +260,39 @@ public class ProjectManagementApp {
         this.setLoggedIn(null);
     }
 
-    public void registerAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
+    public void registerAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) throws OperationNotAllowedException {
         AbsenceRegistration absence = new AbsenceRegistration(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
         absenceRegistrations.add(absence);
     }
 
     public boolean hasAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee) {
         for (AbsenceRegistration absence : absenceRegistrations) {
-            if (!employee.equals(absence.getEmployee())
-                    || absence.getStartYear() != startYear || absence.getStartMonth() != startMonth || absence.getStartDay() != startDay
-                    || absence.getEndYear() != endYear || absence.getEndMonth() != endMonth || absence.getEndDay() != endDay) {
-                return false;
+            if (employee.equals(absence.getEmployee())
+                    && absence.getStartYear() == startYear && absence.getStartMonth() == startMonth && absence.getStartDay() == startDay
+                    && absence.getEndYear() == endYear && absence.getEndMonth() == endMonth && absence.getEndDay() == endDay) {
+                return true;
             }
         }
-        return true;
+        return false;
+    }
+    public AbsenceRegistration getSpecificAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee){
+        for (AbsenceRegistration absence : absenceRegistrations) {
+            if (employee.equals(absence.getEmployee())
+                    && absence.getStartYear() == startYear && absence.getStartMonth() == startMonth && absence.getStartDay() == startDay
+                    && absence.getEndYear() == endYear && absence.getEndMonth() == endMonth && absence.getEndDay() == endDay) {
+                return absence;
+            }
+        }
+        return null;
+    }
+
+    public void deleteAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) throws OperationNotAllowedException {
+        AbsenceRegistration absenceRegistration = getSpecificAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
+        if (isNull(absenceRegistration)) {
+            throw new OperationNotAllowedException("Absence registration does not exist");
+        }
+        absenceRegistrations.remove(getSpecificAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn));
     }
 }
+
+

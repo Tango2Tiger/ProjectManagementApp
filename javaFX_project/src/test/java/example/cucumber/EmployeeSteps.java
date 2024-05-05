@@ -1,6 +1,5 @@
 package example.cucumber;
 import dtu.projectmanagement.businesslogic.*;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -148,7 +147,11 @@ public class EmployeeSteps {
     public void theEmployeeRegistersAbsenceFromYearMonthDayToYearMonthDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
         startDate = new GregorianCalendar(startYear, startMonth, startDay);
         endDate = new GregorianCalendar(endYear, endMonth, endDay);
-        projectManagementApp.registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        try {
+            projectManagementApp.registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("the app has an absence registration with the same start and end date for that employee")
@@ -160,5 +163,42 @@ public class EmployeeSteps {
         int endMonth = endDate.get(Calendar.MONTH);
         int endDay = endDate.get(Calendar.DAY_OF_MONTH);
         assertTrue(projectManagementApp.hasAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, employeeHolder.getEmployee()));
+    }
+
+
+
+    @When("the employee deletes the absence registration")
+    public void theEmployeeDeletesTheAbsenceRegistration() {
+        int startYear = startDate.get(Calendar.YEAR);
+        int startMonth = startDate.get(Calendar.MONTH);
+        int startDay = startDate.get(Calendar.DAY_OF_MONTH);
+        int endYear = endDate.get(Calendar.YEAR);
+        int endMonth = endDate.get(Calendar.MONTH);
+        int endDay = endDate.get(Calendar.DAY_OF_MONTH);
+        try {
+            projectManagementApp.deleteAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
+    }
+
+    @Then("the app has no absence registration with the same start and end date for that employee")
+    public void theAppHasNoAbsenceRegistrationWithTheSameStartAndEndDateForThatEmployee() {
+        int startYear = startDate.get(Calendar.YEAR);
+        int startMonth = startDate.get(Calendar.MONTH);
+        int startDay = startDate.get(Calendar.DAY_OF_MONTH);
+        int endYear = endDate.get(Calendar.YEAR);
+        int endMonth = endDate.get(Calendar.MONTH);
+        int endDay = endDate.get(Calendar.DAY_OF_MONTH);
+        assertFalse(projectManagementApp.hasAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, employeeHolder.getEmployee()));
+    }
+
+    @When("the employee tries to the absence registration from year {int} month {int} day {int} to year {int} month {int} day {int}")
+    public void theEmployeeTriesToTheAbsenceRegistrationFromYearMonthDayToYearMonthDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
+        try {
+            projectManagementApp.deleteAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 }
