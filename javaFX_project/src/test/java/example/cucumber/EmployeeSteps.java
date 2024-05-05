@@ -99,11 +99,11 @@ public class EmployeeSteps {
     }
     @Given("the employee has {int} half hours registered")
     public void the_employee_has_half_hours_registered(Integer halfhours) {
-        assertTrue(employeeHolder.getEmployee().getRegisteredTime() == halfhours);
+        assertEquals(employeeHolder.getEmployee().getRegisteredTime(), (int) halfhours);
     }
     @Then("the employee now has {int} half hours registered")
     public void the_employee_now_has_half_hours_registered(Integer int1) {
-        assertTrue((employeeHolder.getEmployee().getRegisteredTime()) == int1);
+        assertEquals((employeeHolder.getEmployee().getRegisteredTime()), (int) int1);
     }
     @Given("the employee has {int} sickness half hours registered")
     public void the_employee_has_sickness_half_hours_registered(Integer halfhours) {
