@@ -18,6 +18,8 @@ public class AssignEmployeeToActivityController implements Initializable {
     @FXML
     public Label assignEmployeeToActivityLabel;
     @FXML
+    public Label noteLabel;
+    @FXML
     public ChoiceBox<String> projectChoiceBox;
     @FXML
     public ChoiceBox<String> activityChoiceBox;
@@ -36,6 +38,7 @@ public class AssignEmployeeToActivityController implements Initializable {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
         activityChoiceBox.setVisible(false);
         employeeChoiceBox.setVisible(false);
+        noteLabel.setVisible(false);
         chooseActivityButton.setVisible(false);
     }
 
@@ -58,6 +61,7 @@ public class AssignEmployeeToActivityController implements Initializable {
     public void chooseActivity(ActionEvent actionEvent) throws IOException {
         if (!isNull(activityChoiceBox.getValue())) {
             employeeChoiceBox.setVisible(true);
+            noteLabel.setVisible(true);
             employeeChoiceBox.getItems().clear();
             activity = App.getProjectManagementApp().getActivityFromProject(project.getName(), activityChoiceBox.getValue());
             employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeNameListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
