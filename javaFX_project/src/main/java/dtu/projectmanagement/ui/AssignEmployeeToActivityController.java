@@ -68,7 +68,7 @@ public class AssignEmployeeToActivityController implements Initializable {
 
     public void assignEmployee(ActionEvent actionEvent) throws OperationNotAllowedException {
         App.getProjectManagementApp().assignEmployeeToActivity(App.getProjectManagementApp().getEmployeeWithInitials(employeeChoiceBox.getValue()), App.getProjectManagementApp().getActivityFromProject(projectChoiceBox.getValue(), activityChoiceBox.getValue()));
-        assignEmployeeToActivityLabel.setText("\"Employee \"" + employeeChoiceBox.getValue() + " has been assigned to the activity: \"" + activityChoiceBox.getValue() + "\" in the project: \"" + projectChoiceBox.getValue() + "\"");
+        assignEmployeeToActivityLabel.setText("Employee " + employeeChoiceBox.getValue() + " has been assigned to the activity: " + activityChoiceBox.getValue() + " in the project: " + projectChoiceBox.getValue());
 
     }
 }
