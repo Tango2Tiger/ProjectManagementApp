@@ -10,9 +10,15 @@ Initialer bliver dannet ud fra de to første bogstaver i fornavn + de to første
 
 
 Forfattere:
+
 S235233 Clement Koefoed
+
 S235223 Jeppe Søndergaard
+
 S235238 Holger Hommel-Hansen
+
 S230607 Magnus Henneberg
+
 S235221 Jonas Grønbeck
+
 
