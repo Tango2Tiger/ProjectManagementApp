@@ -110,8 +110,8 @@ public class RegisterTimeController implements Initializable {
             yearList.add(Integer.toString(i + 2023));
         }
         yearChoiceBox.getItems().addAll(yearList);
-
     }
+
     private void setMonthChoiceBox() {
         ArrayList<String> monthList = new ArrayList<>();
         for (int i = 1; i < 13; i++) {
@@ -126,7 +126,6 @@ public class RegisterTimeController implements Initializable {
         }
         dayChoiceBox.getItems().addAll(dayList);
     }
-
 
     public void registerTime(ActionEvent actionEvent) throws IOException{
         try {
@@ -146,6 +145,7 @@ public class RegisterTimeController implements Initializable {
         }
 
     }
+
     public void editTime(ActionEvent actionEvent) throws IOException{
         try {
             Project project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());

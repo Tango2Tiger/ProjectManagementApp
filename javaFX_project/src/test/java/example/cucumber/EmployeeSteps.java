@@ -37,12 +37,11 @@ public class EmployeeSteps {
         assertEquals(employeeHolder.getEmployee().getInitials(), string);
     }
 
-
-
     @Given("there is no employee with initials {string}")
     public void there_is_no_employee_with_initials(String string) {
         assertFalse(projectManagementApp.hasEmployeeWithInitials(string));
     }
+
     @Given("the employee is registered in the system")
     public void the_employee_is_registered_in_the_system() {
         projectManagementApp.addEmployeeToEmployeeList(employee);
@@ -52,6 +51,7 @@ public class EmployeeSteps {
     public void there_is_no_employee_with_initials_in_the_system(String string) {
         assertFalse(projectManagementApp.hasEmployeeWithInitials(string));
     }
+
     @Given("there is an employee with initials {string} registered")
     public void there_is_an_employee_with_initials_registered(String string) throws OperationNotAllowedException {
         employee = new Employee("Hubert", "Baumeister");
@@ -60,6 +60,7 @@ public class EmployeeSteps {
         employeeHolder.setEmployee(employee);
         assertTrue(projectManagementApp.hasEmployeeWithInitials(string));
     }
+
     @Given("there is an employee with first name {string} and last name {string}")
     public void there_is_an_employee_with_first_name_and_last_name(String firstName, String lastName) {
         employee = new Employee(firstName, lastName);
@@ -88,6 +89,7 @@ public class EmployeeSteps {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
+
     @Given("an employee is logged in")
     public void an_employee_is_logged_in() throws OperationNotAllowedException {
         employee = new Employee("Hubert", "Baumeister");
@@ -96,10 +98,12 @@ public class EmployeeSteps {
         projectManagementApp.addEmployeeToEmployeeList(employee);
         projectManagementApp.login("huba");
     }
+
     @Given("the employee has {int} half hours registered")
     public void the_employee_has_half_hours_registered(Integer halfhours) {
         assertEquals(employeeHolder.getEmployee().getRegisteredTime(), (int) halfhours);
     }
+
     @Then("the employee now has {int} half hours registered")
     public void the_employee_now_has_half_hours_registered(Integer int1) {
         assertEquals((employeeHolder.getEmployee().getRegisteredTime()), (int) int1);
@@ -132,7 +136,6 @@ public class EmployeeSteps {
         assertFalse(projectManagementApp.projectHasEmployee(projectHolder.getProject(), employeeHolder.getEmployee()));
     }
 
-
     @When("the employee registers absence from year {int} month {int} day {int} to year {int} month {int} day {int}")
     public void theEmployeeRegistersAbsenceFromYearMonthDayToYearMonthDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay) {
         startDate = new GregorianCalendar(startYear, startMonth, startDay);
@@ -154,8 +157,6 @@ public class EmployeeSteps {
         int endDay = endDate.get(Calendar.DAY_OF_MONTH);
         assertTrue(projectManagementApp.hasAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, employeeHolder.getEmployee()));
     }
-
-
 
     @When("the employee deletes the absence registration")
     public void theEmployeeDeletesTheAbsenceRegistration() {

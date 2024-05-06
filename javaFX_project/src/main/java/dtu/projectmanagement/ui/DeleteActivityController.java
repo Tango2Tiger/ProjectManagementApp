@@ -22,12 +22,13 @@ public class DeleteActivityController implements Initializable {
     private ChoiceBox<String> activityChoiceBox;
     @FXML
     public Label deleteActivityLabel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
         projectChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            public void changed(ObservableValue<? extends String> observable, String string1, String string2) {
                 showActivities();
             }
         });

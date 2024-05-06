@@ -100,9 +100,11 @@ public class Project {
             employeeNameList.add(employee.getInitials());
         }
     }
+
     public void setEmployeeList(ArrayList<Employee> employeeList) {
         this.employeeList = employeeList;
     }
+
     public ArrayList<String> getEmployeeNameList(){
         convertEmployeeListToNameList();
         return employeeNameList;
@@ -111,9 +113,10 @@ public class Project {
     public void writeReport(File report){
         try {
             FileWriter writer = new FileWriter(report);
+            writer.write("Status report for " + this.name + " - #" + this.getProjectNumber() + "\n\n");
 
             for(Activity activity: activityList){
-                writer.write("Activity name: " + activity.getName() + "    Budgeted time: " + activity.getBudgetedTime() + "    Time spent: " + activity.getRegisteredTime() + "\n");
+                writer.write("Activity name: " + activity.getName() + "  -  Budgeted time: " + activity.getBudgetedTime() + "hours  -  Time spent: " + activity.getRegisteredTime()/2.0 + "hours" + "\n");
             }
 
             ActivityDate finishingDate = new ActivityDate(0,0);

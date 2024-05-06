@@ -15,6 +15,7 @@ public class ViewEmployeesController {
     public void registerTimeScreen(ActionEvent actionEvent) throws IOException{
         App.setRoot("registerTime");
     }
+
     public void registerAbsence(ActionEvent actionEvent) throws IOException{
         App.setRoot("registerAbsence");
     }

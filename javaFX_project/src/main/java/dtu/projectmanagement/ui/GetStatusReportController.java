@@ -16,12 +16,10 @@ import java.util.ResourceBundle;
 import static java.util.Objects.isNull;
 
 public class GetStatusReportController implements Initializable {
-
     @FXML
     private ChoiceBox<String> projectChoiceBox;
     @FXML
     AnchorPane pane;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,6 +42,7 @@ public class GetStatusReportController implements Initializable {
             App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue()).writeReport(file);
         }
     }
+
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
         App.setRoot("viewProjects");
     }
