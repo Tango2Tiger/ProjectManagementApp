@@ -22,26 +22,44 @@ public class Project {
         return this.name;
     }
 
+    /**
+     @author s230607
+     */
     public int getProjectNumber() {
         return projectNumber;
     }
 
+    /**
+     @author s230607
+     */
     public void setProjectNumber(int projectNumber) {
         this.projectNumber = 24000 + projectNumber;
     }
 
+    /**
+     @author s230607
+     */
     public Employee getProjectLeader() {
         return projectLeader;
     }
 
+    /**
+     @author s230607
+     */
     public void setProjectLeader(Employee projectLeader) {
         this.projectLeader = projectLeader;
     }
 
+    /**
+     @author s230607
+     */
     public void createActivity(String name) throws OperationNotAllowedException {
         activityList.add(new Activity(name));
     }
 
+    /**
+     @author s230607
+     */
     public boolean hasActivityWithName(String name){
         for(Activity activity: activityList){
             if(activity.getName().equals(name)){
@@ -78,6 +96,9 @@ public class Project {
         return activityList;
     }
 
+    /**
+     @author s230607
+     */
     public ArrayList<String> getActivityNameList(){
         ArrayList<String> activityNameList = new ArrayList<>();
         for(Activity activity: this.activityList){
@@ -86,6 +107,9 @@ public class Project {
         return activityNameList;
     }
 
+    /**
+     @author s230607
+     */
     public void deleteActivity(String activityName){
         if (hasActivityWithName(activityName)) {
             for (Employee employee : this.getEmployeeList()) {
@@ -109,6 +133,9 @@ public class Project {
         return employeeNameList;
     }
 
+    /**
+     @author s230607
+     */
     public void writeReport(File report){
         try {
             FileWriter writer = new FileWriter(report);

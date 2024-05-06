@@ -16,10 +16,16 @@ public class Activity {
     private ArrayList<TimeRegistration> timeRegistrations = new ArrayList<>();
     private final int MAX_TIME = 5000;
 
+    /**
+     @author s230607
+     */
     public Activity(String name){
         this.name = name;
     }
 
+    /**
+     @author s230607
+     */
     public String getName() {
         return name;
     }

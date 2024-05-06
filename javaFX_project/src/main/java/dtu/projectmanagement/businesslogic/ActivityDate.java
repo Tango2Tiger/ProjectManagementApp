@@ -1,5 +1,8 @@
 package dtu.projectmanagement.businesslogic;
 
+/**
+ @author s230607
+ */
 public class ActivityDate {
     private int year;
     private int week;

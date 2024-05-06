@@ -59,14 +59,23 @@ public class ProjectManagementApp {
         return false;
     }
 
+    /**
+     @author s230607
+     */
     public ArrayList<Project> getProjectList(){
         return this.projectList;
     }
 
+    /**
+     @author s230607
+     */
     public void addProjectToList(Project project){
         this.projectList.add(project);
     }
 
+    /**
+     @author s230607
+     */
     public void deleteProject(String name) throws OperationNotAllowedException{
         if(hasProjectWithName(name)){
             projectList.remove(getProjectWithName(name));
@@ -116,6 +125,9 @@ public class ProjectManagementApp {
         return false;
     }
 
+    /**
+     @author s230607
+     */
     public Employee getEmployeeWithInitials(String initials) throws OperationNotAllowedException{
         for(Employee employee: employeeList){
             if(employee.getInitials().equals(initials)){
@@ -124,6 +136,9 @@ public class ProjectManagementApp {
         } throw new OperationNotAllowedException("Employee with the initials " + initials + " does not exist");
     }
 
+    /**
+     @author s230607
+     */
     public Project getProjectWithName(String name){
         for(Project project: projectList){
             if(project.getName().equals(name)){
@@ -133,10 +148,16 @@ public class ProjectManagementApp {
         return null;
     }
 
+    /**
+     @author s230607
+     */
     public void assignProjectLeader(String projectName, String initials) throws OperationNotAllowedException{
         getProjectWithName(projectName).setProjectLeader(getEmployeeWithInitials(initials));
     }
 
+    /**
+     @author s230607
+     */
     public void createProject(String name) throws OperationNotAllowedException{
         if(hasProjectWithName(name)){
             throw new OperationNotAllowedException("There is already a project in the app with the given name");
@@ -158,6 +179,9 @@ public class ProjectManagementApp {
         return employeeList.stream().map(Employee::getInitials).collect(Collectors.toList());
     }
 
+    /**
+     @author s230607
+     */
     public void createActivity(Project p1, String name) throws OperationNotAllowedException{
         if(p1.hasActivityWithName(name)){
             throw new OperationNotAllowedException("The project \'" + p1.getName() + "\' already has an activity with the name \'" + name + "\'");
@@ -185,6 +209,9 @@ public class ProjectManagementApp {
         p1.addEmployee(e1);
     }
 
+    /**
+     @author s230607
+     */
     public void setStartEndActivity(int startYear, int startWeek, int endYear, int endWeek, String projectName, String activityName) throws OperationNotAllowedException{
         if(endYear*52 - startYear*52 + endWeek - startWeek < 0){
             throw new OperationNotAllowedException("End date cannot be set before start date.");
@@ -203,6 +230,9 @@ public class ProjectManagementApp {
         loggedIn.registerTime(halfHours);
     }
 
+    /**
+     @author s230607
+     */
     public void deleteActivity(String projectName, String activityName){
         getProjectWithName(projectName).deleteActivity(activityName);
     }
@@ -227,6 +257,9 @@ public class ProjectManagementApp {
         return project.getEmployeeInitialList();
     }
 
+    /**
+     @author s230607
+     */
     public void downloadProjectReport(String projectName, Pane pane){
         try{
             Window stage = pane.getScene().getWindow();
