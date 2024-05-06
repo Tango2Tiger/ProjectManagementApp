@@ -1,5 +1,7 @@
 package dtu.projectmanagement.ui;
 
+import dtu.projectmanagement.businesslogic.Activity;
+import dtu.projectmanagement.businesslogic.Employee;
 import dtu.projectmanagement.businesslogic.OperationNotAllowedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,10 +17,12 @@ public class RegisterEmployeeController {
     public TextField lastNameTxt;
     public Label registerFailTxt;
 
+    public Employee employee;
+
     public void registerEmployee(ActionEvent actionEvent){
         try{
             App.getProjectManagementApp().registerEmployee(firstNameTxt.getText(), lastNameTxt.getText());
-            registerFailTxt.setText(firstNameTxt.getText() + " " + lastNameTxt.getText() + " has been added to the system.");
+            registerFailTxt.setText(firstNameTxt.getText() + " " + lastNameTxt.getText() + " has been added to the system.\n Use initials: "+firstNameTxt.getText(0,2).toLowerCase()+lastNameTxt.getText(0,2).toLowerCase()+" to log in");
         } catch (OperationNotAllowedException e) {
             registerFailTxt.setText(e.getMessage());
         }
