@@ -228,20 +228,19 @@ public class ProjectManagementApp {
         return project.getEmployeeNameList();
     }
 
-    public void downloadProjectReport(Project project, Pane pane){
-        String projectName = project.getName();
+    public void downloadProjectReport(String projectName, Pane pane){
         if(!isNull(projectName)){
             Window stage = pane.getScene().getWindow();
             FileChooser fc = new FileChooser();
 
-            fc.setInitialFileName("status_report_" + projectName + ".pdf");
+            fc.setInitialFileName("status_report_" + projectName + ".txt");
             fc.setInitialDirectory(new File(System.getProperty("user.home") + "/Downloads"));
 
             FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Text Files", "*.txt");
             fc.getExtensionFilters().add(filter);
 
             File file = fc.showSaveDialog(stage);
-            project.writeReport(file);
+            getProjectWithName(projectName).writeReport(file);
         }
     }
 
