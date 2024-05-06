@@ -34,6 +34,7 @@ public class AssignProjectLeaderController implements Initializable {
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
         App.setRoot("viewProjects");
     }
+
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         if (!isNull(projectChoiceBox.getValue())) {
             employeeChoiceBox.setVisible(true);
@@ -43,6 +44,7 @@ public class AssignProjectLeaderController implements Initializable {
         }
 
     }
+
     public void assignLeader() throws IOException, OperationNotAllowedException {
         if(isNull(employeeChoiceBox.getValue()) || isNull(projectChoiceBox.getValue())){
             assignLeaderLabel.setText("Please choose a project and an employee");

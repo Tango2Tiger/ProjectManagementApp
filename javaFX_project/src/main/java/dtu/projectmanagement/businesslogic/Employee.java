@@ -28,22 +28,19 @@ public class Employee {
 
     public void registerTime(int halfhours){this.registeredTime += halfhours;}
 
-
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
 
     public int getRegisteredTime() {return registeredTime;}
 
-
     public void removeActivity(Activity activity){
         this.activityList.remove(activity);
     }
-
-
 
     public ArrayList<Activity> getActivityList(){
         return this.activityList;
@@ -68,4 +65,5 @@ public class Employee {
     public void addRegisteredTime(int diff) {
         this.registeredTime += diff;
     }
+
 }

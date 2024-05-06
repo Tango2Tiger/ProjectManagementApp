@@ -9,15 +9,12 @@ import java.util.GregorianCalendar;
 public class TimeRegistration extends Registration{
     private int halfHours;
 
-
     public TimeRegistration(Integer halfHours, int year, int month, int day, Employee employee) throws OperationNotAllowedException {
         super(year, month, day, employee);
         checkHalfHours(halfHours);
         this.halfHours = halfHours;
 
     }
-
-
 
     public int getHalfHours() {
         return halfHours;
@@ -35,6 +32,7 @@ public class TimeRegistration extends Registration{
     public Calendar getDate() {
         return super.getDate();
     }
+
     private void checkHalfHours(Integer halfHours) throws OperationNotAllowedException {
         if (halfHours < 1) {
             throw new OperationNotAllowedException("Only positive time registrations allowed");

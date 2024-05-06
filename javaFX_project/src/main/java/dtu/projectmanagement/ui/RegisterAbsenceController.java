@@ -60,7 +60,6 @@ public class RegisterAbsenceController implements Initializable {
             yearList.add(Integer.toString(i + 2023));
         }
         startYearChoiceBox.getItems().addAll(yearList);
-
     }
 
     private void setStartMonthChoiceBox() {
@@ -85,7 +84,6 @@ public class RegisterAbsenceController implements Initializable {
             yearList.add(Integer.toString(i + 2023));
         }
         endYearChoiceBox.getItems().addAll(yearList);
-
     }
 
     private void setEndMonthChoiceBox() {
@@ -114,7 +112,6 @@ public class RegisterAbsenceController implements Initializable {
             int endMonth = Integer.parseInt((String) endMonthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
             App.getProjectManagementApp().registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
             absenceLabel.setText("Your absence has been registered");
-
         } catch (OperationNotAllowedException e) {
             absenceLabel.setText(e.getMessage());
         }

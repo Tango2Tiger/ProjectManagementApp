@@ -21,7 +21,6 @@ public class ProjectManagementApp {
     private boolean employeeLoggedIn = false;
     private ArrayList<AbsenceRegistration> absenceRegistrations = new ArrayList<>();
     private int projectCounter = 1;
-
     private ArrayList<Project> projectList = new ArrayList<>();
 
     public boolean isEmployeeLoggedIn() {
@@ -31,7 +30,6 @@ public class ProjectManagementApp {
     public ArrayList<Employee> getEmployeeList() {
         return employeeList;
     }
-
 
     /**
      @author s235223
@@ -157,11 +155,9 @@ public class ProjectManagementApp {
         return projectList.stream().map(Project::getName).collect(Collectors.toList());
     }
 
-
     public List<String> getEmployeeInitialsList() {
         return employeeList.stream().map(Employee::getInitials).collect(Collectors.toList());
     }
-
 
     public void createActivity(Project p1, String name) throws OperationNotAllowedException{
         if(p1.hasActivityWithName(name)){
@@ -170,6 +166,7 @@ public class ProjectManagementApp {
             p1.createActivity(name);
         }
     }
+
     public Activity getActivityFromProject(String projectName, String activityName) {
         return getProjectWithName(projectName).getActivityWithName(activityName);
     }
@@ -189,7 +186,6 @@ public class ProjectManagementApp {
         p1.addEmployee(e1);
     }
 
-
     public void setStartEndActivity(int startYear, int startWeek, int endYear, int endWeek, String projectName, String activityName) throws OperationNotAllowedException{
         if(endYear*52 - startYear*52 + endWeek - startWeek < 0){
             throw new OperationNotAllowedException("End date cannot be set before start date.");
@@ -198,10 +194,10 @@ public class ProjectManagementApp {
             getProjectWithName(projectName).getActivityWithName(activityName).setEndDate(new ActivityDate(endYear, endWeek));
         }
     }
+
     /**
      @author s235223
      */
-
     public void registerTime(Activity activity, Integer halfHours, int year, int month, int day) throws OperationNotAllowedException {
         TimeRegistration timeRegistration = new TimeRegistration(halfHours, year, month, day, loggedIn);
         activity.registerTime(timeRegistration);
@@ -219,14 +215,15 @@ public class ProjectManagementApp {
     public boolean employeeHasActivity(Employee employee, Activity activity){
         return employee.hasActivity(activity);
     }
+
     /**
      @author s235223
      */
-
     public void editTimeRegistrationForActivity(Employee employee, Activity activity, int halfHours, int year, int month, int day) throws OperationNotAllowedException {
         GregorianCalendar date = new GregorianCalendar(year, month, day);
         activity.editTimeRegistration(employee, halfHours, date);
     }
+
     public ArrayList<String> getEmployeeNameListFromProject(Project project){
         return project.getEmployeeNameList();
     }
@@ -237,7 +234,7 @@ public class ProjectManagementApp {
             Window stage = pane.getScene().getWindow();
             FileChooser fc = new FileChooser();
 
-            fc.setInitialFileName("status_report_" + projectName + ".txt");
+            fc.setInitialFileName("status_report_" + projectName + ".pdf");
             fc.setInitialDirectory(new File(System.getProperty("user.home") + "/Downloads"));
 
             FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Text Files", "*.txt");
@@ -256,12 +253,14 @@ public class ProjectManagementApp {
             }
         }
     }
+
     /**
      @author s235223
      */
     public void logout() {
         this.setLoggedIn(null);
     }
+
     /**
      @author s235223
      */
@@ -269,10 +268,10 @@ public class ProjectManagementApp {
         AbsenceRegistration absence = new AbsenceRegistration(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn);
         absenceRegistrations.add(absence);
     }
+
     /**
      @author s235223
      */
-
     public boolean hasAbsence(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay, Employee employee) {
         for (AbsenceRegistration absence : absenceRegistrations) {
             if (employee.equals(absence.getEmployee())
@@ -283,6 +282,7 @@ public class ProjectManagementApp {
         }
         return false;
     }
+
     /**
      @author s235223
      */

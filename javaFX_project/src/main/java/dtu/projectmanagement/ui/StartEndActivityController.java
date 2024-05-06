@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -33,27 +34,10 @@ public class StartEndActivityController implements Initializable {
     public ChoiceBox<Integer> endYearDrop;
     @FXML
     public ChoiceBox<Integer> endWeekDrop;
-    @FXML
-    public TextField setStartYear;
-    @FXML
-    public TextField setStartWeek;
-    @FXML
-    public TextField setEndYear;
-    @FXML
-    public TextField setEndWeek;
-
-    @FXML
-    private Button chooseActivityButton;
-    @FXML
-    private Button setStartDateButton;
-    @FXML
-    private Project project;
     private Activity activity;
-    private ProjectManagementApp projectManagementApp;
-    private Integer[] yearArray = new Integer[10];
-    private Integer[] weekArray = new Integer[52];
-    ObservableList<Integer> yearList;
-    ObservableList<Integer> weekList;
+    private ArrayList<Integer> yearList = new ArrayList<>();
+    private ArrayList<Integer> weekList = new ArrayList<>();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fillWeekArray();
@@ -61,22 +45,17 @@ public class StartEndActivityController implements Initializable {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
         projectChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            public void changed(ObservableValue<? extends String> observable, String string1, String string2) {
                 showActivities();
             }
         });
 
         activityChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            public void changed(ObservableValue<? extends String> observable, String string1, String string2) {
                 showDates();
             }
         });
-
-
-        yearList = FXCollections.observableArrayList(Arrays.asList(yearArray));
-        weekList = FXCollections.observableArrayList(Arrays.asList(weekArray));
-
     }
 
     public void returnToViewProjects(ActionEvent actionEvent) throws IOException {
@@ -94,17 +73,17 @@ public class StartEndActivityController implements Initializable {
         endYearDrop.getItems().clear();
         endWeekDrop.getItems().clear();
 
-        startYearDrop.setItems(yearList);
-        startWeekDrop.setItems(weekList);
-        endYearDrop.setItems(yearList);
-        endWeekDrop.setItems(weekList);
+        startYearDrop.getItems().addAll(yearList);
+        startWeekDrop.getItems().addAll(weekList);
+        endYearDrop.getItems().addAll(yearList);
+        endWeekDrop.getItems().addAll(weekList);
     }
 
     public void setDate(ActionEvent actionEvent) throws NumberFormatException{
         if (!(startYearDrop.getValue() == null) && !(startWeekDrop.getValue() == null) && !(endYearDrop.getValue() == null) && !(endYearDrop.getValue() == null)){
             String projectName = projectChoiceBox.getValue();
             String activityName = activityChoiceBox.getValue();
-            Activity activity = App.getProjectManagementApp().getProjectWithName(projectName).getActivityWithName(activityName);
+            activity = App.getProjectManagementApp().getProjectWithName(projectName).getActivityWithName(activityName);
 
             int startYear = startYearDrop.getValue();
             int startWeek = startWeekDrop.getValue();
@@ -118,6 +97,7 @@ public class StartEndActivityController implements Initializable {
                         + activity.getStartDate().getYear() + "-" +activity.getStartDate().getWeek()
                         +" and end week " + activity.getEndDate().getYear() + "-" + activity.getEndDate().getWeek());
                 App.getProjectManagementApp().setStartEndActivity(startYear, startWeek, endYear, endWeek, projectName, activityName);
+                showDates();
             } catch (OperationNotAllowedException e) {
                 setDateScreenLabel.setText(e.getMessage());
             }
@@ -128,13 +108,13 @@ public class StartEndActivityController implements Initializable {
 
     public void fillYearArray(){
         for(int i=0; i<10; i++){
-            this.yearArray[i] = i + 2023;
+            this.yearList.add(i + 2023);
         }
     }
 
     public void fillWeekArray(){
         for(int i=0; i<52; i++){
-            this.weekArray[i] = i+1;
+            this.weekList.add(i+1);
         }
     }
 

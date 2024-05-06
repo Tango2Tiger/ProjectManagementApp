@@ -14,8 +14,8 @@ public class Activity {
     private ActivityDate startDate;
     private ActivityDate endDate;
     private ArrayList<TimeRegistration> timeRegistrations = new ArrayList<>();
-
     private final int MAX_TIME = 5000;
+
     public Activity(String name){
         this.name = name;
     }
@@ -23,6 +23,7 @@ public class Activity {
     public String getName() {
         return name;
     }
+
     /**
      @author s235223
      */
@@ -39,7 +40,6 @@ public class Activity {
     public Integer getBudgetedTime() {
         return budgetedTime;
     }
-
 
     public ActivityDate getStartDate() {
         return startDate;
@@ -60,6 +60,7 @@ public class Activity {
     public int getRegisteredTime() {
         return registeredTime;
     }
+
     /**
      @author s235223
      */
@@ -89,6 +90,7 @@ public class Activity {
         }
         return false;
     }
+
     /**
      @author s235223
      */

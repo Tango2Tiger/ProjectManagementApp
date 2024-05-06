@@ -3,10 +3,10 @@ package dtu.projectmanagement.businesslogic;
 public class ActivityDate {
     private int year;
     private int week;
+
     public ActivityDate(int year, int week){
         this.setYear(year);
         this.setWeek(week);
-
     }
 
     public int getYear() {
