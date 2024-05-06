@@ -243,12 +243,12 @@ public class ProjectManagementApp {
     }
 
     public void deleteEmployee(Employee employee)throws OperationNotAllowedException {
-        if (!hasEmployee(employee)){
+        if (!hasEmployee(employee)){                                                        // 1
             throw new OperationNotAllowedException("Employee does not exist");
         }
         employeeList.remove(employee);
-        for (Project project : projectList){
-            if (project.hasEmployee(employee)){
+        for (Project project : projectList){                                                // 2
+            if (project.hasEmployee(employee)){                                             // 3
                 project.getEmployeeList().remove(employee);
             }
         }
