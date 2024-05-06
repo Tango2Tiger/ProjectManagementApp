@@ -34,6 +34,7 @@ public class SetBudgetedTimeController implements Initializable {
     private TextField setBudgetedTimeText;
     private Project project;
     private Activity activity;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         projectChoiceBox.getItems().addAll(App.getProjectManagementApp().getProjectNameList());
@@ -42,6 +43,7 @@ public class SetBudgetedTimeController implements Initializable {
         setBudgetedTimeText.setVisible(false);
         setBudgetedTimeButton.setVisible(false);
     }
+
     public void chooseProject(ActionEvent actionEvent) throws IOException {
         if (!isNull(projectChoiceBox.getValue())) {
             activityChoiceBox.setVisible(true);
@@ -51,7 +53,6 @@ public class SetBudgetedTimeController implements Initializable {
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(project));
             activityScreenLabel.setText("Please choose an activity");
         }
-
     }
 
     public void chooseActivity(ActionEvent actionEvent) {
@@ -62,6 +63,7 @@ public class SetBudgetedTimeController implements Initializable {
             activityScreenLabel.setText("Activity "+ activity.getName() + " has budgeted time " + activity.getBudgetedTime() + " hours. Enter budgeted time");
         }
     }
+
     public void setBudgetedTime() {
         try {
             int num = Integer.parseInt(setBudgetedTimeText.getText());

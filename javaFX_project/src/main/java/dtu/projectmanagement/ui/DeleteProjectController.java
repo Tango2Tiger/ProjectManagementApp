@@ -31,7 +31,6 @@ public class DeleteProjectController implements Initializable {
         App.setRoot("viewProjects");
     }
 
-
     public void deleteProject() throws OperationNotAllowedException {
         if(isNull(projectChoiceBox.getValue())){
             deleteProjectLabel.setText("Please choose a project.");

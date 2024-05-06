@@ -19,6 +19,7 @@ public class DeleteEmployeeController implements Initializable {
     private ChoiceBox<String> employeeChoiceBox;
     @FXML
     public Label deleteEmployeeLabel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());

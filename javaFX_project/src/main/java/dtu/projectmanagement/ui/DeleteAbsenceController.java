@@ -44,6 +44,7 @@ public class DeleteAbsenceController implements Initializable {
     public void returnToViewEmployees(ActionEvent actionEvent) throws IOException {
         App.setRoot("viewEmployees");
     }
+
     public void fillAbsenceChoiceBox() {
         for (AbsenceRegistration absenceRegistration : App.getProjectManagementApp().getAbsencesForLoggedIn()) {
             String ymd = Integer.toString(absenceRegistration.getStartYear()) + "-" + Integer.toString(absenceRegistration.getStartMonth() + 1)
@@ -52,7 +53,5 @@ public class DeleteAbsenceController implements Initializable {
                     + "-" + Integer.toString(absenceRegistration.getEndDay());
             absenceChoiceBox.getItems().addAll(ymd);
         }
-
     }
-
 }

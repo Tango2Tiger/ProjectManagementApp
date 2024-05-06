@@ -16,6 +16,7 @@ public class ViewActivitiesController {
     public void activityScreen (ActionEvent actionEvent) throws IOException {
         App.setRoot("setBudgetedTime");
     }
+
     public void returnToLoggedIn(ActionEvent actionEvent) throws IOException {
         App.setRoot("loggedIn");
     }
@@ -27,5 +28,4 @@ public class ViewActivitiesController {
     public void assignToActivityScreen(ActionEvent actionEvent) throws IOException{
         App.setRoot("assignEmployeeToActivity");
     }
-
 }
