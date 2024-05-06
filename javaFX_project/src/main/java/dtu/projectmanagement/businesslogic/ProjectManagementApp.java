@@ -103,15 +103,15 @@ public class ProjectManagementApp {
      */
 
     public void registerEmployee(String firstName, String lastName) throws OperationNotAllowedException {
-        if (hasEmployeeWithName(firstName, lastName)){
-            throw new OperationNotAllowedException("Employee is already registered");
+        if (hasEmployeeWithName(firstName, lastName)){                                                      // 1
+            throw new OperationNotAllowedException("Employee is already registered");                       // 2
         }
-        Employee employee = new Employee(firstName, lastName);
-        if (lastName.length() < 2 || firstName.length() < 2) {
-            throw new OperationNotAllowedException("Employee names must be two or more characters long");
+        if (lastName.length() < 2 || firstName.length() < 2) {                                              // 3
+            throw new OperationNotAllowedException("Employee names must be two or more characters long");   // 4
         }
-        employee.setInitials();
-        addEmployeeToEmployeeList(employee);
+        Employee employee = new Employee(firstName, lastName);                                              // 5
+        employee.setInitials();                                                                             // 6
+        addEmployeeToEmployeeList(employee);                                                                // 7
     }
 
     public boolean hasEmployeeWithName(String firstName, String lastName) {
