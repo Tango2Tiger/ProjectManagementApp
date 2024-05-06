@@ -51,7 +51,8 @@ public class SetBudgetedTimeController implements Initializable {
             project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());
             activityChoiceBox.getItems().clear();
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(project));
-            activityScreenLabel.setText("Please choose an activity");
+        }else {
+            activityScreenLabel.setText("Please choose a project.");
         }
     }
 
@@ -61,6 +62,8 @@ public class SetBudgetedTimeController implements Initializable {
             setBudgetedTimeButton.setVisible(true);
             activity = project.getActivityWithName(activityChoiceBox.getValue());
             activityScreenLabel.setText("Activity "+ activity.getName() + " has budgeted time " + activity.getBudgetedTime() + " hours. Enter budgeted time");
+        } else{
+            activityScreenLabel.setText("Please choose an activity.");
         }
     }
 

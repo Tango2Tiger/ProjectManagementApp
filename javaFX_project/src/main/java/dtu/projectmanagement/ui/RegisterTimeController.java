@@ -80,6 +80,8 @@ public class RegisterTimeController implements Initializable {
             chooseActivityButton.setVisible(true);
             activityChoiceBox.getItems().clear();
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
+        } else{
+            registerTimeLabel.setText("Please select a project.");
         }
     }
 
@@ -101,6 +103,8 @@ public class RegisterTimeController implements Initializable {
             setYearChoiceBox();
             setMonthChoiceBox();
             setDayChoiceBox();
+        } else{
+            registerTimeLabel.setText("Please select an activity.");
         }
     }
 

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -20,6 +21,8 @@ public class GetStatusReportController implements Initializable {
     private ChoiceBox<String> projectChoiceBox;
     @FXML
     AnchorPane pane;
+    @FXML
+    private Label statusReportLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,6 +33,8 @@ public class GetStatusReportController implements Initializable {
     public void downloadProjectReport() {
         if(!isNull(projectChoiceBox.getValue())){
             App.getProjectManagementApp().downloadProjectReport(projectChoiceBox.getValue(), pane);
+        } else{
+            statusReportLabel.setText("Please select a project.");
         }
     }
 

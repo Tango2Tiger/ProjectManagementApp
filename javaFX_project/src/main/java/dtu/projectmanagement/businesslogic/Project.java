@@ -115,6 +115,13 @@ public class Project {
             FileWriter writer = new FileWriter(report);
             writer.write("Status report for " + this.name + " - #" + this.getProjectNumber() + "\n\n");
 
+            writer.write("Project leader: ");
+            if(this.projectLeader != null){
+                writer.write(this.projectLeader.getFullName() + "\n");
+            } else{
+                writer.write("N/A \n");
+            }
+
             for(Activity activity: activityList){
                 writer.write("Activity name: " + activity.getName() + "  -  Budgeted time: " + activity.getBudgetedTime() + "hours  -  Time spent: " + activity.getRegisteredTime()/2.0 + "hours" + "\n");
             }

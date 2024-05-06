@@ -103,17 +103,22 @@ public class RegisterAbsenceController implements Initializable {
     }
 
     public void registerAbsence(ActionEvent actionEvent) throws IOException {
-        try {
-            int startYear = Integer.parseInt((String) startYearChoiceBox.getValue());
-            int startDay = Integer.parseInt((String) startDayChoiceBox.getValue());
-            int startMonth = Integer.parseInt((String) startMonthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
-            int endYear = Integer.parseInt((String) endYearChoiceBox.getValue());
-            int endDay = Integer.parseInt((String) endDayChoiceBox.getValue());
-            int endMonth = Integer.parseInt((String) endMonthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
-            App.getProjectManagementApp().registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
-            absenceLabel.setText("Your absence has been registered");
-        } catch (OperationNotAllowedException e) {
-            absenceLabel.setText(e.getMessage());
+        if(startYearChoiceBox.getValue() != null && startMonthChoiceBox != null && startDayChoiceBox != null && endYearChoiceBox != null && endMonthChoiceBox != null && endDayChoiceBox != null){
+            try {
+                int startYear = Integer.parseInt((String) startYearChoiceBox.getValue());
+                int startDay = Integer.parseInt((String) startDayChoiceBox.getValue());
+                int startMonth = Integer.parseInt((String) startMonthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
+                int endYear = Integer.parseInt((String) endYearChoiceBox.getValue());
+                int endDay = Integer.parseInt((String) endDayChoiceBox.getValue());
+                int endMonth = Integer.parseInt((String) endMonthChoiceBox.getValue()) - 1; // minus one since calendar object works with months 0-11
+                App.getProjectManagementApp().registerAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay);
+                absenceLabel.setText("Your absence has been registered");
+            } catch (OperationNotAllowedException e) {
+                absenceLabel.setText(e.getMessage());
+            }
+        } else{
+            absenceLabel.setText("Please fill in the necessary information.");
         }
+
     }
 }
