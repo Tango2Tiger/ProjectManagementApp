@@ -123,7 +123,11 @@ public class EmployeeSteps {
 
     @When("employee deletes the employee with name {string}")
     public void employee_deletes_the_employee_with_name(String string) {
-        projectManagementApp.deleteEmployee(employeeHolder.getEmployee());
+        try {
+            projectManagementApp.deleteEmployee(employeeHolder.getEmployee());
+        } catch (OperationNotAllowedException e) {
+            errorMessageHolder.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("the employee is not on the employeeList")

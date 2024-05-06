@@ -14,8 +14,7 @@ import java.io.IOException;
  * JavaFX App
  * @author huba
  */
-public class App extends Application {
-
+public class    App extends Application {
     private static Scene scene;
 
     private static ProjectManagementApp projectManagementApp = new ProjectManagementApp();
