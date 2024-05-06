@@ -39,15 +39,22 @@ public class Employee {
 
     public int getRegisteredTime() {return registeredTime;}
 
+    /**
+     @author s230607
+     */
     public void removeActivity(Activity activity){
         this.activityList.remove(activity);
     }
 
+    /**
+     @author s230607
+     */
     public ArrayList<Activity> getActivityList(){
         return this.activityList;
     }
 
     /**
+     @author s230607
      @author s235233
      */
     public boolean hasActivity(Activity activity){
