@@ -1,5 +1,7 @@
 package example.junit.whitebox;
-
+/**
+ @author s235233
+ */
 import dtu.projectmanagement.businesslogic.OperationNotAllowedException;
 import dtu.projectmanagement.businesslogic.ProjectManagementApp;
 import org.junit.Assert;
