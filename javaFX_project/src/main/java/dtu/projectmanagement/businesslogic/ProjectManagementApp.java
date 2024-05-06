@@ -107,7 +107,6 @@ public class ProjectManagementApp {
      */
 
     public void registerEmployee(String firstName, String lastName) throws OperationNotAllowedException {
-        
         if (hasEmployeeWithName(firstName, lastName)){                                                      // 1
             throw new OperationNotAllowedException("Employee is already registered");                       // 2
         }

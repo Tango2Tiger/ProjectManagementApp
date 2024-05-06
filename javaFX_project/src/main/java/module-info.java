@@ -4,4 +4,6 @@ module hellofx {
     exports dtu.projectmanagement.businesslogic;
     exports dtu.projectmanagement.ui;
     opens dtu.projectmanagement.ui to javafx.fxml; // Gives access to fxml files'
+
+
 }

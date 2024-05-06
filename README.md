@@ -2,7 +2,7 @@
 
 Velkommen til vores app til projekt- og medarbejderhåndtering.
 
-Åbn projektet gennem pom.xml-filen under mappen javaFX_project og åbn det som et project i din editor. Filen App.java køres for at køre programmet.
+Åbn projektet gennem pom.xml-filen under mappen javaFX_project og åbn det som et project i din editor. Filen App.java eller mvn javafx:run køres for at køre programmet. mvn clean tests for at køre tests (for nogle af vores computere virkede kun mvn test og ikke mvn clean)
 
 For at logge ind bruger du initialerne "huba". Dette er den eneste bruger, der har adgang ved programmets kørsel.
 

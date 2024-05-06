@@ -152,5 +152,10 @@ public class unit_tests_UI_methods {
         assertEquals(projectManagementApp.getProjectNameList(), list);
     }
 
+    @org.junit.Test
+    public void getProjectWithNameTest() {
+        projectManagementApp = new ProjectManagementApp();
+        assertEquals(projectManagementApp.getProjectWithName("bo"), null);
+    }
 
 }
