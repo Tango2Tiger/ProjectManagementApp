@@ -22,22 +22,37 @@ public class Project {
         return this.name;
     }
 
+    /**
+     @author s230607
+     */
     public int getProjectNumber() {
         return projectNumber;
     }
 
+    /**
+     @author s230607
+     */
     public void setProjectNumber(int projectNumber) {
         this.projectNumber = 24000 + projectNumber;
     }
 
+    /**
+     @author s230607
+     */
     public Employee getProjectLeader() {
         return projectLeader;
     }
 
+    /**
+     @author s230607
+     */
     public void setProjectLeader(Employee projectLeader) {
         this.projectLeader = projectLeader;
     }
 
+    /**
+     @author s230607
+     */
     public void createActivity(String name) throws OperationNotAllowedException {
         activityList.add(new Activity(name));
     }

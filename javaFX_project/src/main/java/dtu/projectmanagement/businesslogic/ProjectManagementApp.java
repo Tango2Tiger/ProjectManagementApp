@@ -62,10 +62,16 @@ public class ProjectManagementApp {
         return false;
     }
 
+    /**
+     @author s230607
+     */
     public ArrayList<Project> getProjectList(){
         return this.projectList;
     }
 
+    /**
+     @author s230607
+     */
     public void addProjectToList(Project project){
         this.projectList.add(project);
     }
@@ -136,6 +142,9 @@ public class ProjectManagementApp {
         } throw new OperationNotAllowedException("Employee with the initials " + initials + " does not exist");
     }
 
+    /**
+     @author s230607
+     */
     public Project getProjectWithName(String name){
         for(Project project: projectList){
             if(project.getName().equals(name)){
@@ -145,6 +154,9 @@ public class ProjectManagementApp {
         return null;
     }
 
+    /**
+     @author s230607
+     */
     public void assignProjectLeader(String projectName, String initials) throws OperationNotAllowedException{
         getProjectWithName(projectName).setProjectLeader(getEmployeeWithInitials(initials));
     }
@@ -233,6 +245,9 @@ public class ProjectManagementApp {
         loggedIn.registerTime(halfHours);
     }
 
+    /**
+     @author s230607
+     */
     public void deleteActivity(String projectName, String activityName){
         getProjectWithName(projectName).deleteActivity(activityName);
     }
@@ -294,9 +309,6 @@ public class ProjectManagementApp {
         employeeList.remove(employee);
     }
 
-    /**
-     @author s230607
-     */
     private boolean hasEmployee(Employee employee) {
         for (Employee em : getEmployeeList()) {
             if (em.equals(employee)) {
