@@ -54,10 +54,6 @@ public class ProjectManagementApp {
         this.loggedIn = loggedIn;
     }
 
-    public void addProject(Project project){
-        projectList.add(project);
-    }
-
     public boolean hasProjectWithName(String name){
         for(Project p : projectList){
             if(p.getName().equals(name)){
