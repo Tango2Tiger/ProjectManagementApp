@@ -36,15 +36,20 @@ public class AssignEmployeeToProjectController implements Initializable{
     }
 
     public void chooseProject(ActionEvent actionEvent) throws IOException {
-        employeeChoiceBox.setVisible(true);
-        assignEmployeeButton.setVisible(true);
-        employeeChoiceBox.getItems().clear();
-        employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
+        if(projectChoiceBox.getValue() != null){
+            employeeChoiceBox.setVisible(true);
+            assignEmployeeButton.setVisible(true);
+            employeeChoiceBox.getItems().clear();
+            employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
+        } else{
+            assignEmployeeLabel.setText("Please select project.");
+        }
+
     }
 
     public void assignEmployee() throws IOException, OperationNotAllowedException {
         if(isNull(employeeChoiceBox.getValue()) || isNull(projectChoiceBox.getValue())){
-            assignEmployeeLabel.setText("Please choose a project and an employee");
+            assignEmployeeLabel.setText("Please choose an employee");
             return;
         }
         App.getProjectManagementApp().addEmployeeToProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue()), App.getProjectManagementApp().getEmployeeWithInitials(employeeChoiceBox.getValue()));

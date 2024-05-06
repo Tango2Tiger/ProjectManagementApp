@@ -29,15 +29,21 @@ public class DeleteAbsenceController implements Initializable {
     }
 
     public void deleteAbsence(ActionEvent actionEvent) {
-        String[] s = absenceChoiceBox.getValue().split(" to ");
-        String[] start = s[0].split("-");
-        String[] end = s[1].split("-");
-        try {
-            App.getProjectManagementApp().deleteAbsence(Integer.parseInt(start[0]), Integer.parseInt(start[1]) - 1, Integer.parseInt(start[2]),
-                                                        Integer.parseInt(end[0]), Integer.parseInt(end[1]) - 1, Integer.parseInt(end[2]));
-            deleteAbsenceLabel.setText("Successfully deleted absence");
-        } catch (OperationNotAllowedException e) {
-            deleteAbsenceLabel.setText(e.getMessage());
+        if(absenceChoiceBox.getValue() != null){
+            String[] s = absenceChoiceBox.getValue().split(" to ");
+            String[] start = s[0].split("-");
+            String[] end = s[1].split("-");
+            try {
+                App.getProjectManagementApp().deleteAbsence(Integer.parseInt(start[0]), Integer.parseInt(start[1]) - 1, Integer.parseInt(start[2]),
+                        Integer.parseInt(end[0]), Integer.parseInt(end[1]) - 1, Integer.parseInt(end[2]));
+                deleteAbsenceLabel.setText("Successfully deleted absence");
+                absenceChoiceBox.getItems().clear();
+                fillAbsenceChoiceBox();
+            } catch (OperationNotAllowedException e) {
+                deleteAbsenceLabel.setText(e.getMessage());
+            }
+        } else{
+            deleteAbsenceLabel.setText("Please select absence.");
         }
     }
 

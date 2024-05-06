@@ -41,13 +41,15 @@ public class AssignProjectLeaderController implements Initializable {
             assignLeaderButton.setVisible(true);
             employeeChoiceBox.getItems().clear();
             employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeInitialsList());
+        } else {
+            assignLeaderLabel.setText("Please select project.");
         }
 
     }
 
     public void assignLeader() throws IOException, OperationNotAllowedException {
         if(isNull(employeeChoiceBox.getValue()) || isNull(projectChoiceBox.getValue())){
-            assignLeaderLabel.setText("Please choose a project and an employee");
+            assignLeaderLabel.setText("Please choose an employee");
             return;
         }
         App.getProjectManagementApp().assignProjectLeader((projectChoiceBox.getValue()), employeeChoiceBox.getValue());

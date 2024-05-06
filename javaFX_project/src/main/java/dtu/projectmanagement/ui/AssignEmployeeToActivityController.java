@@ -28,6 +28,8 @@ public class AssignEmployeeToActivityController implements Initializable {
     @FXML
     private Button chooseActivityButton;
     @FXML
+    private Button assignEmployeeToActivityButton;
+    @FXML
     private Project project;
     private Activity activity;
     private Employee employee;
@@ -40,6 +42,7 @@ public class AssignEmployeeToActivityController implements Initializable {
         employeeChoiceBox.setVisible(false);
         noteLabel.setVisible(false);
         chooseActivityButton.setVisible(false);
+        assignEmployeeToActivityButton.setVisible(false);
     }
 
     public void chooseProject(ActionEvent actionEvent) throws IOException {
@@ -49,7 +52,8 @@ public class AssignEmployeeToActivityController implements Initializable {
             activityChoiceBox.getItems().clear();
             project = App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue());
             activityChoiceBox.getItems().addAll(App.getProjectManagementApp().getActivityListFromProject(project));
-            assignEmployeeToActivityLabel.setText("Please choose an activity");
+        } else{
+            assignEmployeeToActivityLabel.setText("Please choose a project.");
         }
 
     }
@@ -65,13 +69,19 @@ public class AssignEmployeeToActivityController implements Initializable {
             employeeChoiceBox.getItems().clear();
             activity = App.getProjectManagementApp().getActivityFromProject(project.getName(), activityChoiceBox.getValue());
             employeeChoiceBox.getItems().addAll(App.getProjectManagementApp().getEmployeeNameListFromProject(App.getProjectManagementApp().getProjectWithName(projectChoiceBox.getValue())));
-            assignEmployeeToActivityLabel.setText("Please choose an employee");
+            assignEmployeeToActivityButton.setVisible(true);
+        } else{
+            assignEmployeeToActivityLabel.setText("Please choose an activity");
         }
     }
 
     public void assignEmployee(ActionEvent actionEvent) throws OperationNotAllowedException {
-        App.getProjectManagementApp().assignEmployeeToActivity(App.getProjectManagementApp().getEmployeeWithInitials(employeeChoiceBox.getValue()), App.getProjectManagementApp().getActivityFromProject(projectChoiceBox.getValue(), activityChoiceBox.getValue()));
-        assignEmployeeToActivityLabel.setText("Employee " + employeeChoiceBox.getValue() + " has been assigned to the activity: " + activityChoiceBox.getValue() + " in the project: " + projectChoiceBox.getValue());
+        if(!isNull(employeeChoiceBox.getValue())){
+            App.getProjectManagementApp().assignEmployeeToActivity(App.getProjectManagementApp().getEmployeeWithInitials(employeeChoiceBox.getValue()), App.getProjectManagementApp().getActivityFromProject(projectChoiceBox.getValue(), activityChoiceBox.getValue()));
+            assignEmployeeToActivityLabel.setText("Employee " + employeeChoiceBox.getValue() + " has been assigned to the activity: " + activityChoiceBox.getValue() + " in the project: " + projectChoiceBox.getValue());
+        } else{
+            assignEmployeeToActivityLabel.setText("Please choose an employee.");
+        }
 
     }
 }
