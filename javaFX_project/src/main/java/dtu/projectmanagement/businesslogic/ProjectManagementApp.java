@@ -6,12 +6,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
@@ -272,7 +269,6 @@ public class ProjectManagementApp {
         public void logout () {
             this.setLoggedIn(null);
         }
-
         /**
          @author s235223
          */
