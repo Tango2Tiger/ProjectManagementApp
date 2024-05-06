@@ -14,6 +14,7 @@ public class RegisterEmployeeController {
     public TextField firstNameTxt;
     public TextField lastNameTxt;
     public Label registerFailTxt;
+
     public void registerEmployee(ActionEvent actionEvent){
         try{
             App.getProjectManagementApp().registerEmployee(firstNameTxt.getText(), lastNameTxt.getText());

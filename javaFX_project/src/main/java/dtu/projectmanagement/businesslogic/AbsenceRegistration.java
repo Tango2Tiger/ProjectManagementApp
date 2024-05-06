@@ -22,20 +22,25 @@ public class AbsenceRegistration extends Registration{
         Calendar startDate = super.getDate();
         return startDate.get(Calendar.YEAR);
     }
+
     public int getStartMonth() {
         Calendar startDate = super.getDate();
         return startDate.get(Calendar.MONTH);
     }
+
     public int getStartDay() {
         Calendar startDate = super.getDate();
         return startDate.get(Calendar.DAY_OF_MONTH);
     }
+
     public int getEndYear() {
         return endDate.get(Calendar.YEAR);
     }
+
     public int getEndMonth() {
         return endDate.get(Calendar.MONTH);
     }
+
     public int getEndDay() {
         return endDate.get(Calendar.DAY_OF_MONTH);
     }

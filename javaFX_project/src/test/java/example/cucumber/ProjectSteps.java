@@ -112,9 +112,6 @@ public class ProjectSteps {
     @When("the employee gets assigned to the project")
     public void the_employee_gets_assigned_to_the_project() {
         projectManagementApp.addEmployeeToProject(projectHolder.getProject(), employeeHolder.getEmployee());
-
-
-
     }
 
     @Then("the employee is assigned to the project")

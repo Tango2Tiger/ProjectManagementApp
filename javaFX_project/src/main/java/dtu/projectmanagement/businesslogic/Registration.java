@@ -19,8 +19,6 @@ public abstract class Registration {
         return date;
     }
 
-
-
     public Employee getEmployee() {
         return employee;
     }
