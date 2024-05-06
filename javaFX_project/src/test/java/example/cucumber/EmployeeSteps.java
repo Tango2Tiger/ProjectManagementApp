@@ -29,11 +29,12 @@ public class EmployeeSteps {
 
     }
 
-    @Given("there is an employee with initials {string}")
+    @Given("there is an employee with initials {string} in the system")
     public void there_is_an_employee_with_initials(String string) {
         employee = new Employee("Hubert","Baumeister");
         employee.setInitials();
         employeeHolder.setEmployee(employee);
+        projectManagementApp.getEmployeeList().add(employee);
         assertEquals(employeeHolder.getEmployee().getInitials(), string);
     }
 
@@ -112,7 +113,7 @@ public class EmployeeSteps {
 
     @When("the employee gets assigned to the activity {string}")
     public void the_employee_gets_assigned_to_the_activity(String name) throws OperationNotAllowedException {
-        projectManagementApp.assignEmployeeToActivity(employeeHolder.getEmployee(),activityHolder.getActivity());
+        projectManagementApp.assignEmployeeToActivity(employeeHolder.getEmployee(), activityHolder.getActivity());
 
     }
 

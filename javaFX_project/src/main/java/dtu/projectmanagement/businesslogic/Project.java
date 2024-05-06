@@ -87,26 +87,25 @@ public class Project {
     }
 
     public void deleteActivity(String activityName){
-        activityList.remove(getActivityWithName(activityName));
-        for(Employee employee: this.getEmployeeList()){
-            if(employee.hasActivity(getActivityWithName(activityName))){
-                employee.removeActivity(getActivityWithName(activityName));
+        if (hasActivityWithName(activityName)) {
+            for (Employee employee : this.getEmployeeList()) {
+                if (employee.hasActivity(getActivityWithName(activityName))) {
+                    employee.removeActivity(getActivityWithName(activityName));
+                }
             }
+            activityList.remove(getActivityWithName(activityName));
         }
     }
-    public void convertEmployeeListToNameList(){
+    public void convertEmployeeListToInitialList(){
         employeeNameList.clear();
         for(Employee employee: employeeList){
             employeeNameList.add(employee.getInitials());
         }
     }
 
-    public void setEmployeeList(ArrayList<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
 
-    public ArrayList<String> getEmployeeNameList(){
-        convertEmployeeListToNameList();
+    public ArrayList<String> getEmployeeInitialList(){
+        convertEmployeeListToInitialList();
         return employeeNameList;
     }
 

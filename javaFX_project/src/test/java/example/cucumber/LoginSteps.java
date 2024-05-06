@@ -3,6 +3,7 @@ package example.cucumber;
 import dtu.projectmanagement.businesslogic.Employee;
 import dtu.projectmanagement.businesslogic.OperationNotAllowedException;
 import dtu.projectmanagement.businesslogic.ProjectManagementApp;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -53,5 +54,12 @@ public class LoginSteps {
     @Then("no employee is logged in")
     public void noEmployeeIsLoggedIn() {
         assertEquals(null, projectManagementApp.getLoggedIn());
+    }
+
+    @And("there is an employee with initials {string}")
+    public void thereIsAnEmployeeWithInitials(String arg0) {
+        employee = new Employee("Hubert","Baumeister");
+        employee.setInitials();
+        employeeHolder.setEmployee(employee);
     }
 }

@@ -95,6 +95,7 @@ public class ProjectManagementApp {
      */
 
     public void registerEmployee(String firstName, String lastName) throws OperationNotAllowedException {
+        
         if (hasEmployeeWithName(firstName, lastName)){                                                      // 1
             throw new OperationNotAllowedException("Employee is already registered");                       // 2
         }
@@ -223,7 +224,7 @@ public class ProjectManagementApp {
     }
 
     public ArrayList<String> getEmployeeNameListFromProject(Project project){
-        return project.getEmployeeNameList();
+        return project.getEmployeeInitialList();
     }
 
     public void downloadProjectReport(String projectName, Pane pane){
@@ -247,12 +248,12 @@ public class ProjectManagementApp {
         if (!hasEmployee(employee)){                                                        // 1
             throw new OperationNotAllowedException("Employee does not exist");
         }
-        employeeList.remove(employee);
         for (Project project : projectList){                                                // 2
             if (project.hasEmployee(employee)){                                             // 3
                 project.getEmployeeList().remove(employee);
             }
         }
+        employeeList.remove(employee);
     }
 
     private boolean hasEmployee(Employee employee) {

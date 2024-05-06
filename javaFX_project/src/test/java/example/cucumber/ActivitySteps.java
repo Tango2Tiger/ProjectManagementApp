@@ -150,5 +150,21 @@ public class ActivitySteps {
             errorMessageHolder.setErrorMessage(e.getMessage());
         }
     }
+
+    @When("employee deletes the activity with name {string}")
+    public void employeeDeletesTheActivityWithName(String arg0) {
+        projectManagementApp.deleteActivity(projectHolder.getProject().getName(), arg0);
+        employeeHolder.getEmployee().removeActivity(activityHolder.getActivity());
+    }
+
+    @Then("the activity with name {string} is not on the activitylist of the project")
+    public void theActivityWithNameIsNotOnTheActivitylistOfTheProject(String activityName) {
+        assertFalse(projectHolder.getProject().hasActivityWithName(activityName));
+    }
+
+    @And("there exists an activity with the name {string}")
+    public void thereExistsAnActivityWithTheName(String activityName) {
+        activityHolder.setActivity(new Activity(activityName));
+    }
 }
 
