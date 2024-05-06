@@ -227,7 +227,7 @@ public class ProjectManagementApp {
     }
 
     public void downloadProjectReport(String projectName, Pane pane){
-        if(!isNull(projectName)){
+        try{
             Window stage = pane.getScene().getWindow();
             FileChooser fc = new FileChooser();
 
@@ -239,7 +239,8 @@ public class ProjectManagementApp {
 
             File file = fc.showSaveDialog(stage);
             getProjectWithName(projectName).writeReport(file);
-        }
+        } catch(NullPointerException e){}
+
     }
 
     public void deleteEmployee(Employee employee)throws OperationNotAllowedException {

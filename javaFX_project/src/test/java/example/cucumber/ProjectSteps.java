@@ -17,15 +17,13 @@ public class ProjectSteps {
     private Activity activity;
     private ActivityHolder activityHolder;
     private ProjectHolder projectHolder;
-    private FileHolder fileHolder;
 
-    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder, ProjectHolder projectHolder, FileHolder fileHolder) {
+    public ProjectSteps(ProjectManagementApp projectManagementApp, EmployeeHolder employeeHolder, ErrorMessageHolder errorMessageHolder, ActivityHolder activityHolder, ProjectHolder projectHolder) {
         this.projectManagementApp = projectManagementApp;
         this.employeeHolder = employeeHolder;
         this.errorMessageHolder = errorMessageHolder;
         this.activityHolder = activityHolder;
         this.projectHolder = projectHolder;
-        this.fileHolder = fileHolder;
     }
 
     @Given("there exists a project with the name {string}")
@@ -131,14 +129,5 @@ public class ProjectSteps {
     @Given("the project {string} has no activities")
     public void the_project_has_no_activities(String string) {
         assertTrue(projectManagementApp.getProjectWithName(string).getActivityList().isEmpty());
-    }
-
-
-    @Given("there is a file for the report")
-    public void thereIsAFileForTheReport() {
-        File file = new File(System.getProperty("user.home"));
-        this.fileHolder.setFile(file);
-        assertTrue(file.exists());
-
     }
 }
