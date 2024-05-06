@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
 
+/**
+ @author s235221
+ */
 public class AssignEmployeeToActivityController implements Initializable {
     @FXML
     public Label assignEmployeeToActivityLabel;

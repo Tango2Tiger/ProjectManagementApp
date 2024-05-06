@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
+/**
+ @author s235221
+ */
 public class ViewEmployeesController {
     public Label textLabel;
 

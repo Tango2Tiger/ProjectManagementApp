@@ -12,6 +12,9 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
+/**
+ @author s230607
+ */
 public class RegisterEmployeeController {
     public TextField firstNameTxt;
     public TextField lastNameTxt;

@@ -6,6 +6,9 @@ import dtu.projectmanagement.businesslogic.ProjectManagementApp;
 import static org.junit.Assert.*;
 
 
+/**
+ @author s235238
+ */
 public class WhiteBoxLogin {
 
 

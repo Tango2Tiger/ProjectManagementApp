@@ -7,6 +7,9 @@ import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ @author s235233
+ */
 public class WhiteBoxCreateProject {
 
     ProjectManagementApp projectManagementApp = new ProjectManagementApp();

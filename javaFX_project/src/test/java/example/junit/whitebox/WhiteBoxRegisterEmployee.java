@@ -8,6 +8,9 @@ import static org.junit.Assert.assertTrue;
 
 public class WhiteBoxRegisterEmployee {
 
+    /**
+     @author s235223
+     */
 
     @org.junit.Test
     public void testInputDataSetA() throws OperationNotAllowedException {

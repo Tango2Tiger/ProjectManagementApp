@@ -16,6 +16,9 @@ import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
 
+/**
+ @author s235238
+ */
 public class GetStatusReportController implements Initializable {
     @FXML
     private ChoiceBox<String> projectChoiceBox;

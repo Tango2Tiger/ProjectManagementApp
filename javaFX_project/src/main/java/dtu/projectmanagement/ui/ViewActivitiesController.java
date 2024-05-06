@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
+/**
+ @author s235233
+ */
 public class ViewActivitiesController {
     public void setDateScreen(ActionEvent actionEvent) throws IOException {
         App.setRoot("startEndActivity");

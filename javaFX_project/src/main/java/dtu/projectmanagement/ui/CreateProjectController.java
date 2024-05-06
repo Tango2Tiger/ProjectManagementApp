@@ -10,6 +10,9 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
+/**
+ @author s235223
+ */
 public class CreateProjectController {
     public TextField projectname;
     public Label namelabel;

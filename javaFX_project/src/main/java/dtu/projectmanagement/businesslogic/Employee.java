@@ -2,6 +2,7 @@ package dtu.projectmanagement.businesslogic;
 
 import java.util.ArrayList;
 
+
 public class Employee {
     private String initials;
     private String firstName;
@@ -46,6 +47,9 @@ public class Employee {
         return this.activityList;
     }
 
+    /**
+     @author s235233
+     */
     public boolean hasActivity(Activity activity){
         for(Activity a: activityList){
             if(a.equals(activity)){return true;}

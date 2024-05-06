@@ -12,6 +12,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ @author s235238
+ */
 public class RegisterAbsenceController implements Initializable {
     @FXML
     public ChoiceBox startYearChoiceBox;

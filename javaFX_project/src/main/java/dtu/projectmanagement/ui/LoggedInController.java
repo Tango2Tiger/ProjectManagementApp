@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
+/**
+ @author s235223
+ */
 public class LoggedInController {
    public Label textLabel;
 

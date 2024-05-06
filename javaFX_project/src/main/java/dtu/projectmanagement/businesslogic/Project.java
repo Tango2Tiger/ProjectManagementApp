@@ -42,6 +42,9 @@ public class Project {
         activityList.add(new Activity(name));
     }
 
+    /**
+     @author s235238
+     */
     public boolean hasActivityWithName(String name){
         for(Activity activity: activityList){
             if(activity.getName().equals(name)){
@@ -51,11 +54,17 @@ public class Project {
         return false;
     }
 
+    /**
+     @author s235221
+     */
     public void addEmployee(Employee employee) {
         this.getEmployeeList().add(employee);}
 
     public ArrayList<Employee> getEmployeeList(){ return employeeList;}
 
+    /**
+     @author s235233
+     */
     public boolean hasEmployee(Employee employee) {
         for(Employee em : getEmployeeList()){
             if(em.equals(employee)){
@@ -65,6 +74,9 @@ public class Project {
         return false;
     }
 
+    /**
+     @author s230607
+     */
     public Activity getActivityWithName(String activityName) {
         for( Activity activity: activityList){
             if(activity.getName().equals(activityName)){
@@ -78,6 +90,9 @@ public class Project {
         return activityList;
     }
 
+    /**
+     @author s235221
+     */
     public ArrayList<String> getActivityNameList(){
         ArrayList<String> activityNameList = new ArrayList<>();
         for(Activity activity: this.activityList){
@@ -86,6 +101,9 @@ public class Project {
         return activityNameList;
     }
 
+    /**
+     @author s235238
+     */
     public void deleteActivity(String activityName){
         if (hasActivityWithName(activityName)) {
             for (Employee employee : this.getEmployeeList()) {
@@ -96,6 +114,9 @@ public class Project {
             activityList.remove(getActivityWithName(activityName));
         }
     }
+    /**
+     @author s235233
+     */
     public void convertEmployeeListToInitialList(){
         employeeNameList.clear();
         for(Employee employee: employeeList){
@@ -104,11 +125,17 @@ public class Project {
     }
 
 
+    /**
+     @author s235238
+     */
     public ArrayList<String> getEmployeeInitialList(){
         convertEmployeeListToInitialList();
         return employeeNameList;
     }
 
+    /**
+     @author s230607
+     */
     public void writeReport(File report){
         try {
             FileWriter writer = new FileWriter(report);

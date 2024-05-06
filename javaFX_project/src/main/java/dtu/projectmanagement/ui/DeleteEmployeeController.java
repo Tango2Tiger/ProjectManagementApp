@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
 
+/**
+ @author s235233
+ */
 public class DeleteEmployeeController implements Initializable {
     @FXML
     private ChoiceBox<String> employeeChoiceBox;

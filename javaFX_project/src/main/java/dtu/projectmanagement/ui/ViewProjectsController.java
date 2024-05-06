@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
+/**
+ @author s235221
+ */
 public class ViewProjectsController {
 
     public void createProject(ActionEvent actionEvent) throws IOException {

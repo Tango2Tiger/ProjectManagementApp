@@ -7,6 +7,9 @@ import dtu.projectmanagement.businesslogic.ProjectManagementApp;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ @author s230607
+ */
 public class WhiteBoxSetStartEndActivity {
 
     @org.junit.Test

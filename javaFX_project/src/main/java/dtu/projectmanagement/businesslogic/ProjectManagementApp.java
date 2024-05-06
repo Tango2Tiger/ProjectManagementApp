@@ -50,6 +50,9 @@ public class ProjectManagementApp {
         this.loggedIn = loggedIn;
     }
 
+    /**
+     @author s235238
+     */
     public boolean hasProjectWithName(String name){
         for(Project p : projectList){
             if(p.getName().equals(name)){
@@ -67,6 +70,9 @@ public class ProjectManagementApp {
         this.projectList.add(project);
     }
 
+    /**
+     @author s235221
+     */
     public void deleteProject(String name) throws OperationNotAllowedException{
         if(hasProjectWithName(name)){
             projectList.remove(getProjectWithName(name));
@@ -107,6 +113,9 @@ public class ProjectManagementApp {
         addEmployeeToEmployeeList(employee);                                                                // 7
     }
 
+    /**
+     @author s235233
+     */
     public boolean hasEmployeeWithName(String firstName, String lastName) {
         for (Employee employee : employeeList) {
             if (employee.getFirstName().equalsIgnoreCase(firstName) && employee.getLastName().equalsIgnoreCase(lastName)) {
@@ -116,6 +125,9 @@ public class ProjectManagementApp {
         return false;
     }
 
+    /**
+     @author s230607
+     */
     public Employee getEmployeeWithInitials(String initials) throws OperationNotAllowedException{
         for(Employee employee: employeeList){
             if(employee.getInitials().equals(initials)){
@@ -137,6 +149,9 @@ public class ProjectManagementApp {
         getProjectWithName(projectName).setProjectLeader(getEmployeeWithInitials(initials));
     }
 
+    /**
+     @author s235238
+     */
     public void createProject(String name) throws OperationNotAllowedException{
         if(hasProjectWithName(name)){
             throw new OperationNotAllowedException("There is already a project in the app with the given name");
@@ -150,6 +165,9 @@ public class ProjectManagementApp {
         projectCounter ++;
     }
 
+    /**
+     @author s235233
+     */
     public List<String> getProjectNameList() {
         return projectList.stream().map(Project::getName).collect(Collectors.toList());
     }
@@ -158,6 +176,9 @@ public class ProjectManagementApp {
         return employeeList.stream().map(Employee::getInitials).collect(Collectors.toList());
     }
 
+    /**
+     @author s230607
+     */
     public void createActivity(Project p1, String name) throws OperationNotAllowedException{
         if(p1.hasActivityWithName(name)){
             throw new OperationNotAllowedException("The project \'" + p1.getName() + "\' already has an activity with the name \'" + name + "\'");
@@ -166,6 +187,9 @@ public class ProjectManagementApp {
         }
     }
 
+    /**
+     @author s235221
+     */
     public Activity getActivityFromProject(String projectName, String activityName) {
         return getProjectWithName(projectName).getActivityWithName(activityName);
     }
@@ -174,6 +198,9 @@ public class ProjectManagementApp {
         return project.getActivityList().stream().map(Activity::getName).collect(Collectors.toList());
     }
 
+    /**
+     @author s235233
+     */
     public boolean projectHasEmployee(Project p1, Employee e1){
         if(p1.hasEmployee(e1)){
             return true;
@@ -181,6 +208,9 @@ public class ProjectManagementApp {
         return false;
     }
 
+    /**
+     @author s230607
+     */
     public void addEmployeeToProject(Project p1, Employee e1){
         p1.addEmployee(e1);
     }
@@ -206,7 +236,9 @@ public class ProjectManagementApp {
     public void deleteActivity(String projectName, String activityName){
         getProjectWithName(projectName).deleteActivity(activityName);
     }
-
+    /**
+     @author s235221
+     */
     public void assignEmployeeToActivity(Employee employee, Activity activity) throws OperationNotAllowedException {
         employee.assignToActivity(activity);
     }
@@ -227,6 +259,9 @@ public class ProjectManagementApp {
         return project.getEmployeeInitialList();
     }
 
+    /**
+     @author s235221
+     */
     public void downloadProjectReport(String projectName, Pane pane){
         try{
             Window stage = pane.getScene().getWindow();
@@ -244,6 +279,9 @@ public class ProjectManagementApp {
 
     }
 
+    /**
+     @author s235238
+     */
     public void deleteEmployee(Employee employee)throws OperationNotAllowedException {
         if (!hasEmployee(employee)){                                                        // 1
             throw new OperationNotAllowedException("Employee does not exist");
@@ -256,6 +294,9 @@ public class ProjectManagementApp {
         employeeList.remove(employee);
     }
 
+    /**
+     @author s230607
+     */
     private boolean hasEmployee(Employee employee) {
         for (Employee em : getEmployeeList()) {
             if (em.equals(employee)) {
@@ -321,6 +362,9 @@ public class ProjectManagementApp {
             absenceRegistrations.remove(getSpecificAbsence(startYear, startMonth, startDay, endYear, endMonth, endDay, loggedIn));
         }
 
+    /**
+     @author s235233
+     */
         public ArrayList<AbsenceRegistration> getAbsencesForLoggedIn () {
             ArrayList<AbsenceRegistration> loggedInAbsences = new ArrayList<AbsenceRegistration>();
             for (AbsenceRegistration absenceRegistration : absenceRegistrations) {

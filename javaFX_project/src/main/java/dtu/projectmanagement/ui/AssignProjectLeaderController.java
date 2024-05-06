@@ -14,6 +14,9 @@ import javafx.scene.control.Label;
 
 import static java.util.Objects.isNull;
 
+/**
+ @author s230607
+ */
 public class AssignProjectLeaderController implements Initializable {
     @FXML
     public ChoiceBox<String> employeeChoiceBox;

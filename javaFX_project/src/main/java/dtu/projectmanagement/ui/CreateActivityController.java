@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 
 import static java.util.Objects.isNull;
 
+/**
+ @author s235238
+ */
 public class CreateActivityController implements Initializable {
     @FXML
     public Label createActivityLabel;

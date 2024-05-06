@@ -75,6 +75,9 @@ public class Activity {
         this.timeRegistrations.add(timeRegistration);
     }
 
+    /**
+     @author s235233
+     */
     private boolean outsideDates(TimeRegistration timeRegistration) {
         if (isNull(startDate) || isNull(endDate)) {
             return false;
@@ -104,6 +107,9 @@ public class Activity {
         return null;
     }
 
+    /**
+     @author s235221
+     */
     public void editTimeRegistration(Employee employee, int newHalfHours, GregorianCalendar gregorianCalendar) throws OperationNotAllowedException {
         TimeRegistration specificTimeRegistration = getSpecificTimeRegistration(employee, gregorianCalendar);
         if (isNull(specificTimeRegistration)) {

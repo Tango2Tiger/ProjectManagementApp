@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+/**
+ @author s235221
+ */
 public class StartEndActivityController implements Initializable {
     @FXML
     public Label setDateScreenLabel;

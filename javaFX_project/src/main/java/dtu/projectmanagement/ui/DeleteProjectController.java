@@ -15,6 +15,9 @@ import java.util.ResourceBundle;
 
 import static java.util.Objects.isNull;
 
+/**
+ @author s230607
+ */
 public class DeleteProjectController implements Initializable {
     @FXML
     private ChoiceBox<String> projectChoiceBox;

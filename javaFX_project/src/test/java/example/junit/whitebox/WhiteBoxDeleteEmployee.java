@@ -8,6 +8,9 @@ import org.junit.Assert;
 
 import static org.junit.Assert.*;
 
+/**
+ @author s235221
+ */
 public class WhiteBoxDeleteEmployee {
     ProjectManagementApp projectManagementApp = new ProjectManagementApp();
 
